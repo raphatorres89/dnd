@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: dnd
+
+dnd5e:
+  url: https://www.dnd5eapi.co/graphql
+  version: 2014
+

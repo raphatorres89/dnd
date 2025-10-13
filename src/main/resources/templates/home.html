@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(
+          pageTitle='Página Inicial',
+          content=~{::content},
+          headExtra=~{}
+      )}">
+<body>
+
+    <th:block th:fragment="content">
+        <h2>Conteúdo da Página Inicial</h2>
+        <p>Olá, <strong th:text="${userName}">visitante</strong>!</p>
+    </th:block>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="header">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="/">
+                    <span th:text="#{app.title}">Mestre Rapha</span>
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav nav-pills w-100">
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               th:classappend="${currentUri == '/' ? 'active' : ''}"
+                               th:aria-current="${currentUri == '/' ? 'page' : ''}"
+                               href="/">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               th:classappend="${currentUri == '/test' ? 'active' : ''}"
+                               th:aria-current="${currentUri == '/test' ? 'page' : ''}"
+                               href="/npcs"
+                               th:text="#{app.menu.npcs}"></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               th:classappend="${currentUri == '/monsters' ? 'active' : ''}"
+                               th:aria-current="${currentUri == '/monsters' ? 'page' : ''}"
+                               href="/bestiary"
+                               th:text="#{app.menu.bestiary}"></a>
+                        </li>
+
+                        <li class="nav-item dropdown ms-auto">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false"
+                               th:text="${#locale.getDisplayName()}">
+                            </a>
+
+                            <ul class="dropdown-menu" id="locale-menu">
+                                <li th:if="${#locale.language != 'pt_BR'}">
+                                    <a class="dropdown-item locale-switcher"
+                                       href="#"
+                                       data-lang="pt_BR"
+                                       th:text="#{app.language.portuguese}"></a>
+                                </li>
+
+                                <li th:if="${#locale.language != 'en_US'}">
+                                    <a class="dropdown-item locale-switcher"
+                                       href="#"
+                                       data-lang="en_US"
+                                       th:text="#{app.language.english}"></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               id="theme-dropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                <i class="bi bi-circle-half"></i> </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="theme-dropdown">
+                                <li>
+                                    <button type="button" class="dropdown-item theme-switcher" data-theme="light">
+                                        <i class="bi bi-sun"></i> <span th:text="#{app.theme.light}"></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item theme-switcher" data-theme="dark">
+                                        <i class="bi bi-moon-stars"></i> <span th:text="#{app.theme.dark}"></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item theme-switcher" data-theme="auto">
+                                        <i class="bi bi-laptop"></i> <span th:text="#{app.theme.system}"></span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+
+<div th:fragment="footer">
+    <footer>
+        <p>&copy; <span th:text="${#dates.year(#dates.createNow())}">2025</span> - Ferramentas do Mestre Raphão Torres</p>
+    </footer>
+</div>
+
+</body>
+</html>

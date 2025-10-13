@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt"
+      th:fragment="base(pageTitle, content, headExtra)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}"></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rpg-awesome/0.2.0/css/rpg-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <th:block th:replace="${headExtra} ?: _" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="container d-flex flex-column flex-grow-1">
+        <div th:replace="~{layout/fragments :: header}"></div>
+        <main id="content" class="flex-grow-1 mb-5">
+            <th:block th:replace="${content}" />
+        </main>
+        <div th:replace="~{layout/fragments :: footer}" class="mt-auto justify-content-center">Footer Default</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            // Script para troca de idioma via Dropdown
+            $('#locale-menu').on('click', '.locale-switcher', function(e) {
+                e.preventDefault();
+
+                var selectedLang = $(this).data('lang');
+
+                if (selectedLang) {
+                    var currentPath = window.location.pathname;
+                    var urlParams = new URLSearchParams(window.location.search);
+
+                    urlParams.set('lang', selectedLang);
+
+                    window.location.href = currentPath + '?' + urlParams.toString();
+                }
+            });
+        });
+    </script>
+
+    <script th:inline="javascript">
+        (function() {
+            // Função utilitária para obter a preferência do sistema
+            const getPreferredTheme = () => {
+                if (localStorage.getItem('theme')) {
+                    return localStorage.getItem('theme');
+                }
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            };
+
+            // Função para aplicar o tema na tag <html>
+            const setTheme = (theme) => {
+                let actualTheme = theme;
+
+                if (theme === 'auto') {
+                    // Se for 'auto', usa a preferência do sistema
+                    actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+
+                // Aplica o atributo principal do Bootstrap 5.3+
+                document.documentElement.setAttribute('data-bs-theme', actualTheme);
+            };
+
+            // --- 1. Aplica o tema no carregamento da página ---
+            setTheme(getPreferredTheme());
+
+            // --- 2. Listener para o clique no Dropdown ---
+            document.querySelectorAll('.theme-switcher').forEach(element => {
+                element.addEventListener('click', () => {
+                    const theme = element.getAttribute('data-theme');
+
+                    // Salva a escolha do usuário no Local Storage
+                    localStorage.setItem('theme', theme);
+
+                    // Aplica o novo tema
+                    setTheme(theme);
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>

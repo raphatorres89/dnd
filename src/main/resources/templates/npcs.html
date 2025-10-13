@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(
+          pageTitle='Gerador de NPCs Humanóides',
+          content=~{::content},
+          headExtra=~{}
+      )}">
+<body>
+<th:block th:fragment="content">
+    <div class="container mt-4">
+        <div class="row text-center mb-4">
+            <h1>
+                <i class="ra ra-player-dodge text-primary"></i> <span th:text="#{app.npcs.title}" />
+            </h1>
+        </div>
+
+        <div id="npcFilters" class="card shadow p-4 mb-4">
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <label for="filterNpcRace" class="form-label" th:text="#{app.npcs.filter.race}"></label>
+                    <select id="filterNpcRace" class="form-select">
+                        <option value="" th:text="#{app.npcs.filter.race.any}"></option>
+                        <option th:each="race : ${T(com.raphaowl.dnd.enums.RaceEnum).values()}"
+                                th:value="${race.name()}"
+                                th:text="#{${'race.' + race.name()}}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="filterNpcGender" class="form-label" th:text="#{app.npcs.filter.gender}"></label>
+                    <select id="filterNpcGender" class="form-select">
+                        <option value="" th:text="#{app.npcs.filter.gender.any}"></option>
+                        <option th:each="gender : ${T(com.raphaowl.dnd.enums.GenderEnum).values()}"
+                                th:value="${gender.name()}"
+                                th:text="#{${'gender.' + gender.name()}}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="filterNpcClass" class="form-label" th:text="#{app.npcs.filter.class}"></label>
+                    <select id="filterNpcClass" class="form-select">
+                        <option value="" th:text="#{app.npcs.filter.class.any}"></option>
+                        <option th:each="class : ${T(com.raphaowl.dnd.enums.ClassEnum).values()}"
+                                th:value="${class.name()}"
+                                th:text="#{${'class.' + class.name()}}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <button id="generateNpcsBtn" class="btn btn-primary w-100">
+                        <i class="ra ra-dizzy"></i> <span th:text="#{app.npcs.filter.button}"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="npcsContainer" class="row row-cols-1 row-cols-md-2 g-4">
+            <p class="text-muted text-center w-100" th:text="#{app.npcs.filter.message.info}"></p>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        $('#generateNpcsBtn').on('click', function() {
+            const race = $('#filterNpcRace').val();
+            const gender = $('#filterNpcGender').val();
+            const npcClass = $('#filterNpcClass').val();
+            const alignment = $('#filterNpcAlignment').val();
+
+            const url = `/npcs/generate?race=${race}&gender=${gender}&className=${npcClass}&alignment=${alignment}`;
+
+            const $container = $('#npcsContainer');
+            $container.html('<p class="text-center w-100"><i class="ra ra-sword"></i> [[#{app.npcs.filter.message.loading}]]</p>');
+
+            $.get(url, function(htmlContent) {
+                $container.html(htmlContent);
+            }).fail(function() {
+                $container.html('<p class="text-danger text-center w-100" >[[#{app.npcs.filter.message.error}]]</p>');
+            });
+        });
+    </script>
+</th:block>

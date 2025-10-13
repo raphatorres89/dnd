@@ -1,0 +1,178 @@
+<div th:fragment="content">
+    <div class="container">
+        <div class="row align-items-center mb-4 border-bottom pb-2">
+            <div class="col-3 col-sm-2 text-center">
+                <img th:src="${monster.imageUrl()}"
+                     th:alt="#{${'monster.name.' + monster.name()}}"
+                     class="rounded-circle border border-2 border-secondary"
+                     width="75" height="75" />
+            </div>
+            <div class="col-9 col-sm-10">
+                <h3 class="m-0" th:text="#{${'monster.name.' + monster.name()}}"></h3>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-12">
+                <strong><span th:text="#{app.bestiary.modal.type}"></span></strong><br/>
+                <span th:with="type = ${monster.type}">
+                    <i class="fs-3 align-middle"
+                       th:classappend="${type.iconClass}"
+                       data-bs-toggle="popover"
+                       data-bs-trigger="hover"
+                       th:data-bs-content="#{${'monster.type.' + type.name()}}"
+                       data-bs-placement="top"
+                       th:title="#{${'monster.type.' + type.name()}}"
+                       style="cursor: help;"
+                    ></i>
+                    <span th:text="#{${'monster.type.' + type.name()}}"></span>
+                    <span th:if="${monster.subtype}" th:text="|(${monster.ptSubtype})|"></span>
+                </span>
+            </div>
+
+            <div class="col-sm-6">
+                <strong><span th:text="#{app.bestiary.modal.size}"></span></strong><br/>
+                <span th:text="#{${'size.' + monster.size.name()}}"></span>
+                <div th:with="icons = ${#numbers.sequence(1, 6)}" class="mt-1">
+                    <i th:each="i : ${icons}"
+                       class="ra ra-player"
+                       th:classappend="${i eq monster.size.primaryIcons} ? 'text-primary' : 'text-secondary'"
+                       th:styleappend="|font-size: 1.${i}rem; margin-right: 2px;|">
+                    </i>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <strong><span th:text="#{app.bestiary.modal.alignment}"></span></strong><br/>
+                <span th:text="#{${'alignment.' + monster.alignment.name()}}"></span>
+            </div>
+
+            <div class="col-sm-6">
+                <strong><span th:text="#{app.bestiary.modal.hp}"></span></strong><br/>
+                <p th:inline="text" class="mb-0">
+                    <i class="ra ra-gear-heart text-danger align-middle"></i>
+                    <span th:text="${monster.hitPoints}"></span> (<span th:text="${monster.hitDice}"></span>)
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <strong><span th:text="#{app.bestiary.modal.xp}"></span></strong><br/>
+                <span th:text="${monster.experience}"></span>
+            </div>
+        </div>
+
+        <h5 class="mt-4 mb-3 border-bottom pb-1" th:text="#{app.bestiary.modal.attributes}"></h5>
+        <div class="row text-center g-2">
+            <div class="col-4 col-sm-2">
+                <div class="border border-secondary-subtle rounded-3 p-2">
+                    <h6 class="m-0 text-uppercase" th:text="#{attributes.strength.prefix}"></h6>
+                    <p class="fs-5 fw-bold m-0" th:text="${monster.strength}">
+                        <span th:text="1"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-4 col-sm-2">
+                <div class="border border-secondary-subtle rounded-3 p-2">
+                    <h6 class="m-0 text-uppercase" th:text="#{attributes.dexterity.prefix}"></h6>
+                    <p class="fs-5 fw-bold m-0" th:text="${monster.dexterity}">
+                        <span th:text="1"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-4 col-sm-2">
+                <div class="border border-secondary-subtle rounded-3 p-2">
+                    <h6 class="m-0 text-uppercase" th:text="#{attributes.constitution.prefix}"></h6>
+                    <p class="fs-5 fw-bold m-0" th:text="${monster.constitution}">
+                        <span th:text="1"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-4 col-sm-2">
+                <div class="border border-secondary-subtle rounded-3 p-2">
+                    <h6 class="m-0 text-uppercase" th:text="#{attributes.intelligence.prefix}"></h6>
+                    <p class="fs-5 fw-bold m-0" th:text="${monster.intelligence}">
+                        <span th:text="1"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-4 col-sm-2">
+                <div class="border border-secondary-subtle rounded-3 p-2">
+                    <h6 class="m-0 text-uppercase" th:text="#{attributes.wisdom.prefix}"></h6>
+                    <p class="fs-5 fw-bold m-0" th:text="${monster.wisdom}">
+                        <span th:text="1"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-4 col-sm-2">
+                <div class="border border-secondary-subtle rounded-3 p-2">
+                    <h6 class="m-0 text-uppercase" th:text="#{attributes.charisma.prefix}"></h6>
+                    <p class="fs-5 fw-bold m-0" th:text="${monster.charisma}">
+                        <span th:text="1"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="mt-4 mb-3 border-bottom pb-1" th:text="#{app.bestiary.modal.defenses}"></h5>
+        <div class="row g-3">
+            <div class="col-sm-6">
+                <strong><span th:text="#{app.bestiary.modal.vulnerabilities}"></span></strong><br/>
+                <div th:each="vulnerability : ${monster.damageVulnerabilities}" style="display: inline-block; margin-right: 10px;" class="fs-3">
+                    <i th:class="${vulnerability.iconClass}"
+                       data-bs-toggle="popover"
+                       data-bs-trigger="hover"
+                       th:data-bs-content="#{${'damage.' + vulnerability.name()}}"
+                       data-bs-placement="top"
+                       th:title="#{${'damage.' + vulnerability.name()}}"
+                       style="cursor: help;"
+                    ></i>
+                </div>
+                <span th:if="${#lists.isEmpty(monster.damageVulnerabilities)}" th:text="#{app.bestiary.modal.vulnerabilities.empty}"></span>
+            </div>
+
+            <div class="col-sm-6">
+                <strong><span th:text="#{app.bestiary.modal.resistances}"></span></strong><br/>
+                <div th:each="resistance : ${monster.damageResistances}" style="display: inline-block; margin-right: 10px;" class="fs-3">
+                    <i th:class="${resistance.iconClass}"
+                       data-bs-toggle="popover"
+                       data-bs-trigger="hover"
+                       th:data-bs-content="#{${'damage.' + resistance.name()}}"
+                       data-bs-placement="top"
+                       th:title="#{${'damage.' + resistance.name()}}"
+                       style="cursor: help;"
+                    ></i>
+                </div>
+                <span th:if="${#lists.isEmpty(monster.damageResistances)}" th:text="#{app.bestiary.modal.resistances.empty}"></span>
+            </div>
+
+            <div class="col-sm-6">
+                <strong><span th:text="#{app.bestiary.modal.immunities}"></span></strong><br/>
+                <div th:each="immunity : ${monster.damageImmunities}" style="display: inline-block; margin-right: 10px;" class="fs-3">
+                    <i th:class="${immunity.iconClass}"
+                       data-bs-toggle="popover"
+                       data-bs-trigger="hover"
+                       th:data-bs-content="#{${'damage.' + immunity.name()}}"
+                       data-bs-placement="top"
+                       th:title="#{${'damage.' + immunity.name()}}"
+                       style="cursor: help;"
+                    ></i>
+                </div>
+                <span th:if="${#lists.isEmpty(monster.damageImmunities)}" th:text="#{app.bestiary.modal.immunities.empty}"></span>
+            </div>
+
+            <div class="col-sm-6">
+                <strong><span th:text="#{app.bestiary.modal.condition_immunities}"></span></strong><br/>
+                <div th:each="immunity : ${monster.conditionImmunities}" style="display: inline-block; margin-right: 10px;" class="fs-3">
+                    <i th:class="${immunity.name.iconClass}"
+                       data-bs-toggle="popover"
+                       data-bs-trigger="hover"
+                       th:data-bs-content="#{${'condition.' + immunity.name.name()}}"
+                       data-bs-placement="top"
+                       th:title="#{${'condition.' + immunity.name.name()}}"
+                       style="cursor: help;"
+                    ></i>
+                </div>
+                <span th:if="${#lists.isEmpty(monster.conditionImmunities)}" th:text="#{app.bestiary.modal.condition_immunities.empty}"></span>
+            </div>
+        </div>
+    </div>
+</div>

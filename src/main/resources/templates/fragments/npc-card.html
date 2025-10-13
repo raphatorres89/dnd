@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<th:block th:fragment="cards">
+
+    <div th:each="npc : ${npcs}" class="col">
+
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <div class="row g-2">
+
+                    <div class="col-4 text-center border-end">
+                        <i class="ra ra-player display-4"
+                           th:classappend="${npc.gender.name == 'MALE'} ? 'text-primary' : 'text-danger'">
+                        </i>
+                        <p class="mb-1 fw-bold" th:text="#{${'race.' + npc.race.name()}}"></p>
+                        <small class="text-muted" th:text="#{${'gender.' + npc.gender.name()}}"></small>
+                    </div>
+
+                    <div class="col-8">
+                        <h5 class="card-title text-truncate" th:text="${npc.name}"></h5>
+                        <p class="card-subtitle mb-2 text-muted small">
+                            <i th:class="${npc.className.iconClass}"></i>
+                            <span th:text="#{${'class.' + npc.className.name}} + ' (' + #{${'alignment.' + npc.alignment.name()}} + ')'"></span>
+                        </p>
+
+                        <hr class="my-2">
+
+                        <div class="d-flex flex-column small">
+                            <span class="text-success fw-bold" th:text="${npc.statistics}"></span>
+
+                            <div class="mt-2">
+                                <span class="fw-bold" th:text="#{app.npcs.card.trait}">:</span> <span th:text="${npc.trait}"></span>
+                            </div>
+                            <div>
+                                <span class="fw-bold" th:text="#{app.npcs.card.motivation}">:</span> <span th:text="${npc.motivation}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</th:block>
+
+</body>
+</html>

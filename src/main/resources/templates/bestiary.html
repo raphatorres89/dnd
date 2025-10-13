@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(
+          pageTitle='Bestiário',
+          content=~{::content},
+          headExtra=~{}
+      )}">
+<body>
+<th:block th:fragment="content">
+    <div class="container mt-4">
+        <div class="row text-center mb-4">
+            <h1>
+                <i class="ra ra-dragon text-primary"></i> <span th:text="#{app.bestiary.title}"></span>
+            </h1>
+        </div>
+
+        <div class="card shadow p-4 mb-4">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="filterName" class="form-label visually-hidden" th:text="#{app.bestiary.filter.name}"></label>
+                    <input type="text" id="filterName" class="form-control" th:placeholder="#{app.bestiary.filter.name.placeholder}">
+                </div>
+
+                <div class="col-md-4">
+                    <label for="filterSize" class="form-label visually-hidden" th:text="#{app.bestiary.filter.size}"></label>
+                    <select id="filterSize" class="form-select">
+                        <option value="" th:text="#{app.bestiary.filter.size.all}"></option>
+                        <option th:each="size : ${T(com.raphaowl.dnd.enums.MonsterEnum).values()}"
+                                th:value="${size.name()}"
+                                th:text="#{${'size.' + size.name()}}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="filterCr" class="form-label visually-hidden" th:text="#{app.bestiary.filter.challenge_rating}"></label>
+                    <select id="filterCr" class="form-select">
+                        <option value="" th:text="#{app.bestiary.filter.size.challenge_rating.all}"></option>
+                        <option value="1">CR <= 1</option>
+                        <option value="2">CR 2 ~ 4</option>
+                        <option value="5">CR 5 ~ 9</option>
+                        <option value="10">CR 10 ~ 15</option>
+                        <option value="16">CR 16+</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-secondary w-100" onclick="clearFilters()" th:text="#{app.bestiary.filter.button}"></button>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover" id="monsterTable">
+            <thead>
+                <tr>
+                    <th scope="col"><i class="ra ra-dragon"></i> <span th:text="#{app.bestiary.table.name}" /></th>
+                    <th scope="col"><i class="ra ra-muscle-up"></i> <span th:text="#{app.bestiary.table.size}" /></th>
+                    <th scope="col"><i class="ra ra-trophy"></i> <span th:text="#{app.bestiary.table.challenge_rating}" /></th>
+                </tr>
+            </thead>
+            <tbody th:each="monster : ${monsters}">
+                <tr class="monster-row"
+                    th:data-id="${monster.index}"
+                    th:data-size="${monster.size()}"
+                    th:data-cr="${monster.challengeRating.doubleValue()}"
+                    style="cursor: pointer;">
+                    <td th:text="#{${'monster.name.' + monster.name()}}"></td>
+                    <td th:text="#{${'size.' + monster.size.name()}}"></td>
+                    <td>
+                        <span class="w-15" th:text="${monster.getChallengeRatingFormatted()}"></span>
+                        <span th:text="${monster.getChallengeRatingStars()}"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="monsterDetailModal" tabindex="-1" aria-labelledby="monsterDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="#{app.bestiary.modal.title}"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="monsterDetails" class="space-y-2 text-sm">
+                        <span class="visually-hidden"><i class="ra ra-sword"></i> <span th:text="#{app.bestiary.modal.loading}" /></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                            th:text="#{app.bestiary.modal.button}" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script click na row -->
+    <script>
+        $(document).ready(function() {
+            // 1. Ouve o clique em qualquer linha com a classe 'monster-row'
+            $('#monsterTable').on('click', '.monster-row', function() {
+                // 2. Obtém o ID do monstro a partir do atributo data-id da linha
+                var monsterId = $(this).data('id');
+
+                // 3. Define a URL do seu endpoint no backend
+                var url = '/bestiary/' + monsterId;
+
+                // 4. Limpa o modal e mostra o spinner de carregamento
+                $('#monsterDetails').load(url, function () {
+                    // Callback: o conteúdo foi carregado. Agora, exiba o modal.
+                    $('#monsterDetailModal').modal('show');
+                });
+            });
+        });
+    </script>
+
+    <!-- Script de filtragem -->
+    <script>
+        // Função principal de filtragem
+        function filterMonsters() {
+            const filterName = $('#filterName').val().toLowerCase();
+            const filterSize = $('#filterSize').val();
+            const filterCrRange = $('#filterCr').val();
+
+            $('#monsterTable tbody tr.monster-row').each(function() {
+                const $row = $(this);
+                const name = $row.find('td:nth-child(1)').text().toLowerCase();
+                const size = $row.data('size');
+                const cr = parseFloat($row.data('cr'));
+
+                let show = true;
+
+                // 1. Filtragem por Nome
+                if (filterName && !name.includes(filterName)) {
+                    show = false;
+                }
+
+                // 2. Filtragem por Tamanho
+                if (show && filterSize && size !== filterSize) {
+                    show = false;
+                }
+
+                // 3. Filtragem por ND (Challenge Rating)
+                if (show && filterCrRange) {
+                    let crMin = 0;
+                    let crMax = Infinity; // Use Infinity para representar 'ilimitado'
+
+                    switch(filterCrRange) {
+                        case '1':
+                            crMax = 1.0;
+                            break;
+                        case '2':
+                            crMin = 1.001; // Começa um pouco acima do limite anterior
+                            crMax = 4.999; // Chega perto do próximo limite (ND 5)
+                            break;
+                        case '5':
+                            crMin = 5.0;
+                            crMax = 9.999; // Chega perto do próximo limite (ND 10)
+                            break;
+                        case '10':
+                            crMin = 10.0;
+                            crMax = 15.999; // Chega perto do próximo limite (ND 16)
+                            break;
+                        case '16':
+                            crMin = 16.0;
+                            crMax = Infinity;
+                            break;
+                    }
+
+                    if (cr < crMin || cr > crMax) {
+                        show = false;
+                    }
+                }
+
+                // Mostrar ou Ocultar a linha
+                $row.toggle(show);
+            });
+        }
+
+        // Função para limpar os filtros
+        function clearFilters() {
+            $('#filterName').val('');
+            $('#filterSize').val('');
+            $('#filterCr').val('');
+            filterMonsters(); // Executa o filtro para reexibir tudo
+        }
+
+        $(document).ready(function() {
+            // ... (Código do Modal Existente) ...
+
+            // 🌟 NOVO: Atribui a função de filtro aos eventos de mudança
+            $('#filterName, #filterSize, #filterCr').on('keyup change', filterMonsters);
+        });
+    </script>
+</th:block>
+</body>
+</html>
