@@ -1,0 +1,29 @@
+body {
+    padding-top: 56px; /* ajusta conforme a altura do header */
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background: url('/images/logo.png') no-repeat center center;
+    background-size: cover;
+}
+
+.hero-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* escurece a imagem para o texto ficar legível */
+    z-index: 1;
+}
+
+.hero-section .container {
+    z-index: 2;
+}
+
+.hero-section h1,
+.hero-section p {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}

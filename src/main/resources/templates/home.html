@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layout/base :: base(
-          pageTitle='Página Inicial',
+          pageTitle='Home',
           content=~{::content},
           headExtra=~{}
       )}">
 <body>
 
-    <th:block th:fragment="content">
-        <h2>Seja bem vindo, aventureiro</h2>
-        <p>Este site está em construção, mas já temos algumas funções para sua <strong>aventura</strong>!</p>
-    </th:block>
+<th:block th:fragment="content">
+    <section class="hero-section d-flex align-items-center justify-content-center text-center text-light">
+        <div class="overlay"></div>
+        <div class="container position-relative">
+            <h1 class="display-4 fw-bold mb-3" th:text="#{app.home.welcome.title}"></h1>
+            <p class="lead" th:text="#{app.home.welcome.message}"></p>
+            <a th:text="#{app.home.welcome.button}" href="/npcs" class="btn btn-outline-light btn-lg mt-3"></a>
+        </div>
+    </section>
+</th:block>
 
 </body>
 </html>
