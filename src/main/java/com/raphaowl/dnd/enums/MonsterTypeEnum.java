@@ -33,7 +33,10 @@ public enum MonsterTypeEnum {
         if (value == null) {
             return null;
         }
-        String normalized = value.trim().toLowerCase();
+        String normalized = value.trim()
+                .toLowerCase()
+                .replace(" ", "_")
+                .replace("-", "_");
 
         return Stream.of(MonsterTypeEnum.values())
                 .filter(g -> g.name().toLowerCase().equals(normalized))

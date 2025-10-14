@@ -1,0 +1,2344 @@
+{
+  "data": {
+    "monsters": [
+      {
+        "index": "aboleth",
+        "name": "Aboleth",
+        "size": "Large",
+        "challenge_rating": 10,
+        "image": "/api/images/monsters/aboleth.png"
+      },
+      {
+        "index": "acolyte",
+        "name": "Acolyte",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/acolyte.png"
+      },
+      {
+        "index": "adult-black-dragon",
+        "name": "Adult Black Dragon",
+        "size": "Huge",
+        "challenge_rating": 14,
+        "image": "/api/images/monsters/adult-black-dragon.png"
+      },
+      {
+        "index": "adult-blue-dragon",
+        "name": "Adult Blue Dragon",
+        "size": "Huge",
+        "challenge_rating": 16,
+        "image": "/api/images/monsters/adult-blue-dragon.png"
+      },
+      {
+        "index": "adult-brass-dragon",
+        "name": "Adult Brass Dragon",
+        "size": "Huge",
+        "challenge_rating": 13,
+        "image": "/api/images/monsters/adult-brass-dragon.png"
+      },
+      {
+        "index": "adult-bronze-dragon",
+        "name": "Adult Bronze Dragon",
+        "size": "Huge",
+        "challenge_rating": 15,
+        "image": "/api/images/monsters/adult-bronze-dragon.png"
+      },
+      {
+        "index": "adult-copper-dragon",
+        "name": "Adult Copper Dragon",
+        "size": "Huge",
+        "challenge_rating": 14,
+        "image": "/api/images/monsters/adult-copper-dragon.png"
+      },
+      {
+        "index": "adult-gold-dragon",
+        "name": "Adult Gold Dragon",
+        "size": "Huge",
+        "challenge_rating": 17,
+        "image": "/api/images/monsters/adult-gold-dragon.png"
+      },
+      {
+        "index": "adult-green-dragon",
+        "name": "Adult Green Dragon",
+        "size": "Huge",
+        "challenge_rating": 15,
+        "image": "/api/images/monsters/adult-green-dragon.png"
+      },
+      {
+        "index": "adult-red-dragon",
+        "name": "Adult Red Dragon",
+        "size": "Huge",
+        "challenge_rating": 17,
+        "image": "/api/images/monsters/adult-red-dragon.png"
+      },
+      {
+        "index": "adult-silver-dragon",
+        "name": "Adult Silver Dragon",
+        "size": "Huge",
+        "challenge_rating": 16,
+        "image": "/api/images/monsters/adult-silver-dragon.png"
+      },
+      {
+        "index": "adult-white-dragon",
+        "name": "Adult White Dragon",
+        "size": "Huge",
+        "challenge_rating": 13,
+        "image": "/api/images/monsters/adult-white-dragon.png"
+      },
+      {
+        "index": "air-elemental",
+        "name": "Air Elemental",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/air-elemental.png"
+      },
+      {
+        "index": "ancient-black-dragon",
+        "name": "Ancient Black Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 21,
+        "image": "/api/images/monsters/ancient-black-dragon.png"
+      },
+      {
+        "index": "ancient-blue-dragon",
+        "name": "Ancient Blue Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 23,
+        "image": "/api/images/monsters/ancient-blue-dragon.png"
+      },
+      {
+        "index": "ancient-brass-dragon",
+        "name": "Ancient Brass Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 20,
+        "image": "/api/images/monsters/ancient-brass-dragon.png"
+      },
+      {
+        "index": "ancient-bronze-dragon",
+        "name": "Ancient Bronze Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 22,
+        "image": "/api/images/monsters/ancient-bronze-dragon.png"
+      },
+      {
+        "index": "ancient-copper-dragon",
+        "name": "Ancient Copper Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 21,
+        "image": "/api/images/monsters/ancient-copper-dragon.png"
+      },
+      {
+        "index": "ancient-gold-dragon",
+        "name": "Ancient Gold Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 24,
+        "image": "/api/images/monsters/ancient-gold-dragon.png"
+      },
+      {
+        "index": "ancient-green-dragon",
+        "name": "Ancient Green Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 22,
+        "image": "/api/images/monsters/ancient-green-dragon.png"
+      },
+      {
+        "index": "ancient-red-dragon",
+        "name": "Ancient Red Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 24,
+        "image": "/api/images/monsters/ancient-red-dragon.png"
+      },
+      {
+        "index": "ancient-silver-dragon",
+        "name": "Ancient Silver Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 23,
+        "image": "/api/images/monsters/ancient-silver-dragon.png"
+      },
+      {
+        "index": "ancient-white-dragon",
+        "name": "Ancient White Dragon",
+        "size": "Gargantuan",
+        "challenge_rating": 20,
+        "image": "/api/images/monsters/ancient-white-dragon.png"
+      },
+      {
+        "index": "androsphinx",
+        "name": "Androsphinx",
+        "size": "Large",
+        "challenge_rating": 17,
+        "image": "/api/images/monsters/androsphinx.png"
+      },
+      {
+        "index": "animated-armor",
+        "name": "Animated Armor",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/animated-armor.png"
+      },
+      {
+        "index": "ankheg",
+        "name": "Ankheg",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/ankheg.png"
+      },
+      {
+        "index": "ape",
+        "name": "Ape",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/ape.png"
+      },
+      {
+        "index": "archmage",
+        "name": "Archmage",
+        "size": "Medium",
+        "challenge_rating": 12,
+        "image": "/api/images/monsters/archmage.png"
+      },
+      {
+        "index": "assassin",
+        "name": "Assassin",
+        "size": "Medium",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/assassin.png"
+      },
+      {
+        "index": "awakened-shrub",
+        "name": "Awakened Shrub",
+        "size": "Small",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/awakened-shrub.png"
+      },
+      {
+        "index": "awakened-tree",
+        "name": "Awakened Tree",
+        "size": "Huge",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/awakened-tree.png"
+      },
+      {
+        "index": "axe-beak",
+        "name": "Axe Beak",
+        "size": "Large",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/axe-beak.png"
+      },
+      {
+        "index": "azer",
+        "name": "Azer",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/azer.png"
+      },
+      {
+        "index": "baboon",
+        "name": "Baboon",
+        "size": "Small",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/baboon.png"
+      },
+      {
+        "index": "badger",
+        "name": "Badger",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/badger.png"
+      },
+      {
+        "index": "balor",
+        "name": "Balor",
+        "size": "Huge",
+        "challenge_rating": 19,
+        "image": "/api/images/monsters/balor.png"
+      },
+      {
+        "index": "bandit",
+        "name": "Bandit",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/bandit.png"
+      },
+      {
+        "index": "bandit-captain",
+        "name": "Bandit Captain",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/bandit-captain.png"
+      },
+      {
+        "index": "barbed-devil",
+        "name": "Barbed Devil",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/barbed-devil.png"
+      },
+      {
+        "index": "basilisk",
+        "name": "Basilisk",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/basilisk.png"
+      },
+      {
+        "index": "bat",
+        "name": "Bat",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/bat.png"
+      },
+      {
+        "index": "bearded-devil",
+        "name": "Bearded Devil",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/bearded-devil.png"
+      },
+      {
+        "index": "behir",
+        "name": "Behir",
+        "size": "Huge",
+        "challenge_rating": 11,
+        "image": "/api/images/monsters/behir.png"
+      },
+      {
+        "index": "berserker",
+        "name": "Berserker",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/berserker.png"
+      },
+      {
+        "index": "black-bear",
+        "name": "Black Bear",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/black-bear.png"
+      },
+      {
+        "index": "black-dragon-wyrmling",
+        "name": "Black Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/black-dragon-wyrmling.png"
+      },
+      {
+        "index": "black-pudding",
+        "name": "Black Pudding",
+        "size": "Large",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/black-pudding.png"
+      },
+      {
+        "index": "blink-dog",
+        "name": "Blink Dog",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/blink-dog.png"
+      },
+      {
+        "index": "blood-hawk",
+        "name": "Blood Hawk",
+        "size": "Small",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/blood-hawk.png"
+      },
+      {
+        "index": "blue-dragon-wyrmling",
+        "name": "Blue Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/blue-dragon-wyrmling.png"
+      },
+      {
+        "index": "boar",
+        "name": "Boar",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/boar.png"
+      },
+      {
+        "index": "bone-devil",
+        "name": "Bone Devil",
+        "size": "Large",
+        "challenge_rating": 9,
+        "image": "/api/images/monsters/bone-devil.png"
+      },
+      {
+        "index": "brass-dragon-wyrmling",
+        "name": "Brass Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/brass-dragon-wyrmling.png"
+      },
+      {
+        "index": "bronze-dragon-wyrmling",
+        "name": "Bronze Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/bronze-dragon-wyrmling.png"
+      },
+      {
+        "index": "brown-bear",
+        "name": "Brown Bear",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/brown-bear.png"
+      },
+      {
+        "index": "bugbear",
+        "name": "Bugbear",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/bugbear.png"
+      },
+      {
+        "index": "bulette",
+        "name": "Bulette",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/bulette.png"
+      },
+      {
+        "index": "camel",
+        "name": "Camel",
+        "size": "Large",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/camel.png"
+      },
+      {
+        "index": "cat",
+        "name": "Cat",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/cat.png"
+      },
+      {
+        "index": "centaur",
+        "name": "Centaur",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/centaur.png"
+      },
+      {
+        "index": "chain-devil",
+        "name": "Chain Devil",
+        "size": "Medium",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/chain-devil.png"
+      },
+      {
+        "index": "chimera",
+        "name": "Chimera",
+        "size": "Large",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/chimera.png"
+      },
+      {
+        "index": "chuul",
+        "name": "Chuul",
+        "size": "Large",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/chuul.png"
+      },
+      {
+        "index": "clay-golem",
+        "name": "Clay Golem",
+        "size": "Large",
+        "challenge_rating": 9,
+        "image": "/api/images/monsters/clay-golem.png"
+      },
+      {
+        "index": "cloaker",
+        "name": "Cloaker",
+        "size": "Large",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/cloaker.png"
+      },
+      {
+        "index": "cloud-giant",
+        "name": "Cloud Giant",
+        "size": "Huge",
+        "challenge_rating": 9,
+        "image": "/api/images/monsters/cloud-giant.png"
+      },
+      {
+        "index": "cockatrice",
+        "name": "Cockatrice",
+        "size": "Small",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/cockatrice.png"
+      },
+      {
+        "index": "commoner",
+        "name": "Commoner",
+        "size": "Medium",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/commoner.png"
+      },
+      {
+        "index": "constrictor-snake",
+        "name": "Constrictor Snake",
+        "size": "Large",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/constrictor-snake.png"
+      },
+      {
+        "index": "copper-dragon-wyrmling",
+        "name": "Copper Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/copper-dragon-wyrmling.png"
+      },
+      {
+        "index": "couatl",
+        "name": "Couatl",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/couatl.png"
+      },
+      {
+        "index": "crab",
+        "name": "Crab",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/crab.png"
+      },
+      {
+        "index": "crocodile",
+        "name": "Crocodile",
+        "size": "Large",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/crocodile.png"
+      },
+      {
+        "index": "cult-fanatic",
+        "name": "Cult Fanatic",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/cult-fanatic.png"
+      },
+      {
+        "index": "cultist",
+        "name": "Cultist",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/cultist.png"
+      },
+      {
+        "index": "darkmantle",
+        "name": "Darkmantle",
+        "size": "Small",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/darkmantle.png"
+      },
+      {
+        "index": "death-dog",
+        "name": "Death Dog",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/death-dog.png"
+      },
+      {
+        "index": "deep-gnome-svirfneblin",
+        "name": "Deep Gnome (Svirfneblin)",
+        "size": "Small",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/deep-gnome-svirfneblin.png"
+      },
+      {
+        "index": "deer",
+        "name": "Deer",
+        "size": "Medium",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/deer.png"
+      },
+      {
+        "index": "deva",
+        "name": "Deva",
+        "size": "Medium",
+        "challenge_rating": 10,
+        "image": "/api/images/monsters/deva.png"
+      },
+      {
+        "index": "dire-wolf",
+        "name": "Dire Wolf",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/dire-wolf.png"
+      },
+      {
+        "index": "djinni",
+        "name": "Djinni",
+        "size": "Large",
+        "challenge_rating": 11,
+        "image": "/api/images/monsters/djinni.png"
+      },
+      {
+        "index": "doppelganger",
+        "name": "Doppelganger",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/doppelganger.png"
+      },
+      {
+        "index": "draft-horse",
+        "name": "Draft Horse",
+        "size": "Large",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/draft-horse.png"
+      },
+      {
+        "index": "dragon-turtle",
+        "name": "Dragon Turtle",
+        "size": "Gargantuan",
+        "challenge_rating": 17,
+        "image": "/api/images/monsters/dragon-turtle.png"
+      },
+      {
+        "index": "dretch",
+        "name": "Dretch",
+        "size": "Small",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/dretch.png"
+      },
+      {
+        "index": "drider",
+        "name": "Drider",
+        "size": "Large",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/drider.png"
+      },
+      {
+        "index": "drow",
+        "name": "Drow",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/drow.png"
+      },
+      {
+        "index": "druid",
+        "name": "Druid",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/druid.png"
+      },
+      {
+        "index": "dryad",
+        "name": "Dryad",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/dryad.png"
+      },
+      {
+        "index": "duergar",
+        "name": "Duergar",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/duergar.png"
+      },
+      {
+        "index": "dust-mephit",
+        "name": "Dust Mephit",
+        "size": "Small",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/dust-mephit.png"
+      },
+      {
+        "index": "eagle",
+        "name": "Eagle",
+        "size": "Small",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/eagle.png"
+      },
+      {
+        "index": "earth-elemental",
+        "name": "Earth Elemental",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/earth-elemental.png"
+      },
+      {
+        "index": "efreeti",
+        "name": "Efreeti",
+        "size": "Large",
+        "challenge_rating": 11,
+        "image": "/api/images/monsters/efreeti.png"
+      },
+      {
+        "index": "elephant",
+        "name": "Elephant",
+        "size": "Huge",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/elephant.png"
+      },
+      {
+        "index": "elk",
+        "name": "Elk",
+        "size": "Large",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/elk.png"
+      },
+      {
+        "index": "erinyes",
+        "name": "Erinyes",
+        "size": "Medium",
+        "challenge_rating": 12,
+        "image": "/api/images/monsters/erinyes.png"
+      },
+      {
+        "index": "ettercap",
+        "name": "Ettercap",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/ettercap.png"
+      },
+      {
+        "index": "ettin",
+        "name": "Ettin",
+        "size": "Large",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/ettin.png"
+      },
+      {
+        "index": "fire-elemental",
+        "name": "Fire Elemental",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/fire-elemental.png"
+      },
+      {
+        "index": "fire-giant",
+        "name": "Fire Giant",
+        "size": "Huge",
+        "challenge_rating": 9,
+        "image": "/api/images/monsters/fire-giant.png"
+      },
+      {
+        "index": "flesh-golem",
+        "name": "Flesh Golem",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/flesh-golem.png"
+      },
+      {
+        "index": "flying-snake",
+        "name": "Flying Snake",
+        "size": "Tiny",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/flying-snake.png"
+      },
+      {
+        "index": "flying-sword",
+        "name": "Flying Sword",
+        "size": "Small",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/flying-sword.png"
+      },
+      {
+        "index": "frog",
+        "name": "Frog",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/frog.png"
+      },
+      {
+        "index": "frost-giant",
+        "name": "Frost Giant",
+        "size": "Huge",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/frost-giant.png"
+      },
+      {
+        "index": "gargoyle",
+        "name": "Gargoyle",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/gargoyle.png"
+      },
+      {
+        "index": "gelatinous-cube",
+        "name": "Gelatinous Cube",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/gelatinous-cube.png"
+      },
+      {
+        "index": "ghast",
+        "name": "Ghast",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/ghast.png"
+      },
+      {
+        "index": "ghost",
+        "name": "Ghost",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/ghost.png"
+      },
+      {
+        "index": "ghoul",
+        "name": "Ghoul",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/ghoul.png"
+      },
+      {
+        "index": "giant-ape",
+        "name": "Giant Ape",
+        "size": "Huge",
+        "challenge_rating": 7,
+        "image": "/api/images/monsters/giant-ape.png"
+      },
+      {
+        "index": "giant-badger",
+        "name": "Giant Badger",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/giant-badger.png"
+      },
+      {
+        "index": "giant-bat",
+        "name": "Giant Bat",
+        "size": "Large",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/giant-bat.png"
+      },
+      {
+        "index": "giant-boar",
+        "name": "Giant Boar",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/giant-boar.png"
+      },
+      {
+        "index": "giant-centipede",
+        "name": "Giant Centipede",
+        "size": "Small",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/giant-centipede.png"
+      },
+      {
+        "index": "giant-constrictor-snake",
+        "name": "Giant Constrictor Snake",
+        "size": "Huge",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/giant-constrictor-snake.png"
+      },
+      {
+        "index": "giant-crab",
+        "name": "Giant Crab",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/giant-crab.png"
+      },
+      {
+        "index": "giant-crocodile",
+        "name": "Giant Crocodile",
+        "size": "Huge",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/giant-crocodile.png"
+      },
+      {
+        "index": "giant-eagle",
+        "name": "Giant Eagle",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/giant-eagle.png"
+      },
+      {
+        "index": "giant-elk",
+        "name": "Giant Elk",
+        "size": "Huge",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/giant-elk.png"
+      },
+      {
+        "index": "giant-fire-beetle",
+        "name": "Giant Fire Beetle",
+        "size": "Small",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/giant-fire-beetle.png"
+      },
+      {
+        "index": "giant-frog",
+        "name": "Giant Frog",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/giant-frog.png"
+      },
+      {
+        "index": "giant-goat",
+        "name": "Giant Goat",
+        "size": "Large",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/giant-goat.png"
+      },
+      {
+        "index": "giant-hyena",
+        "name": "Giant Hyena",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/giant-hyena.png"
+      },
+      {
+        "index": "giant-lizard",
+        "name": "Giant Lizard",
+        "size": "Large",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/giant-lizard.png"
+      },
+      {
+        "index": "giant-octopus",
+        "name": "Giant Octopus",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/giant-octopus.png"
+      },
+      {
+        "index": "giant-owl",
+        "name": "Giant Owl",
+        "size": "Large",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/giant-owl.png"
+      },
+      {
+        "index": "giant-poisonous-snake",
+        "name": "Giant Poisonous Snake",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/giant-poisonous-snake.png"
+      },
+      {
+        "index": "giant-rat",
+        "name": "Giant Rat",
+        "size": "Small",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/giant-rat.png"
+      },
+      {
+        "index": "giant-rat-diseased",
+        "name": "Giant Rat (Diseased)",
+        "size": "Small",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/giant-rat-diseased.png"
+      },
+      {
+        "index": "giant-scorpion",
+        "name": "Giant Scorpion",
+        "size": "Large",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/giant-scorpion.png"
+      },
+      {
+        "index": "giant-sea-horse",
+        "name": "Giant Sea Horse",
+        "size": "Large",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/giant-sea-horse.png"
+      },
+      {
+        "index": "giant-shark",
+        "name": "Giant Shark",
+        "size": "Huge",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/giant-shark.png"
+      },
+      {
+        "index": "giant-spider",
+        "name": "Giant Spider",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/giant-spider.png"
+      },
+      {
+        "index": "giant-toad",
+        "name": "Giant Toad",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/giant-toad.png"
+      },
+      {
+        "index": "giant-vulture",
+        "name": "Giant Vulture",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/giant-vulture.png"
+      },
+      {
+        "index": "giant-wasp",
+        "name": "Giant Wasp",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/giant-wasp.png"
+      },
+      {
+        "index": "giant-weasel",
+        "name": "Giant Weasel",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/giant-weasel.png"
+      },
+      {
+        "index": "giant-wolf-spider",
+        "name": "Giant Wolf Spider",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/giant-wolf-spider.png"
+      },
+      {
+        "index": "gibbering-mouther",
+        "name": "Gibbering Mouther",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/gibbering-mouther.png"
+      },
+      {
+        "index": "glabrezu",
+        "name": "Glabrezu",
+        "size": "Large",
+        "challenge_rating": 9,
+        "image": "/api/images/monsters/glabrezu.png"
+      },
+      {
+        "index": "gladiator",
+        "name": "Gladiator",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/gladiator.png"
+      },
+      {
+        "index": "gnoll",
+        "name": "Gnoll",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/gnoll.png"
+      },
+      {
+        "index": "goat",
+        "name": "Goat",
+        "size": "Medium",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/goat.png"
+      },
+      {
+        "index": "goblin",
+        "name": "Goblin",
+        "size": "Small",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/goblin.png"
+      },
+      {
+        "index": "gold-dragon-wyrmling",
+        "name": "Gold Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/gold-dragon-wyrmling.png"
+      },
+      {
+        "index": "gorgon",
+        "name": "Gorgon",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/gorgon.png"
+      },
+      {
+        "index": "gray-ooze",
+        "name": "Gray Ooze",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/gray-ooze.png"
+      },
+      {
+        "index": "green-dragon-wyrmling",
+        "name": "Green Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/green-dragon-wyrmling.png"
+      },
+      {
+        "index": "green-hag",
+        "name": "Green Hag",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/green-hag.png"
+      },
+      {
+        "index": "grick",
+        "name": "Grick",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/grick.png"
+      },
+      {
+        "index": "griffon",
+        "name": "Griffon",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/griffon.png"
+      },
+      {
+        "index": "grimlock",
+        "name": "Grimlock",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/grimlock.png"
+      },
+      {
+        "index": "guard",
+        "name": "Guard",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/guard.png"
+      },
+      {
+        "index": "guardian-naga",
+        "name": "Guardian Naga",
+        "size": "Large",
+        "challenge_rating": 10,
+        "image": "/api/images/monsters/guardian-naga.png"
+      },
+      {
+        "index": "gynosphinx",
+        "name": "Gynosphinx",
+        "size": "Large",
+        "challenge_rating": 11,
+        "image": "/api/images/monsters/gynosphinx.png"
+      },
+      {
+        "index": "half-red-dragon-veteran",
+        "name": "Half-Red Dragon Veteran",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/half-red-dragon-veteran.png"
+      },
+      {
+        "index": "harpy",
+        "name": "Harpy",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/harpy.png"
+      },
+      {
+        "index": "hawk",
+        "name": "Hawk",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/hawk.png"
+      },
+      {
+        "index": "hell-hound",
+        "name": "Hell Hound",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/hell-hound.png"
+      },
+      {
+        "index": "hezrou",
+        "name": "Hezrou",
+        "size": "Large",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/hezrou.png"
+      },
+      {
+        "index": "hill-giant",
+        "name": "Hill Giant",
+        "size": "Huge",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/hill-giant.png"
+      },
+      {
+        "index": "hippogriff",
+        "name": "Hippogriff",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/hippogriff.png"
+      },
+      {
+        "index": "hobgoblin",
+        "name": "Hobgoblin",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/hobgoblin.png"
+      },
+      {
+        "index": "homunculus",
+        "name": "Homunculus",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/homunculus.png"
+      },
+      {
+        "index": "horned-devil",
+        "name": "Horned Devil",
+        "size": "Large",
+        "challenge_rating": 11,
+        "image": "/api/images/monsters/horned-devil.png"
+      },
+      {
+        "index": "hunter-shark",
+        "name": "Hunter Shark",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/hunter-shark.png"
+      },
+      {
+        "index": "hydra",
+        "name": "Hydra",
+        "size": "Huge",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/hydra.png"
+      },
+      {
+        "index": "hyena",
+        "name": "Hyena",
+        "size": "Medium",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/hyena.png"
+      },
+      {
+        "index": "ice-devil",
+        "name": "Ice Devil",
+        "size": "Large",
+        "challenge_rating": 14,
+        "image": "/api/images/monsters/ice-devil.png"
+      },
+      {
+        "index": "ice-mephit",
+        "name": "Ice Mephit",
+        "size": "Small",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/ice-mephit.png"
+      },
+      {
+        "index": "imp",
+        "name": "Imp",
+        "size": "Tiny",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/imp.png"
+      },
+      {
+        "index": "invisible-stalker",
+        "name": "Invisible Stalker",
+        "size": "Medium",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/invisible-stalker.png"
+      },
+      {
+        "index": "iron-golem",
+        "name": "Iron Golem",
+        "size": "Large",
+        "challenge_rating": 16,
+        "image": "/api/images/monsters/iron-golem.png"
+      },
+      {
+        "index": "jackal",
+        "name": "Jackal",
+        "size": "Small",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/jackal.png"
+      },
+      {
+        "index": "killer-whale",
+        "name": "Killer Whale",
+        "size": "Huge",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/killer-whale.png"
+      },
+      {
+        "index": "knight",
+        "name": "Knight",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/knight.png"
+      },
+      {
+        "index": "kobold",
+        "name": "Kobold",
+        "size": "Small",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/kobold.png"
+      },
+      {
+        "index": "kraken",
+        "name": "Kraken",
+        "size": "Gargantuan",
+        "challenge_rating": 23,
+        "image": "/api/images/monsters/kraken.png"
+      },
+      {
+        "index": "lamia",
+        "name": "Lamia",
+        "size": "Large",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/lamia.png"
+      },
+      {
+        "index": "lemure",
+        "name": "Lemure",
+        "size": "Medium",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/lemure.png"
+      },
+      {
+        "index": "lich",
+        "name": "Lich",
+        "size": "Medium",
+        "challenge_rating": 21,
+        "image": "/api/images/monsters/lich.png"
+      },
+      {
+        "index": "lion",
+        "name": "Lion",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/lion.png"
+      },
+      {
+        "index": "lizard",
+        "name": "Lizard",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/lizard.png"
+      },
+      {
+        "index": "lizardfolk",
+        "name": "Lizardfolk",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/lizardfolk.png"
+      },
+      {
+        "index": "mage",
+        "name": "Mage",
+        "size": "Medium",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/mage.png"
+      },
+      {
+        "index": "magma-mephit",
+        "name": "Magma Mephit",
+        "size": "Small",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/magma-mephit.png"
+      },
+      {
+        "index": "magmin",
+        "name": "Magmin",
+        "size": "Small",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/magmin.png"
+      },
+      {
+        "index": "mammoth",
+        "name": "Mammoth",
+        "size": "Huge",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/mammoth.png"
+      },
+      {
+        "index": "manticore",
+        "name": "Manticore",
+        "size": "Large",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/manticore.png"
+      },
+      {
+        "index": "marilith",
+        "name": "Marilith",
+        "size": "Large",
+        "challenge_rating": 16,
+        "image": "/api/images/monsters/marilith.png"
+      },
+      {
+        "index": "mastiff",
+        "name": "Mastiff",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/mastiff.png"
+      },
+      {
+        "index": "medusa",
+        "name": "Medusa",
+        "size": "Medium",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/medusa.png"
+      },
+      {
+        "index": "merfolk",
+        "name": "Merfolk",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/merfolk.png"
+      },
+      {
+        "index": "merrow",
+        "name": "Merrow",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/merrow.png"
+      },
+      {
+        "index": "mimic",
+        "name": "Mimic",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/mimic.png"
+      },
+      {
+        "index": "minotaur",
+        "name": "Minotaur",
+        "size": "Large",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/minotaur.png"
+      },
+      {
+        "index": "minotaur-skeleton",
+        "name": "Minotaur Skeleton",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/minotaur-skeleton.png"
+      },
+      {
+        "index": "mule",
+        "name": "Mule",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/mule.png"
+      },
+      {
+        "index": "mummy",
+        "name": "Mummy",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/mummy.png"
+      },
+      {
+        "index": "mummy-lord",
+        "name": "Mummy Lord",
+        "size": "Medium",
+        "challenge_rating": 15,
+        "image": "/api/images/monsters/mummy-lord.png"
+      },
+      {
+        "index": "nalfeshnee",
+        "name": "Nalfeshnee",
+        "size": "Large",
+        "challenge_rating": 13,
+        "image": "/api/images/monsters/nalfeshnee.png"
+      },
+      {
+        "index": "night-hag",
+        "name": "Night Hag",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/night-hag.png"
+      },
+      {
+        "index": "nightmare",
+        "name": "Nightmare",
+        "size": "Large",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/nightmare.png"
+      },
+      {
+        "index": "noble",
+        "name": "Noble",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/noble.png"
+      },
+      {
+        "index": "ochre-jelly",
+        "name": "Ochre Jelly",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/ochre-jelly.png"
+      },
+      {
+        "index": "octopus",
+        "name": "Octopus",
+        "size": "Small",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/octopus.png"
+      },
+      {
+        "index": "ogre",
+        "name": "Ogre",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/ogre.png"
+      },
+      {
+        "index": "ogre-zombie",
+        "name": "Ogre Zombie",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/ogre-zombie.png"
+      },
+      {
+        "index": "oni",
+        "name": "Oni",
+        "size": "Large",
+        "challenge_rating": 7,
+        "image": "/api/images/monsters/oni.png"
+      },
+      {
+        "index": "orc",
+        "name": "Orc",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/orc.png"
+      },
+      {
+        "index": "otyugh",
+        "name": "Otyugh",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/otyugh.png"
+      },
+      {
+        "index": "owl",
+        "name": "Owl",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/owl.png"
+      },
+      {
+        "index": "owlbear",
+        "name": "Owlbear",
+        "size": "Large",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/owlbear.png"
+      },
+      {
+        "index": "panther",
+        "name": "Panther",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/panther.png"
+      },
+      {
+        "index": "pegasus",
+        "name": "Pegasus",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/pegasus.png"
+      },
+      {
+        "index": "phase-spider",
+        "name": "Phase Spider",
+        "size": "Large",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/phase-spider.png"
+      },
+      {
+        "index": "pit-fiend",
+        "name": "Pit Fiend",
+        "size": "Large",
+        "challenge_rating": 20,
+        "image": "/api/images/monsters/pit-fiend.png"
+      },
+      {
+        "index": "planetar",
+        "name": "Planetar",
+        "size": "Large",
+        "challenge_rating": 16,
+        "image": "/api/images/monsters/planetar.png"
+      },
+      {
+        "index": "plesiosaurus",
+        "name": "Plesiosaurus",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/plesiosaurus.png"
+      },
+      {
+        "index": "poisonous-snake",
+        "name": "Poisonous Snake",
+        "size": "Tiny",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/poisonous-snake.png"
+      },
+      {
+        "index": "polar-bear",
+        "name": "Polar Bear",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/polar-bear.png"
+      },
+      {
+        "index": "pony",
+        "name": "Pony",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/pony.png"
+      },
+      {
+        "index": "priest",
+        "name": "Priest",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/priest.png"
+      },
+      {
+        "index": "pseudodragon",
+        "name": "Pseudodragon",
+        "size": "Tiny",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/pseudodragon.png"
+      },
+      {
+        "index": "purple-worm",
+        "name": "Purple Worm",
+        "size": "Gargantuan",
+        "challenge_rating": 15,
+        "image": "/api/images/monsters/purple-worm.png"
+      },
+      {
+        "index": "quasit",
+        "name": "Quasit",
+        "size": "Tiny",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/quasit.png"
+      },
+      {
+        "index": "quipper",
+        "name": "Quipper",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/quipper.png"
+      },
+      {
+        "index": "rakshasa",
+        "name": "Rakshasa",
+        "size": "Medium",
+        "challenge_rating": 13,
+        "image": "/api/images/monsters/rakshasa.png"
+      },
+      {
+        "index": "rat",
+        "name": "Rat",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/rat.png"
+      },
+      {
+        "index": "raven",
+        "name": "Raven",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/raven.png"
+      },
+      {
+        "index": "red-dragon-wyrmling",
+        "name": "Red Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/red-dragon-wyrmling.png"
+      },
+      {
+        "index": "reef-shark",
+        "name": "Reef Shark",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/reef-shark.png"
+      },
+      {
+        "index": "remorhaz",
+        "name": "Remorhaz",
+        "size": "Huge",
+        "challenge_rating": 11,
+        "image": "/api/images/monsters/remorhaz.png"
+      },
+      {
+        "index": "rhinoceros",
+        "name": "Rhinoceros",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/rhinoceros.png"
+      },
+      {
+        "index": "riding-horse",
+        "name": "Riding Horse",
+        "size": "Large",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/riding-horse.png"
+      },
+      {
+        "index": "roc",
+        "name": "Roc",
+        "size": "Gargantuan",
+        "challenge_rating": 11,
+        "image": "/api/images/monsters/roc.png"
+      },
+      {
+        "index": "roper",
+        "name": "Roper",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/roper.png"
+      },
+      {
+        "index": "rug-of-smothering",
+        "name": "Rug of Smothering",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/rug-of-smothering.png"
+      },
+      {
+        "index": "rust-monster",
+        "name": "Rust Monster",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/rust-monster.png"
+      },
+      {
+        "index": "saber-toothed-tiger",
+        "name": "Saber-Toothed Tiger",
+        "size": "Large",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/saber-toothed-tiger.png"
+      },
+      {
+        "index": "sahuagin",
+        "name": "Sahuagin",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/sahuagin.png"
+      },
+      {
+        "index": "salamander",
+        "name": "Salamander",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/salamander.png"
+      },
+      {
+        "index": "satyr",
+        "name": "Satyr",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/satyr.png"
+      },
+      {
+        "index": "scorpion",
+        "name": "Scorpion",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/scorpion.png"
+      },
+      {
+        "index": "scout",
+        "name": "Scout",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/scout.png"
+      },
+      {
+        "index": "sea-hag",
+        "name": "Sea Hag",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/sea-hag.png"
+      },
+      {
+        "index": "sea-horse",
+        "name": "Sea Horse",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/sea-horse.png"
+      },
+      {
+        "index": "shadow",
+        "name": "Shadow",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/shadow.png"
+      },
+      {
+        "index": "shambling-mound",
+        "name": "Shambling Mound",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/shambling-mound.png"
+      },
+      {
+        "index": "shield-guardian",
+        "name": "Shield Guardian",
+        "size": "Large",
+        "challenge_rating": 7,
+        "image": "/api/images/monsters/shield-guardian.png"
+      },
+      {
+        "index": "shrieker",
+        "name": "Shrieker",
+        "size": "Medium",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/shrieker.png"
+      },
+      {
+        "index": "silver-dragon-wyrmling",
+        "name": "Silver Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/silver-dragon-wyrmling.png"
+      },
+      {
+        "index": "skeleton",
+        "name": "Skeleton",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/skeleton.png"
+      },
+      {
+        "index": "solar",
+        "name": "Solar",
+        "size": "Large",
+        "challenge_rating": 21,
+        "image": "/api/images/monsters/solar.png"
+      },
+      {
+        "index": "specter",
+        "name": "Specter",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/specter.png"
+      },
+      {
+        "index": "spider",
+        "name": "Spider",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/spider.png"
+      },
+      {
+        "index": "spirit-naga",
+        "name": "Spirit Naga",
+        "size": "Large",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/spirit-naga.png"
+      },
+      {
+        "index": "sprite",
+        "name": "Sprite",
+        "size": "Tiny",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/sprite.png"
+      },
+      {
+        "index": "spy",
+        "name": "Spy",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/spy.png"
+      },
+      {
+        "index": "steam-mephit",
+        "name": "Steam Mephit",
+        "size": "Small",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/steam-mephit.png"
+      },
+      {
+        "index": "stirge",
+        "name": "Stirge",
+        "size": "Tiny",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/stirge.png"
+      },
+      {
+        "index": "stone-giant",
+        "name": "Stone Giant",
+        "size": "Huge",
+        "challenge_rating": 7,
+        "image": "/api/images/monsters/stone-giant.png"
+      },
+      {
+        "index": "stone-golem",
+        "name": "Stone Golem",
+        "size": "Large",
+        "challenge_rating": 10,
+        "image": "/api/images/monsters/stone-golem.png"
+      },
+      {
+        "index": "storm-giant",
+        "name": "Storm Giant",
+        "size": "Huge",
+        "challenge_rating": 13,
+        "image": "/api/images/monsters/storm-giant.png"
+      },
+      {
+        "index": "succubus-incubus",
+        "name": "Succubus/Incubus",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/succubus-incubus.png"
+      },
+      {
+        "index": "swarm-of-bats",
+        "name": "Swarm of Bats",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/swarm-of-bats.png"
+      },
+      {
+        "index": "swarm-of-beetles",
+        "name": "Swarm of Beetles",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/swarm-of-beetles.png"
+      },
+      {
+        "index": "swarm-of-centipedes",
+        "name": "Swarm of Centipedes",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/swarm-of-centipedes.png"
+      },
+      {
+        "index": "swarm-of-insects",
+        "name": "Swarm of Insects",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/swarm-of-insects.png"
+      },
+      {
+        "index": "swarm-of-poisonous-snakes",
+        "name": "Swarm of Poisonous Snakes",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/swarm-of-poisonous-snakes.png"
+      },
+      {
+        "index": "swarm-of-quippers",
+        "name": "Swarm of Quippers",
+        "size": "Medium",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/swarm-of-quippers.png"
+      },
+      {
+        "index": "swarm-of-rats",
+        "name": "Swarm of Rats",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/swarm-of-rats.png"
+      },
+      {
+        "index": "swarm-of-ravens",
+        "name": "Swarm of Ravens",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/swarm-of-ravens.png"
+      },
+      {
+        "index": "swarm-of-spiders",
+        "name": "Swarm of Spiders",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/swarm-of-spiders.png"
+      },
+      {
+        "index": "swarm-of-wasps",
+        "name": "Swarm of Wasps",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/swarm-of-wasps.png"
+      },
+      {
+        "index": "tarrasque",
+        "name": "Tarrasque",
+        "size": "Gargantuan",
+        "challenge_rating": 30,
+        "image": "/api/images/monsters/tarrasque.png"
+      },
+      {
+        "index": "thug",
+        "name": "Thug",
+        "size": "Medium",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/thug.png"
+      },
+      {
+        "index": "tiger",
+        "name": "Tiger",
+        "size": "Large",
+        "challenge_rating": 1,
+        "image": "/api/images/monsters/tiger.png"
+      },
+      {
+        "index": "treant",
+        "name": "Treant",
+        "size": "Huge",
+        "challenge_rating": 9,
+        "image": "/api/images/monsters/treant.png"
+      },
+      {
+        "index": "tribal-warrior",
+        "name": "Tribal Warrior",
+        "size": "Medium",
+        "challenge_rating": 0.125,
+        "image": "/api/images/monsters/tribal-warrior.png"
+      },
+      {
+        "index": "triceratops",
+        "name": "Triceratops",
+        "size": "Huge",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/triceratops.png"
+      },
+      {
+        "index": "troll",
+        "name": "Troll",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/troll.png"
+      },
+      {
+        "index": "tyrannosaurus-rex",
+        "name": "Tyrannosaurus Rex",
+        "size": "Huge",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/tyrannosaurus-rex.png"
+      },
+      {
+        "index": "unicorn",
+        "name": "Unicorn",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/unicorn.png"
+      },
+      {
+        "index": "vampire-spawn",
+        "name": "Vampire Spawn",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/vampire-spawn.png"
+      },
+      {
+        "index": "vampire-bat",
+        "name": "Vampire, Bat Form",
+        "size": "Medium",
+        "challenge_rating": 13,
+        "image": "/api/images/monsters/vampire-bat.png"
+      },
+      {
+        "index": "vampire-mist",
+        "name": "Vampire, Mist Form",
+        "size": "Medium",
+        "challenge_rating": 13,
+        "image": "/api/images/monsters/vampire-mist.png"
+      },
+      {
+        "index": "vampire-vampire",
+        "name": "Vampire, Vampire Form",
+        "size": "Medium",
+        "challenge_rating": 13,
+        "image": "/api/images/monsters/vampire-vampire.png"
+      },
+      {
+        "index": "veteran",
+        "name": "Veteran",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/veteran.png"
+      },
+      {
+        "index": "violet-fungus",
+        "name": "Violet Fungus",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/violet-fungus.png"
+      },
+      {
+        "index": "vrock",
+        "name": "Vrock",
+        "size": "Large",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/vrock.png"
+      },
+      {
+        "index": "vulture",
+        "name": "Vulture",
+        "size": "Medium",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/vulture.png"
+      },
+      {
+        "index": "warhorse",
+        "name": "Warhorse",
+        "size": "Large",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/warhorse.png"
+      },
+      {
+        "index": "warhorse-skeleton",
+        "name": "Warhorse Skeleton",
+        "size": "Large",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/warhorse-skeleton.png"
+      },
+      {
+        "index": "water-elemental",
+        "name": "Water Elemental",
+        "size": "Large",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/water-elemental.png"
+      },
+      {
+        "index": "weasel",
+        "name": "Weasel",
+        "size": "Tiny",
+        "challenge_rating": 0,
+        "image": "/api/images/monsters/weasel.png"
+      },
+      {
+        "index": "werebear-bear",
+        "name": "Werebear, Bear Form",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/werebear-bear.png"
+      },
+      {
+        "index": "werebear-human",
+        "name": "Werebear, Human Form",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/werebear-human.png"
+      },
+      {
+        "index": "werebear-hybrid",
+        "name": "Werebear, Hybrid Form",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/werebear-hybrid.png"
+      },
+      {
+        "index": "wereboar-boar",
+        "name": "Wereboar, Boar Form",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/wereboar-boar.png"
+      },
+      {
+        "index": "wereboar-human",
+        "name": "Wereboar, Human Form",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/wereboar-human.png"
+      },
+      {
+        "index": "wereboar-hybrid",
+        "name": "Wereboar, Hybrid Form",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/wereboar-hybrid.png"
+      },
+      {
+        "index": "wererat-human",
+        "name": "Wererat, Human Form",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/wererat-human.png"
+      },
+      {
+        "index": "wererat-hybrid",
+        "name": "Wererat, Hybrid Form",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/wererat-hybrid.png"
+      },
+      {
+        "index": "wererat-rat",
+        "name": "Wererat, Rat Form",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/wererat-rat.png"
+      },
+      {
+        "index": "weretiger-human",
+        "name": "Weretiger, Human Form",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/weretiger-human.png"
+      },
+      {
+        "index": "weretiger-hybrid",
+        "name": "Weretiger, Hybrid Form",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/weretiger-hybrid.png"
+      },
+      {
+        "index": "weretiger-tiger",
+        "name": "Weretiger, Tiger Form",
+        "size": "Medium",
+        "challenge_rating": 4,
+        "image": "/api/images/monsters/weretiger-tiger.png"
+      },
+      {
+        "index": "werewolf-human",
+        "name": "Werewolf, Human Form",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/werewolf-human.png"
+      },
+      {
+        "index": "werewolf-hybrid",
+        "name": "Werewolf, Hybrid Form",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/werewolf-hybrid.png"
+      },
+      {
+        "index": "werewolf-wolf",
+        "name": "Werewolf, Wolf Form",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/werewolf-wolf.png"
+      },
+      {
+        "index": "white-dragon-wyrmling",
+        "name": "White Dragon Wyrmling",
+        "size": "Medium",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/white-dragon-wyrmling.png"
+      },
+      {
+        "index": "wight",
+        "name": "Wight",
+        "size": "Medium",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/wight.png"
+      },
+      {
+        "index": "will-o-wisp",
+        "name": "Will-o'-Wisp",
+        "size": "Tiny",
+        "challenge_rating": 2,
+        "image": "/api/images/monsters/will-o-wisp.png"
+      },
+      {
+        "index": "winter-wolf",
+        "name": "Winter Wolf",
+        "size": "Large",
+        "challenge_rating": 3,
+        "image": "/api/images/monsters/winter-wolf.png"
+      },
+      {
+        "index": "wolf",
+        "name": "Wolf",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/wolf.png"
+      },
+      {
+        "index": "worg",
+        "name": "Worg",
+        "size": "Large",
+        "challenge_rating": 0.5,
+        "image": "/api/images/monsters/worg.png"
+      },
+      {
+        "index": "wraith",
+        "name": "Wraith",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/wraith.png"
+      },
+      {
+        "index": "wyvern",
+        "name": "Wyvern",
+        "size": "Large",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/wyvern.png"
+      },
+      {
+        "index": "xorn",
+        "name": "Xorn",
+        "size": "Medium",
+        "challenge_rating": 5,
+        "image": "/api/images/monsters/xorn.png"
+      },
+      {
+        "index": "young-black-dragon",
+        "name": "Young Black Dragon",
+        "size": "Large",
+        "challenge_rating": 7,
+        "image": "/api/images/monsters/young-black-dragon.png"
+      },
+      {
+        "index": "young-blue-dragon",
+        "name": "Young Blue Dragon",
+        "size": "Large",
+        "challenge_rating": 9,
+        "image": "/api/images/monsters/young-blue-dragon.png"
+      },
+      {
+        "index": "young-brass-dragon",
+        "name": "Young Brass Dragon",
+        "size": "Large",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/young-brass-dragon.png"
+      },
+      {
+        "index": "young-bronze-dragon",
+        "name": "Young Bronze Dragon",
+        "size": "Large",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/young-bronze-dragon.png"
+      },
+      {
+        "index": "young-copper-dragon",
+        "name": "Young Copper Dragon",
+        "size": "Large",
+        "challenge_rating": 7,
+        "image": "/api/images/monsters/young-copper-dragon.png"
+      },
+      {
+        "index": "young-gold-dragon",
+        "name": "Young Gold Dragon",
+        "size": "Large",
+        "challenge_rating": 10,
+        "image": "/api/images/monsters/young-gold-dragon.png"
+      },
+      {
+        "index": "young-green-dragon",
+        "name": "Young Green Dragon",
+        "size": "Large",
+        "challenge_rating": 8,
+        "image": "/api/images/monsters/young-green-dragon.png"
+      },
+      {
+        "index": "young-red-dragon",
+        "name": "Young Red Dragon",
+        "size": "Large",
+        "challenge_rating": 10,
+        "image": "/api/images/monsters/young-red-dragon.png"
+      },
+      {
+        "index": "young-silver-dragon",
+        "name": "Young Silver Dragon",
+        "size": "Large",
+        "challenge_rating": 9,
+        "image": "/api/images/monsters/young-silver-dragon.png"
+      },
+      {
+        "index": "young-white-dragon",
+        "name": "Young White Dragon",
+        "size": "Large",
+        "challenge_rating": 6,
+        "image": "/api/images/monsters/young-white-dragon.png"
+      },
+      {
+        "index": "zombie",
+        "name": "Zombie",
+        "size": "Medium",
+        "challenge_rating": 0.25,
+        "image": "/api/images/monsters/zombie.png"
+      }
+    ]
+  }
+}

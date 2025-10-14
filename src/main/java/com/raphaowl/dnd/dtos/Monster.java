@@ -2,6 +2,7 @@ package com.raphaowl.dnd.dtos;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.DamageEnum;
@@ -13,6 +14,7 @@ import com.raphaowl.dnd.enums.MonsterTypeEnum;
 import lombok.Builder;
 
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record Monster(
         String index,
         MonsterNameEnum name,

@@ -46,7 +46,14 @@ public enum AlignmentEnum {
         if (value == null) {
             return null;
         }
-        String normalized = value.trim().toLowerCase().replace(" ", "_");
+        String normalized = value.trim()
+                .toLowerCase()
+                .replace(" ", "_")
+                .replace("-", "_");
+
+        if (value.equalsIgnoreCase("neutral good (50%) or neutral evil (50%)")) {
+            return NEUTRAL_GOOD_OR_EVIL;
+        }
 
         return Stream.of(AlignmentEnum.values())
                 .filter(g -> g.name().toLowerCase().equals(normalized))

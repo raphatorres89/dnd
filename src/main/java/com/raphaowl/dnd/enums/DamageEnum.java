@@ -24,13 +24,16 @@ public enum DamageEnum {
     PIERCING("piercing", "ra ra-spear-head text-secondary"),
     DAMAGE_FROM_SPELLS("damage from spells", "ra ra-blaster text-primary" ),
     RADIANT("radiant", "ra ra-sunbeams text-warning"),
+    NECROTIC("necrotic", "ra ra-skull text-secondary"),
 
     // Resistências Físicas Complexas (ex: Imunidade a armas não-mágicas)
     NONMAGICAL_WEAPONS_3P("bludgeoning, piercing, and slashing from nonmagical weapons", "ra ra-lightning-sword text-info"),
     NONMAGICAL_ADAMANTINE("bludgeoning, piercing, and slashing from nonmagical weapons that aren't adamantine", "ra ra-lightning-sword text-info"),
+    NONMAGICAL_ADAMANTINE2("piercing and slashing from nonmagical weapons that aren't adamantine", "ra ra-lightning-sword text-info"),
     NONMAGICAL_SILVER("bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered", "ra ra-lightning-sword text-info"),
     NONMAGICAL_STONESKIN("bludgeoning, piercing, and slashing from nonmagical attacks (from stoneskin)", "ra ra-lightning-sword text-info"),
-    NONMAGICAL_ATTACKS("bludgeoning, piercing, and slashing from nonmagical attacks", "ra ra-lightning-sword text-info");
+    NONMAGICAL_ATTACKS("bludgeoning, piercing, and slashing from nonmagical attacks", "ra ra-lightning-sword text-info"),
+    PIERCING_FROM_MAGIC("piercing from magic weapons wielded by good creatures", "ra ra-spear-head text-info");
 
     private final String damageType;
     private final String iconClass;

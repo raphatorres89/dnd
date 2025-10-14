@@ -182,6 +182,7 @@ public enum MonsterNameEnum {
     HYDRA("hydra", "Hydra"),
     HYENA("hyena", "Hyena"),
     ICE_DEVIL("ice-devil", "Ice Devil"),
+    ICE_MEPHIT("ice-mephit", "Ice Mephit"),
     IMP("imp", "Imp"),
     INVISIBLE_STALKER("invisible-stalker", "Invisible Stalker"),
     IRON_GOLEM("iron-golem", "Iron Golem"),
