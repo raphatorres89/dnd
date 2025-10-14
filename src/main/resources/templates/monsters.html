@@ -10,21 +10,21 @@
     <div class="container mt-4">
         <div class="row text-center mb-4">
             <h1>
-                <i class="ra ra-dragon text-primary"></i> <span th:text="#{app.bestiary.title}"></span>
+                <i class="ra ra-dragon text-primary"></i> <span th:text="#{app.monsters.title}"></span>
             </h1>
         </div>
 
         <div class="card shadow p-4 mb-4">
             <div class="row g-3">
                 <div class="col-md-4">
-                    <label for="filterName" class="form-label visually-hidden" th:text="#{app.bestiary.filter.name}"></label>
-                    <input type="text" id="filterName" class="form-control" th:placeholder="#{app.bestiary.filter.name.placeholder}">
+                    <label for="filterName" class="form-label visually-hidden" th:text="#{app.monsters.filter.name}"></label>
+                    <input type="text" id="filterName" class="form-control" th:placeholder="#{app.monsters.filter.name.placeholder}">
                 </div>
 
                 <div class="col-md-4">
-                    <label for="filterSize" class="form-label visually-hidden" th:text="#{app.bestiary.filter.size}"></label>
+                    <label for="filterSize" class="form-label visually-hidden" th:text="#{app.monsters.filter.size}"></label>
                     <select id="filterSize" class="form-select">
-                        <option value="" th:text="#{app.bestiary.filter.size.all}"></option>
+                        <option value="" th:text="#{app.monsters.filter.size.all}"></option>
                         <option th:each="size : ${T(com.raphaowl.dnd.enums.MonsterEnum).values()}"
                                 th:value="${size.name()}"
                                 th:text="#{${'size.' + size.name()}}">
@@ -33,9 +33,9 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="filterCr" class="form-label visually-hidden" th:text="#{app.bestiary.filter.challenge_rating}"></label>
+                    <label for="filterCr" class="form-label visually-hidden" th:text="#{app.monsters.filter.challenge_rating}"></label>
                     <select id="filterCr" class="form-select">
-                        <option value="" th:text="#{app.bestiary.filter.size.challenge_rating.all}"></option>
+                        <option value="" th:text="#{app.monsters.filter.size.challenge_rating.all}"></option>
                         <option value="1">CR <= 1</option>
                         <option value="2">CR 2 ~ 4</option>
                         <option value="5">CR 5 ~ 9</option>
@@ -47,7 +47,7 @@
 
             <div class="row mt-4">
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-secondary w-100" onclick="clearFilters()" th:text="#{app.bestiary.filter.button}"></button>
+                    <button type="button" class="btn btn-secondary w-100" onclick="clearFilters()" th:text="#{app.monsters.filter.button}"></button>
                 </div>
             </div>
         </div>
@@ -55,9 +55,9 @@
         <table class="table table-hover" id="monsterTable">
             <thead>
                 <tr>
-                    <th scope="col"><i class="ra ra-dragon"></i> <span th:text="#{app.bestiary.table.name}" /></th>
-                    <th scope="col"><i class="ra ra-muscle-up"></i> <span th:text="#{app.bestiary.table.size}" /></th>
-                    <th scope="col"><i class="ra ra-trophy"></i> <span th:text="#{app.bestiary.table.challenge_rating}" /></th>
+                    <th scope="col"><i class="ra ra-dragon"></i> <span th:text="#{app.monsters.table.name}" /></th>
+                    <th scope="col"><i class="ra ra-muscle-up"></i> <span th:text="#{app.monsters.table.size}" /></th>
+                    <th scope="col"><i class="ra ra-trophy"></i> <span th:text="#{app.monsters.table.challenge_rating}" /></th>
                 </tr>
             </thead>
             <tbody th:each="monster : ${monsters}">
@@ -82,19 +82,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="#{app.bestiary.modal.title}"></h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="#{app.monsters.modal.title}"></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div id="monsterDetails" class="space-y-2 text-sm">
-                        <span class="visually-hidden"><i class="ra ra-sword"></i> <span th:text="#{app.bestiary.modal.loading}" /></span>
+                        <span class="visually-hidden"><i class="ra ra-sword"></i> <span th:text="#{app.monsters.modal.loading}" /></span>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button"
                             class="btn btn-secondary"
                             data-bs-dismiss="modal"
-                            th:text="#{app.bestiary.modal.button}" />
+                            th:text="#{app.monsters.modal.button}" />
                 </div>
             </div>
         </div>
@@ -109,7 +109,7 @@
                 var monsterId = $(this).data('id');
 
                 // 3. Define a URL do seu endpoint no backend
-                var url = '/bestiary/' + monsterId;
+                var url = '/monsters/' + monsterId;
 
                 // 4. Limpa o modal e mostra o spinner de carregamento
                 $('#monsterDetails').load(url, function () {

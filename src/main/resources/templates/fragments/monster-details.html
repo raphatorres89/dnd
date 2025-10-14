@@ -15,7 +15,7 @@
         <div class="row g-3">
 
             <div class="col-12">
-                <strong><span th:text="#{app.bestiary.modal.type}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.type}"></span></strong><br/>
                 <span th:with="type = ${monster.type}">
                     <i class="fs-3 align-middle"
                        th:classappend="${type.iconClass}"
@@ -32,7 +32,7 @@
             </div>
 
             <div class="col-sm-6">
-                <strong><span th:text="#{app.bestiary.modal.size}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.size}"></span></strong><br/>
                 <span th:text="#{${'size.' + monster.size.name()}}"></span>
                 <div th:with="icons = ${#numbers.sequence(1, 6)}" class="mt-1">
                     <i th:each="i : ${icons}"
@@ -43,24 +43,24 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <strong><span th:text="#{app.bestiary.modal.alignment}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.alignment}"></span></strong><br/>
                 <span th:text="#{${'alignment.' + monster.alignment.name()}}"></span>
             </div>
 
             <div class="col-sm-6">
-                <strong><span th:text="#{app.bestiary.modal.hp}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.hp}"></span></strong><br/>
                 <p th:inline="text" class="mb-0">
                     <i class="ra ra-gear-heart text-danger align-middle"></i>
                     <span th:text="${monster.hitPoints}"></span> (<span th:text="${monster.hitDice}"></span>)
                 </p>
             </div>
             <div class="col-sm-6">
-                <strong><span th:text="#{app.bestiary.modal.xp}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.xp}"></span></strong><br/>
                 <span th:text="${monster.experience}"></span>
             </div>
         </div>
 
-        <h5 class="mt-4 mb-3 border-bottom pb-1" th:text="#{app.bestiary.modal.attributes}"></h5>
+        <h5 class="mt-4 mb-3 border-bottom pb-1" th:text="#{app.monsters.modal.attributes}"></h5>
         <div class="row text-center g-2">
             <div class="col-4 col-sm-2">
                 <div class="border border-secondary-subtle rounded-3 p-2">
@@ -112,10 +112,10 @@
             </div>
         </div>
 
-        <h5 class="mt-4 mb-3 border-bottom pb-1" th:text="#{app.bestiary.modal.defenses}"></h5>
+        <h5 class="mt-4 mb-3 border-bottom pb-1" th:text="#{app.monsters.modal.defenses}"></h5>
         <div class="row g-3">
             <div class="col-sm-6">
-                <strong><span th:text="#{app.bestiary.modal.vulnerabilities}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.vulnerabilities}"></span></strong><br/>
                 <div th:each="vulnerability : ${monster.damageVulnerabilities}" style="display: inline-block; margin-right: 10px;" class="fs-3">
                     <i th:class="${vulnerability.iconClass}"
                        data-bs-toggle="popover"
@@ -126,11 +126,11 @@
                        style="cursor: help;"
                     ></i>
                 </div>
-                <span th:if="${#lists.isEmpty(monster.damageVulnerabilities)}" th:text="#{app.bestiary.modal.vulnerabilities.empty}"></span>
+                <span th:if="${#lists.isEmpty(monster.damageVulnerabilities)}" th:text="#{app.monsters.modal.vulnerabilities.empty}"></span>
             </div>
 
             <div class="col-sm-6">
-                <strong><span th:text="#{app.bestiary.modal.resistances}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.resistances}"></span></strong><br/>
                 <div th:each="resistance : ${monster.damageResistances}" style="display: inline-block; margin-right: 10px;" class="fs-3">
                     <i th:class="${resistance.iconClass}"
                        data-bs-toggle="popover"
@@ -141,11 +141,11 @@
                        style="cursor: help;"
                     ></i>
                 </div>
-                <span th:if="${#lists.isEmpty(monster.damageResistances)}" th:text="#{app.bestiary.modal.resistances.empty}"></span>
+                <span th:if="${#lists.isEmpty(monster.damageResistances)}" th:text="#{app.monsters.modal.resistances.empty}"></span>
             </div>
 
             <div class="col-sm-6">
-                <strong><span th:text="#{app.bestiary.modal.immunities}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.immunities}"></span></strong><br/>
                 <div th:each="immunity : ${monster.damageImmunities}" style="display: inline-block; margin-right: 10px;" class="fs-3">
                     <i th:class="${immunity.iconClass}"
                        data-bs-toggle="popover"
@@ -156,11 +156,11 @@
                        style="cursor: help;"
                     ></i>
                 </div>
-                <span th:if="${#lists.isEmpty(monster.damageImmunities)}" th:text="#{app.bestiary.modal.immunities.empty}"></span>
+                <span th:if="${#lists.isEmpty(monster.damageImmunities)}" th:text="#{app.monsters.modal.immunities.empty}"></span>
             </div>
 
             <div class="col-sm-6">
-                <strong><span th:text="#{app.bestiary.modal.condition_immunities}"></span></strong><br/>
+                <strong><span th:text="#{app.monsters.modal.condition_immunities}"></span></strong><br/>
                 <div th:each="immunity : ${monster.conditionImmunities}" style="display: inline-block; margin-right: 10px;" class="fs-3">
                     <i th:class="${immunity.name.iconClass}"
                        data-bs-toggle="popover"
@@ -171,7 +171,7 @@
                        style="cursor: help;"
                     ></i>
                 </div>
-                <span th:if="${#lists.isEmpty(monster.conditionImmunities)}" th:text="#{app.bestiary.modal.condition_immunities.empty}"></span>
+                <span th:if="${#lists.isEmpty(monster.conditionImmunities)}" th:text="#{app.monsters.modal.condition_immunities.empty}"></span>
             </div>
         </div>
     </div>

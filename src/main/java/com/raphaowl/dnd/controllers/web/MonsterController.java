@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.raphaowl.dnd.dtos.Monster;
 import com.raphaowl.dnd.service.MonsterJsonService;
-import com.raphaowl.dnd.service.MonsterService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.AllArgsConstructor;
 
 @Controller
-@RequestMapping(value = {"/bestiary"})
+@RequestMapping(value = {"/monsters"})
 @AllArgsConstructor
-public class BestiaryController {
+public class MonsterController {
 
-    private final MonsterService monsterService;
     private final MonsterJsonService monsterJsonService;
 
     @GetMapping
     public String getMonsters(Model model) {
         List<Monster> allMonsters = monsterJsonService.getAllMonsters();
         model.addAttribute("monsters", allMonsters);
-        return "bestiary";
+        return "monsters";
     }
 
     @GetMapping("/{index}")
