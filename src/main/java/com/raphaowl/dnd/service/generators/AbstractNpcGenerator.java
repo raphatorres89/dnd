@@ -7,8 +7,10 @@ import java.util.Random;
 import com.raphaowl.dnd.dtos.Npc;
 import com.raphaowl.dnd.dtos.NpcFilterDto;
 import com.raphaowl.dnd.enums.AlignmentEnum;
+import com.raphaowl.dnd.enums.CharacteristicEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GenderEnum;
+import com.raphaowl.dnd.enums.MotivationEnum;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,13 +36,19 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
 
         AlignmentEnum alignment = alignmentGenerator.generateAlignment(getRaceName(), clazz);
 
+        CharacteristicEnum characteristic = CharacteristicEnum.values()[random.nextInt(CharacteristicEnum.values().length)];
+
+        MotivationEnum motivation = MotivationEnum.values()[random.nextInt(MotivationEnum.values().length)];
+
         return new Npc(
                 generateName(gender),
                 getRaceName(),
                 gender,
                 alignment,
                 clazz,
-                null, null, null);
+                null,
+                characteristic,
+                motivation);
     }
 
     private GenderEnum selectGender(GenderEnum genderFilter) {

@@ -31,10 +31,12 @@
                             <span class="text-success fw-bold" th:text="${npc.statistics}"></span>
 
                             <div class="mt-2">
-                                <span class="fw-bold" th:text="#{app.npcs.card.trait}">:</span> <span th:text="${npc.trait}"></span>
+                                <span class="fw-bold" th:text="#{app.npcs.card.trait}">:</span>
+                                <span th:text="#{${'characteristic.' + npc.trait.name()}}"></span>
                             </div>
                             <div>
-                                <span class="fw-bold" th:text="#{app.npcs.card.motivation}">:</span> <span th:text="${npc.motivation}"></span>
+                                <span class="fw-bold" th:text="#{app.npcs.card.motivation}">:</span>
+                                <span th:text="#{${'motivation.' + npc.motivation.name()}}"></span>
                             </div>
                         </div>
                     </div>
