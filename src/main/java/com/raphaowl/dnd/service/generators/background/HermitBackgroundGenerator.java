@@ -3,6 +3,7 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.List;
 
 import com.raphaowl.dnd.enums.BackgroundEnum;
+import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
@@ -20,6 +21,20 @@ public class HermitBackgroundGenerator extends AbstractBackgroundGenerator {
             PersonalityTrait.HERMIT_7,
             PersonalityTrait.HERMIT_8
     );
+
+    public static final List<IdealEnum> IDEALS = List.of(
+            IdealEnum.HERMIT_1,
+            IdealEnum.HERMIT_2,
+            IdealEnum.HERMIT_3,
+            IdealEnum.HERMIT_4,
+            IdealEnum.HERMIT_5,
+            IdealEnum.HERMIT_6
+    );
+
+    @Override
+    protected IdealEnum generateIdealTrait() {
+        return IDEALS.get(random.nextInt(IDEALS.size()));
+    }
 
     @Override
     protected PersonalityTrait generatePersonalityTrait() {

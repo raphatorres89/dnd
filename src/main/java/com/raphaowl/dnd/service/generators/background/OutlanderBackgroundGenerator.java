@@ -3,6 +3,7 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.List;
 
 import com.raphaowl.dnd.enums.BackgroundEnum;
+import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
@@ -20,6 +21,20 @@ public class OutlanderBackgroundGenerator extends AbstractBackgroundGenerator {
             PersonalityTrait.OUTLANDER_7,
             PersonalityTrait.OUTLANDER_8
     );
+
+    public static final List<IdealEnum> IDEALS = List.of(
+            IdealEnum.OUTLANDER_1,
+            IdealEnum.OUTLANDER_2,
+            IdealEnum.OUTLANDER_3,
+            IdealEnum.OUTLANDER_4,
+            IdealEnum.OUTLANDER_5,
+            IdealEnum.OUTLANDER_6
+    );
+
+    @Override
+    protected IdealEnum generateIdealTrait() {
+        return IDEALS.get(random.nextInt(IDEALS.size()));
+    }
 
     @Override
     protected PersonalityTrait generatePersonalityTrait() {

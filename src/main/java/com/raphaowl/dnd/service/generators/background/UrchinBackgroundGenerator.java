@@ -3,6 +3,7 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.List;
 
 import com.raphaowl.dnd.enums.BackgroundEnum;
+import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
@@ -20,6 +21,20 @@ public class UrchinBackgroundGenerator extends AbstractBackgroundGenerator {
             PersonalityTrait.URCHIN_7,
             PersonalityTrait.URCHIN_8
     );
+
+    public static final List<IdealEnum> IDEALS = List.of(
+            IdealEnum.URCHIN_1,
+            IdealEnum.URCHIN_2,
+            IdealEnum.URCHIN_3,
+            IdealEnum.URCHIN_4,
+            IdealEnum.URCHIN_5,
+            IdealEnum.URCHIN_6
+    );
+
+    @Override
+    protected IdealEnum generateIdealTrait() {
+        return IDEALS.get(random.nextInt(IDEALS.size()));
+    }
 
     @Override
     protected PersonalityTrait generatePersonalityTrait() {
