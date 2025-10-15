@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators;
+package com.raphaowl.dnd.service.generators.alignment;
 
 import java.util.Map;
 import java.util.Random;

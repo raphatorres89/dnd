@@ -19,5 +19,5 @@ public enum ClassEnum {
     WARLOCK("ra ra-fire-symbol"),
     WIZARD("ra ra-book");
 
-    private String iconClass;
+    private final String iconClass;
 }

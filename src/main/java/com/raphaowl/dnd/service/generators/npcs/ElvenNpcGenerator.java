@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators;
+package com.raphaowl.dnd.service.generators.npcs;
 
 import java.util.List;
 

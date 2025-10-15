@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators;
+package com.raphaowl.dnd.service.generators.npcs;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,10 +7,11 @@ import java.util.Random;
 import com.raphaowl.dnd.dtos.Npc;
 import com.raphaowl.dnd.dtos.NpcFilterDto;
 import com.raphaowl.dnd.enums.AlignmentEnum;
-import com.raphaowl.dnd.enums.CharacteristicEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GenderEnum;
-import com.raphaowl.dnd.enums.MotivationEnum;
+import com.raphaowl.dnd.service.generators.alignment.AlignmentGenerator;
+import com.raphaowl.dnd.service.generators.background.BackgroundFactory;
+import com.raphaowl.dnd.service.generators.background.BackgroundGenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,8 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
 
     @Autowired
     private AlignmentGenerator alignmentGenerator;
+    @Autowired
+    private BackgroundFactory backgroundFactory;
 
     protected abstract String generateName(GenderEnum gender);
     protected abstract List<ClassEnum> getPreferredClasses();
@@ -36,9 +39,7 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
 
         AlignmentEnum alignment = alignmentGenerator.generateAlignment(getRaceName(), clazz);
 
-        CharacteristicEnum characteristic = CharacteristicEnum.values()[random.nextInt(CharacteristicEnum.values().length)];
-
-        MotivationEnum motivation = MotivationEnum.values()[random.nextInt(MotivationEnum.values().length)];
+        BackgroundGenerator backgroundGenerator = backgroundFactory.getGenerator(filter.background());
 
         return new Npc(
                 generateName(gender),
@@ -47,8 +48,7 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
                 alignment,
                 clazz,
                 null,
-                characteristic,
-                motivation);
+                backgroundGenerator.generate());
     }
 
     private GenderEnum selectGender(GenderEnum genderFilter) {

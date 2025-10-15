@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators;
+package com.raphaowl.dnd.service.generators.npcs;
 
 import com.raphaowl.dnd.dtos.Npc;
 import com.raphaowl.dnd.dtos.NpcFilterDto;

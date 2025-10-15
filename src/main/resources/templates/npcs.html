@@ -17,7 +17,7 @@
         <div id="npcFilters" class="card shadow p-4 mb-4">
             <div class="row g-3">
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="filterNpcRace" class="form-label" th:text="#{app.npcs.filter.race}"></label>
                     <select id="filterNpcRace" class="form-select">
                         <option value="" th:text="#{app.npcs.filter.race.any}"></option>
@@ -28,7 +28,7 @@
                     </select>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="filterNpcGender" class="form-label" th:text="#{app.npcs.filter.gender}"></label>
                     <select id="filterNpcGender" class="form-select">
                         <option value="" th:text="#{app.npcs.filter.gender.any}"></option>
@@ -39,13 +39,24 @@
                     </select>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="filterNpcClass" class="form-label" th:text="#{app.npcs.filter.class}"></label>
                     <select id="filterNpcClass" class="form-select">
                         <option value="" th:text="#{app.npcs.filter.class.any}"></option>
                         <option th:each="class : ${T(com.raphaowl.dnd.enums.ClassEnum).values()}"
                                 th:value="${class.name()}"
                                 th:text="#{${'class.' + class.name()}}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="filterNpcBackground" class="form-label" th:text="#{app.npcs.filter.background}"></label>
+                    <select id="filterNpcBackground" class="form-select">
+                        <option value="" th:text="#{app.npcs.filter.background.any}"></option>
+                        <option th:each="background : ${T(com.raphaowl.dnd.enums.BackgroundEnum).values()}"
+                                th:value="${background.name()}"
+                                th:text="#{${'background.' + background.name()}}">
                         </option>
                     </select>
                 </div>
@@ -71,8 +82,9 @@
             const gender = $('#filterNpcGender').val();
             const npcClass = $('#filterNpcClass').val();
             const alignment = $('#filterNpcAlignment').val();
+            const background = $('#filterNpcBackground').val();
 
-            const url = `/npcs/generate?race=${race}&gender=${gender}&className=${npcClass}&alignment=${alignment}`;
+            const url = `/npcs/generate?race=${race}&gender=${gender}&className=${npcClass}&alignment=${alignment}&background=${background}`;
 
             const $container = $('#npcsContainer');
             $container.html('<p class="text-center w-100"><i class="ra ra-sword"></i> [[#{app.npcs.filter.message.loading}]]</p>');

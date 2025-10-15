@@ -6,8 +6,8 @@ import java.util.stream.IntStream;
 
 import com.raphaowl.dnd.dtos.Npc;
 import com.raphaowl.dnd.dtos.NpcFilterDto;
-import com.raphaowl.dnd.service.generators.NpcFactory;
-import com.raphaowl.dnd.service.generators.NpcGenerator;
+import com.raphaowl.dnd.service.generators.npcs.NpcFactory;
+import com.raphaowl.dnd.service.generators.npcs.NpcGenerator;
 
 import org.springframework.stereotype.Service;
 
@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 public class NpcService {
 
     private final NpcFactory npcFactory;
+
     public List<Npc> generateNpcs(NpcFilterDto filter, int count) {
         List<Npc> npcs = new ArrayList<>();
 
