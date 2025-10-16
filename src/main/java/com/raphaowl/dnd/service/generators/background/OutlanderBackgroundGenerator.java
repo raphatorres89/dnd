@@ -1,8 +1,12 @@
 package com.raphaowl.dnd.service.generators.background;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
+import com.raphaowl.dnd.enums.BondsEnum;
+import com.raphaowl.dnd.enums.FlawsEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
@@ -22,18 +26,59 @@ public class OutlanderBackgroundGenerator extends AbstractBackgroundGenerator {
             PersonalityTrait.OUTLANDER_8
     );
 
-    public static final List<IdealEnum> IDEALS = List.of(
-            IdealEnum.OUTLANDER_1,
-            IdealEnum.OUTLANDER_2,
-            IdealEnum.OUTLANDER_3,
-            IdealEnum.OUTLANDER_4,
-            IdealEnum.OUTLANDER_5,
-            IdealEnum.OUTLANDER_6
+    public static final  List<BondsEnum> BONDS_TRAITS = List.of(
+            BondsEnum.OUTLANDER_1,
+            BondsEnum.OUTLANDER_2,
+            BondsEnum.OUTLANDER_3,
+            BondsEnum.OUTLANDER_4,
+            BondsEnum.OUTLANDER_5,
+            BondsEnum.OUTLANDER_6
+    );
+
+    public static final List<FlawsEnum> FLAWS_TRAITS = List.of(
+            FlawsEnum.OUTLANDER_1,
+            FlawsEnum.OUTLANDER_2,
+            FlawsEnum.OUTLANDER_3,
+            FlawsEnum.OUTLANDER_4,
+            FlawsEnum.OUTLANDER_5,
+            FlawsEnum.OUTLANDER_6
     );
 
     @Override
-    protected IdealEnum generateIdealTrait() {
-        return IDEALS.get(random.nextInt(IDEALS.size()));
+    protected FlawsEnum generateFlaws() {
+        return FLAWS_TRAITS.get(random.nextInt(FLAWS_TRAITS.size()));
+    }
+
+    @Override
+    protected BondsEnum generateBonds() {
+        return BONDS_TRAITS.get(random.nextInt(BONDS_TRAITS.size()));
+    }
+
+    @Override
+    protected IdealEnum generateIdeal(AlignmentEnum alignment) {
+        List<IdealEnum> ideals = new ArrayList<>(List.of());
+        // LAWFUL
+        if (AlignmentEnum.getLawful().contains(alignment)) {
+            ideals.add(IdealEnum.OUTLANDER_3);
+        }
+        // CHAOTIC
+        if (AlignmentEnum.getChaotic().contains(alignment)) {
+            ideals.add(IdealEnum.OUTLANDER_1);
+        }
+        // GOOD
+        if (AlignmentEnum.getGood().contains(alignment)) {
+            ideals.add(IdealEnum.OUTLANDER_2);
+        }
+        // EVIL
+        if (AlignmentEnum.getEvil().contains(alignment)) {
+            ideals.add(IdealEnum.OUTLANDER_4);
+        }
+        // NEUTRAL
+        if (AlignmentEnum.getNeutral().contains(alignment)) {
+            ideals.add(IdealEnum.OUTLANDER_5);
+        }
+        ideals.add(IdealEnum.OUTLANDER_6);
+        return ideals.get(random.nextInt(ideals.size()));
     }
 
     @Override

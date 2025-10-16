@@ -41,6 +41,26 @@ public enum AlignmentEnum {
         );
     }
 
+    public static List<AlignmentEnum> getLawful() {
+        return List.of(LAWFUL_EVIL, LAWFUL_NEUTRAL, LAWFUL_GOOD);
+    }
+
+    public static List<AlignmentEnum> getGood() {
+        return List.of(NEUTRAL_GOOD, CHAOTIC_GOOD, LAWFUL_GOOD);
+    }
+
+    public static List<AlignmentEnum> getChaotic() {
+        return List.of(CHAOTIC_EVIL, CHAOTIC_GOOD, CHAOTIC_NEUTRAL);
+    }
+
+    public static List<AlignmentEnum> getEvil() {
+        return List.of(CHAOTIC_EVIL, LAWFUL_EVIL, NEUTRAL_EVIL);
+    }
+
+    public static List<AlignmentEnum> getNeutral() {
+        return List.of(NEUTRAL, NEUTRAL_EVIL, NEUTRAL_GOOD);
+    }
+
     @JsonCreator
     public static AlignmentEnum fromString(String value) {
         if (value == null) {

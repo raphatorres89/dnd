@@ -11,6 +11,6 @@ public record Npc(
         GenderEnum gender,
         AlignmentEnum alignment,
         ClassEnum className,
-        String statistics,
+        NpcStats statistics,
         Background background) {
 }

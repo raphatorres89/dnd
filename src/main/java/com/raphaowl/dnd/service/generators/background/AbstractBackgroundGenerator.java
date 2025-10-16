@@ -3,6 +3,9 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.Random;
 
 import com.raphaowl.dnd.dtos.Background;
+import com.raphaowl.dnd.enums.AlignmentEnum;
+import com.raphaowl.dnd.enums.BondsEnum;
+import com.raphaowl.dnd.enums.FlawsEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
@@ -15,13 +18,19 @@ public abstract class AbstractBackgroundGenerator implements BackgroundGenerator
 
     protected abstract PersonalityTrait generatePersonalityTrait();
 
-    protected abstract IdealEnum generateIdealTrait();
+    protected abstract IdealEnum generateIdeal(AlignmentEnum alignment);
 
-    public Background generate() {
+    protected abstract BondsEnum generateBonds();
+
+    protected abstract FlawsEnum generateFlaws();
+
+    public Background generate(AlignmentEnum alignment) {
         return new Background(
                 getBackgroundName(),
                 generatePersonalityTrait(),
-                generateIdealTrait()
+                generateIdeal(alignment),
+                generateBonds(),
+                generateFlaws()
         );
     }
 }

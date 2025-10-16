@@ -3,51 +3,81 @@
 <body>
 
 <th:block th:fragment="cards">
-
     <div th:each="npc : ${npcs}" class="col">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden h-100">
+            <!-- Header visual -->
+            <div class="card-header bg-dark text-light d-flex justify-content-between align-items-center py-2 px-3">
+                <h5 class="m-0 text-truncate" th:text="#{${'class.' + npc.className.name()}}"></h5>
+                <small th:text="${npc.name}"></small>
+            </div>
 
-        <div class="card shadow-sm h-100">
-            <div class="card-body">
+            <div class="card-body p-3">
                 <div class="row g-2">
-
-                    <div class="col-4 text-center border-end">
-                        <i class="ra ra-player display-4"
-                           th:classappend="${npc.gender.name == 'MALE'} ? 'text-primary' : 'text-danger'">
-                        </i>
-                        <p class="mb-1 fw-bold" th:text="#{${'race.' + npc.race.name()}}"></p>
+                    <!-- Coluna esquerda: ícone e raça -->
+                    <div class="col-4 d-flex flex-column justify-content-center align-items-center text-center border-end">
+                        <i class="ra ra-player display-5 mb-1"
+                           th:classappend="${npc.gender.name == 'MALE'} ? 'text-primary' : 'text-danger'"></i>
+                        <p class="fw-bold mb-0" th:text="#{${'race.' + npc.race.name()}}"></p>
                         <small class="text-muted" th:text="#{${'gender.' + npc.gender.name()}}"></small>
+                        <hr class="w-75 my-2">
+                        <div class="small text-center">
+                            <span class="fw-semibold">PV:</span>
+                            <span th:text="${npc.statistics.hitPoints()}"></span>
+                        </div>
                     </div>
 
-                    <div class="col-8">
-                        <h5 class="card-title text-truncate" th:text="${npc.name}"></h5>
-                        <p class="card-subtitle mb-2 text-muted small">
-                            <i th:class="${npc.className.iconClass}"></i>
-                            <span th:text="#{${'class.' + npc.className.name}} + ' (' + #{${'alignment.' + npc.alignment.name()}} + ')'"></span>
-                        </p>
-
-                        <hr class="my-2">
-
-                        <div class="d-flex flex-column small">
-                            <span class="text-success fw-bold" th:text="${npc.statistics}"></span>
-
-                            <div>
-                                <span class="fw-bold" th:text="#{app.npcs.card.background}">:</span>
+                    <!-- Coluna direita: detalhes -->
+                    <div class="col-8 d-flex flex-column justify-content-between">
+                        <!-- Alinhamento e background -->
+                        <div class="mb-2">
+                            <p class="card-subtitle mb-1 text-muted small">
+                                <i th:class="${npc.className.iconClass}"></i>
+                                <span th:text="'(' + #{${'alignment.' + npc.alignment.name()}} + ')'"></span>
+                            </p>
+                            <small>
+                                <span class="fw-bold" th:text="#{app.npcs.card.background} + ': '"></span>
                                 <span th:text="#{${'background.' + npc.background.name()}}"></span>
+                            </small>
+                        </div>
+
+                        <!-- Atributos -->
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between flex-wrap text-center border rounded-3 p-2 small">
+                                <div th:each="entry : ${npc.statistics.attributes().entrySet()}"
+                                     class="flex-fill text-center px-1">
+                                    <span class="fw-bold" th:text="${entry.key}"></span><br>
+                                    <span th:text="${entry.value}"></span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="fw-bold" th:text="#{app.npcs.card.personality.trait}">:</span>
+                        </div>
+
+                        <!-- Traços e personalidade -->
+                        <div class="pt-2 small">
+                            <div class="mb-2">
+                                <i class="bi bi-star"></i>
+                                <span class="fw-bold" th:text="#{app.npcs.card.personality.trait} + ': '"></span>
                                 <span th:text="#{${'personality.traits.' + npc.background.trait.name()}}"></span>
                             </div>
-                            <div>
-                                <span class="fw-bold" th:text="#{app.npcs.card.ideal}">:</span>
+                            <div class="mb-2">
+                                <i class="bi bi-heart"></i>
+                                <span class="fw-bold" th:text="#{app.npcs.card.ideal} + ': '"></span>
                                 <span th:text="#{${'ideals.' + npc.background.ideal.name()}}"></span>
+                            </div>
+                            <div class="mb-2">
+                                <i class="bi bi-link-45deg"></i>
+                                <span class="fw-bold" th:text="#{app.npcs.card.bond} + ': '"></span>
+                                <span th:text="#{${'bonds.' + npc.background.bond.name()}}"></span>
+                            </div>
+                            <div class="mb-2">
+                                <i class="bi bi-exclamation-triangle"></i>
+                                <span class="fw-bold" th:text="#{app.npcs.card.flaw} + ': '"></span>
+                                <span th:text="#{${'flaws.' + npc.background.flaw.name()}}"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </th:block>
 
