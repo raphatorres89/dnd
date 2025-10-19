@@ -29,7 +29,7 @@ public class NpcController {
     @GetMapping("/generate")
     public String generateNpcs(
             NpcFilterDto filter,
-            @RequestParam(defaultValue = "6") int count,
+            @RequestParam(defaultValue = "4") int count,
             Model model
     ) {
 

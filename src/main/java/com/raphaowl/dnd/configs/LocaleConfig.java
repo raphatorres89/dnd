@@ -22,23 +22,21 @@ public class LocaleConfig implements WebMvcConfigurer {
         messageSource.setBasename("classpath:i18n/messages");
         messageSource.setDefaultEncoding("UTF-8");
 
-        messageSource.setCacheSeconds(3600); // Recarrega a cada hora
+        messageSource.setCacheSeconds(3600);
         return messageSource;
     }
 
     @Bean
     public LocaleResolver localeResolver() {
-        // Usa CookieLocaleResolver para persistir entre sessões
         CookieLocaleResolver resolver = new CookieLocaleResolver();
-        resolver.setDefaultLocale(new Locale("pt"));
-//        resolver.setCookieName("locale-cookie");
+        resolver.setDefaultLocale(Locale.of("pt_BR"));
         return resolver;
     }
 
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-        lci.setParamName("lang"); // ESSENCIAL: Corresponde ao parâmetro enviado pelo JavaScript
+        lci.setParamName("lang");
         return lci;
     }
 

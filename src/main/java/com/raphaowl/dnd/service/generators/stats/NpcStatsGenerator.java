@@ -22,8 +22,12 @@ public class NpcStatsGenerator {
 
         int constitutionModifier = (attributes.get(AbilityScoreEnum.CON) - 10) / 2;
         int hitPoints = calculateHitPoints(clazz, constitutionModifier, challengeRating);
+        int armorClass = 10 + ((attributes.get(AbilityScoreEnum.DEX) - 10) /2);
 
-        return new NpcStats(attributes, hitPoints);
+        return new NpcStats(
+                attributes,
+                hitPoints,
+                armorClass);
     }
 
     private Map<AbilityScoreEnum, Integer> generateBaseAttributes(double cr) {

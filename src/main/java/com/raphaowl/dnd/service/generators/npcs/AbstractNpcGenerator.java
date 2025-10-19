@@ -3,6 +3,7 @@ package com.raphaowl.dnd.service.generators.npcs;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import com.raphaowl.dnd.dtos.Npc;
 import com.raphaowl.dnd.dtos.NpcFilterDto;
@@ -33,6 +34,7 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
 
     protected abstract String generateName(GenderEnum gender);
     protected abstract List<ClassEnum> getPreferredClasses();
+//    protected abstract Integer getArmorClassBonus();
 
     @Override
     public Npc generate(NpcFilterDto filter) {
@@ -46,13 +48,15 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
         NpcStats npcStats = npcStatsGenerator.generateStats(clazz, getRaceName(), challengeRating);
 
         return new Npc(
+                new UUID(random.nextLong(), random.nextLong()),
                 generateName(gender),
                 getRaceName(),
                 gender,
                 alignment,
                 clazz,
                 npcStats,
-                backgroundGenerator.generate(alignment));
+                backgroundGenerator.generate(alignment),
+                2, challengeRating,null, null);
     }
 
     private GenderEnum selectGender(GenderEnum genderFilter) {
