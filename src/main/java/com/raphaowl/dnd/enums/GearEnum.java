@@ -107,12 +107,25 @@ public enum GearEnum {
     SHIP_ROWBOAT("Rowboat", 50.0, 100.0, GearTypeEnum.VEHICLE),
 
     // ---------- PACKS ----------
-    DIPLOMAT_PACK("Diplomat's Pack", 40.0, 12.0, GearTypeEnum.ADVENTURING_GEAR),
-    ADVENTURER_PACK("Adventurer's Pack", 39.0, 12.0, GearTypeEnum.ADVENTURING_GEAR),
-    ENTERTAINER_PACK("Entertainer's Pack", 40.0, 11.0, GearTypeEnum.ADVENTURING_GEAR),
-    PRIEST_PACK("Priest's Pack", 19.0, 11.0, GearTypeEnum.ADVENTURING_GEAR),
-    SCHOLAR_PACK("Scholar's Pack", 40.0, 11.0, GearTypeEnum.ADVENTURING_GEAR),
-    EXPLORER_PACK("Explorer's Pack", 50.0, 13.0, GearTypeEnum.ADVENTURING_GEAR);
+    DIPLOMAT_PACK("Diplomat's Pack", 40.0, 12.0, GearTypeEnum.PACK),
+    ADVENTURER_PACK("Adventurer's Pack", 39.0, 12.0, GearTypeEnum.PACK),
+    ENTERTAINER_PACK("Entertainer's Pack", 40.0, 11.0, GearTypeEnum.PACK),
+    PRIEST_PACK("Priest's Pack", 19.0, 11.0, GearTypeEnum.PACK),
+    SCHOLAR_PACK("Scholar's Pack", 40.0, 11.0, GearTypeEnum.PACK),
+    EXPLORER_PACK("Explorer's Pack", 50.0, 13.0, GearTypeEnum.PACK),
+
+    // ---------- FOCUSES ----------
+    DRUIDIC_FOCUS_SPRIG("Sprig of Mistletoe", 1.0, 0.0, GearTypeEnum.FOCUS),
+    DRUIDIC_FOCUS_TOTEM("Totem", 1.0, 0.0, GearTypeEnum.FOCUS),
+    DRUIDIC_FOCUS_WOODEN_STAFF("Wooden Staff", 5.0, 4.0, GearTypeEnum.FOCUS),
+    DRUIDIC_FOCUS_YEW_WAND("Yew Wand", 10.0, 1.0, GearTypeEnum.FOCUS),
+
+    ARCANE_FOCUS_CRYSTAL("Crystal", 10.0, 1.0, GearTypeEnum.FOCUS),
+    ARCANE_FOCUS_ORB("Orb", 20.0, 3.0, GearTypeEnum.FOCUS),
+    ARCANE_FOCUS_ROD("Rod", 10.0, 2.0, GearTypeEnum.FOCUS),
+    ARCANE_FOCUS_STAFF("Staff", 5.0, 4.0, GearTypeEnum.FOCUS),
+    ARCANE_FOCUS_WAND("Wand", 10.0, 1.0, GearTypeEnum.FOCUS);
+
 
     private final String name;
     private final Double price;

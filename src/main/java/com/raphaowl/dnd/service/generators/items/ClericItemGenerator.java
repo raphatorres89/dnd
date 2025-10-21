@@ -3,14 +3,11 @@ package com.raphaowl.dnd.service.generators.items;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.raphaowl.dnd.dtos.Armor;
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Weapon;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
-import com.raphaowl.dnd.enums.WeaponType;
 
 import org.springframework.stereotype.Component;
 
@@ -33,14 +30,10 @@ import org.springframework.stereotype.Component;
  * EQUIPAMENTO
  * Você começa com o seguinte equipamento, além do
  * equipamento concedido pelo seu antecedente:
- *  (a) uma maça ou (b) um martelo de guerra (se for
- * proficiente)
- *  (a) brunea, (b) armadura de couro ou (c) cota de malha
- * (se for proficiente)
- *  (a) um besta leve e 20 virotes ou (b) qualquer arma
- * simples
- *  (a) um pacote de sacerdote ou (b) um pacote de
- * aventureiro
+ *  (a) uma maça ou (b) um martelo de guerra (se for proficiente)
+ *  (a) brunea, (b) armadura de couro ou (c) cota de malha (se for proficiente)
+ *  (a) um besta leve e 20 virotes ou (b) qualquer arma simples
+ *  (a) um pacote de sacerdote ou (b) um pacote de aventureiro
  *  Um escudo e um símbolo sagrado
  */
 @Component
@@ -61,31 +54,42 @@ public class ClericItemGenerator extends AbstractItemGenerator {
             items.add(WeaponEnum.HAND_CROSSBOW.toWeapon(1));
             items.add(GearEnum.CROSSBOW_BOLTS.toItem(20));
         } else {
-            items.add(getSecondaryWeapon());
+            items.add(getAnySimpleWeapon());
         }
 
         items.add(getPack());
+//        Um escudo e um símbolo sagrado
         items.add(ArmorEnum.SHIELD.toArmor(1));
         return items;
     }
 
+//     (a) um pacote de sacerdote ou (b) um pacote de aventureiro
     private Item getPack() {
-        List<GearEnum> items = List.of(GearEnum.PRIEST_PACK, GearEnum.ADVENTURER_PACK);
-        return items.get(random.nextInt(items.size())).toItem(1);
+        if (random.nextBoolean()) {
+            GearEnum.PRIEST_PACK.toItem(1);
+        }
+        return GearEnum.ADVENTURER_PACK.toItem(1);
     }
 
-    private Weapon getSecondaryWeapon() {
-        List<WeaponEnum> secondary = new ArrayList<>(WeaponEnum.getByType(WeaponType.SIMPLE_MELEE));
-        return secondary.get(random.nextInt(secondary.size())).toWeapon(1);
+//     (a) brunea, (b) armadura de couro ou (c) cota de malha (se for proficiente)
+    private Item getArmor() {
+        int choice = random.nextInt(3);
+        Item armor;
+        if (choice == 0) {
+            armor = ArmorEnum.BREASTPLATE.toArmor(1);
+        } else if (choice == 1) {
+            armor = ArmorEnum.LEATHER.toArmor(1);
+        } else {
+            armor = ArmorEnum.CHAIN_MAIL.toArmor(1);
+        }
+        return armor;
     }
 
-    private Armor getArmor() {
-        List<ArmorEnum> armors = List.of(ArmorEnum.BREASTPLATE, ArmorEnum.LEATHER, ArmorEnum.CHAIN_MAIL);
-        return armors.get(random.nextInt(armors.size())).toArmor(1);
-    }
-
-    private Weapon getMainWeapon() {
-        List<WeaponEnum> main = List.of(WeaponEnum.MACE, WeaponEnum.WARHAMMER);
-        return main.get(random.nextInt(main.size())).toWeapon(1);
+//     (a) uma maça ou (b) um martelo de guerra (se for proficiente)
+    private Item getMainWeapon() {
+        if (random.nextBoolean()) {
+            WeaponEnum.MACE.toWeapon(1);
+        }
+        return WeaponEnum.WARHAMMER.toWeapon(1);
     }
 }

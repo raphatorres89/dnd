@@ -55,7 +55,7 @@ public enum WeaponEnum {
     HAND_CROSSBOW("Hand Crossbow", WeaponType.MARTIAL_RANGED, "1d6", DamageEnum.PIERCING, false, false, false, 3.0, 75.0),
     HEAVY_CROSSBOW("Heavy Crossbow", WeaponType.MARTIAL_RANGED, "1d10", DamageEnum.PIERCING, false, true, false, 18.0, 50.0),
     LONGBOW("Longbow", WeaponType.MARTIAL_RANGED, "1d8", DamageEnum.PIERCING, false, true, false, 2.0, 50.0),
-    NET("Net", WeaponType.MARTIAL_RANGED, "—", null, false, false, false, 6.0, 1.0);
+    NET("Net", WeaponType.MARTIAL_RANGED, "—", DamageEnum.EMPTY, false, false, false, 6.0, 1.0);
 
     private final String displayName;
     private final WeaponType type;

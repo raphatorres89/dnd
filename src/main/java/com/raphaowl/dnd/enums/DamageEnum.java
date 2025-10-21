@@ -33,7 +33,8 @@ public enum DamageEnum {
     NONMAGICAL_SILVER("bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered", "ra ra-lightning-sword text-info"),
     NONMAGICAL_STONESKIN("bludgeoning, piercing, and slashing from nonmagical attacks (from stoneskin)", "ra ra-lightning-sword text-info"),
     NONMAGICAL_ATTACKS("bludgeoning, piercing, and slashing from nonmagical attacks", "ra ra-lightning-sword text-info"),
-    PIERCING_FROM_MAGIC("piercing from magic weapons wielded by good creatures", "ra ra-spear-head text-info");
+    PIERCING_FROM_MAGIC("piercing from magic weapons wielded by good creatures", "ra ra-spear-head text-info"),
+    EMPTY("no damage", "ra ra-cancel text-secondary");
 
     private final String damageType;
     private final String iconClass;

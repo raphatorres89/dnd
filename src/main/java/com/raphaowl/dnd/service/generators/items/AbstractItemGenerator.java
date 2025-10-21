@@ -1,6 +1,14 @@
 package com.raphaowl.dnd.service.generators.items;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import com.raphaowl.dnd.dtos.Item;
+import com.raphaowl.dnd.enums.ToolEnum;
+import com.raphaowl.dnd.enums.ToolTypeEnum;
+import com.raphaowl.dnd.enums.WeaponEnum;
+import com.raphaowl.dnd.enums.WeaponType;
 
 import org.springframework.stereotype.Component;
 
@@ -8,4 +16,26 @@ import org.springframework.stereotype.Component;
 public abstract class AbstractItemGenerator implements ItemGenerator {
 
     Random random = new Random();
+
+    protected Item getAnyMartialWeapon() {
+        List<WeaponEnum> weapons = new ArrayList<>(WeaponEnum.getByType(WeaponType.MARTIAL_MELEE));
+        weapons.addAll(WeaponEnum.getByType(WeaponType.MARTIAL_RANGED));
+        return weapons.get(random.nextInt(weapons.size())).toWeapon(1);
+    }
+
+    protected Item getAnySimpleWeapon() {
+        List<WeaponEnum> weapons = new ArrayList<>(WeaponEnum.getByType(WeaponType.SIMPLE_MELEE));
+        weapons.addAll(WeaponEnum.getByType(WeaponType.SIMPLE_RANGED));
+        return weapons.get(random.nextInt(weapons.size())).toWeapon(1);
+    }
+
+    protected Item getAnySimpleMeleeWeapon() {
+        List<WeaponEnum> weapons = new ArrayList<>(WeaponEnum.getByType(WeaponType.SIMPLE_MELEE));
+        return weapons.get(random.nextInt(weapons.size())).toWeapon(1);
+    }
+
+    protected Item getAnyInstrument() {
+        List<ToolEnum> instruments = new ArrayList<>(ToolEnum.getByType(ToolTypeEnum.MUSICAL));
+        return instruments.get(random.nextInt(instruments.size())).toItem(1);
+    }
 }

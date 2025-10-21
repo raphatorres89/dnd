@@ -8,5 +8,7 @@ public enum GearTypeEnum {
     MOUNT,
     VEHICLE,
     TACK_AND_HARNESS,
-    TRADE_GOOD
+    TRADE_GOOD,
+    PACK,
+    FOCUS
 }

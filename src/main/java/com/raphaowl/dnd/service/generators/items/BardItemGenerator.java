@@ -1,17 +1,13 @@
 package com.raphaowl.dnd.service.generators.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Weapon;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.ToolEnum;
-import com.raphaowl.dnd.enums.ToolTypeEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
-import com.raphaowl.dnd.enums.WeaponType;
 
 import org.springframework.stereotype.Component;
 
@@ -48,33 +44,42 @@ public class BardItemGenerator extends AbstractItemGenerator{
 
     @Override
     public List<Item> getItems() {
-        Weapon mainWeapon = getMainWeapon();
-        GearEnum pack = getPack();
-        ToolEnum instrument = getInstrument();
         return List.of(
-                mainWeapon,
-                pack.toItem(1),
-                instrument.toItem(1),
+                getMainWeapon(),
+                getPack().toItem(1),
+                getInstrument(),
                 ArmorEnum.LEATHER.toArmor(1),
                 WeaponEnum.DAGGER.toWeapon(1)
         );
     }
 
-    private ToolEnum getInstrument() {
-        List<ToolEnum> instruments = ToolEnum.getByType(ToolTypeEnum.MUSICAL);
-        return instruments.get(random.nextInt(instruments.size()));
+//    (a) um lute ou (b) qualquer outro instrumento musical
+    private Item getInstrument() {
+        if (random.nextBoolean()) {
+            return ToolEnum.LUTE.toItem(1);
+        }
+        return getAnyInstrument();
     }
 
+//     (a) um pacote de diplomata ou (b) um pacote de artista
     private GearEnum getPack() {
-        List<GearEnum> items = List.of(GearEnum.DIPLOMAT_PACK, GearEnum.ENTERTAINER_PACK);
-        return items.get(random.nextInt(items.size()));
+        if (random.nextBoolean()) {
+            return GearEnum.DIPLOMAT_PACK;
+        }
+        return GearEnum.ENTERTAINER_PACK;
     }
 
-    private Weapon getMainWeapon() {
-        List<WeaponEnum> main = new ArrayList<>(WeaponEnum.getByType(WeaponType.SIMPLE_MELEE));
-        main.add(WeaponEnum.RAPIER);
-        main.add(WeaponEnum.LONGSWORD);
-        WeaponEnum weaponEnum = main.get(random.nextInt(main.size()));
-        return weaponEnum.toWeapon(1);
+//     (a) uma rapieira, (b) uma espada longa ou (c) qualquer arma simples
+    private Item getMainWeapon() {
+        int choice = random.nextInt(3);
+        Item weapon;
+        if (choice == 0) {
+            weapon = WeaponEnum.RAPIER.toWeapon(1);
+        } else if (choice == 1) {
+            weapon = WeaponEnum.LONGSWORD.toWeapon(1);
+        } else {
+            weapon = getAnySimpleWeapon();
+        }
+        return weapon;
     }
 }

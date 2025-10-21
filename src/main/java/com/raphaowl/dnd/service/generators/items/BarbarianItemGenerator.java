@@ -1,14 +1,11 @@
 package com.raphaowl.dnd.service.generators.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Weapon;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
-import com.raphaowl.dnd.enums.WeaponType;
 
 import org.springframework.stereotype.Component;
 
@@ -33,10 +30,8 @@ import org.springframework.stereotype.Component;
  * EQUIPAMENTO
  * Você começa com o seguinte equipamento, além do
  * equipamento concedido pelo seu antecedente:
- *  (a) um machado grande ou (b) qualquer arma marcial
- * corpo-a-corpo
- *  (a) dois machados de mão ou (b) qualquer arma
- * simples
+ *  (a) um machado grande ou (b) qualquer arma marcial corpo-a-corpo
+ *  (a) dois machados de mão ou (b) qualquer arma simples
  *  Um pacote de aventureiro e quatro azagaias
  */
 @Component
@@ -51,25 +46,25 @@ public class BarbarianItemGenerator extends AbstractItemGenerator {
         return List.of(
                 getMainWeapon(),
                 getSubWeapon(),
+//                 Um pacote de aventureiro e quatro azagaias
                 GearEnum.ADVENTURER_PACK.toItem(1),
                 WeaponEnum.JAVELIN.toWeapon(4)
         );
     }
 
-    private Weapon getMainWeapon() {
-        List<WeaponEnum> main = new ArrayList<>(WeaponEnum.getByType(WeaponType.MARTIAL_MELEE));
-        main.add(WeaponEnum.BATTLEAXE);
-        WeaponEnum weaponEnum = main.get(random.nextInt(main.size()));
-        return weaponEnum.toWeapon(1);
+//     (a) um machado grande ou (b) qualquer arma marcial corpo-a-corpo
+    private Item getMainWeapon() {
+        if (random.nextBoolean()) {
+            return getAnySimpleMeleeWeapon();
+        }
+        return WeaponEnum.GREATAXE.toWeapon(1);
     }
 
-    private Weapon getSubWeapon() {
-        List<WeaponEnum> main = new ArrayList<>(WeaponEnum.getByType(WeaponType.SIMPLE_MELEE));
-        main.add(WeaponEnum.HANDAXE);
-        WeaponEnum weaponEnum = main.get(random.nextInt(main.size()));
-        if (weaponEnum.equals(WeaponEnum.HANDAXE)) {
-            return weaponEnum.toWeapon(2);
+//     (a) dois machados de mão ou (b) qualquer arma simples
+    private Item getSubWeapon() {
+        if (random.nextBoolean()) {
+            return WeaponEnum.HANDAXE.toWeapon(2);
         }
-        return weaponEnum.toWeapon(1);
+        return getAnySimpleWeapon();
     }
 }

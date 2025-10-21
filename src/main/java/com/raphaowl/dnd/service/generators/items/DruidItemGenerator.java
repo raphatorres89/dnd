@@ -1,6 +1,5 @@
 package com.raphaowl.dnd.service.generators.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Item;
@@ -8,7 +7,6 @@ import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
-import com.raphaowl.dnd.enums.WeaponType;
 
 import org.springframework.stereotype.Component;
 
@@ -34,14 +32,10 @@ import org.springframework.stereotype.Component;
  * EQUIPAMENTO
  * Você começa com o seguinte equipamento, além do
  * equipamento concedido pelo seu antecedente:
- *  (a) um escudo de madeira ou (b) qualquer arma
- * simples
- * (a) uma cimitarra ou (b) qualquer arma corpo-a-corpo
- * simples
- * (a) um pacote de estudioso ou (b) um pacote de
- * explorador
- *  Armadura de couro, um pacote de aventureiro e um
- * foco druídico
+ *  (a) um escudo de madeira ou (b) qualquer arma simples
+ * (a) uma cimitarra ou (b) qualquer arma corpo-a-corpo simples
+ * (a) um pacote de estudioso ou (b) um pacote de explorador
+ *  Armadura de couro, um pacote de aventureiro e um foco druídico
  */
 @Component
 public class DruidItemGenerator extends AbstractItemGenerator {
@@ -55,28 +49,43 @@ public class DruidItemGenerator extends AbstractItemGenerator {
         return List.of(
                 getMainWeapon(),
                 getSecondaryWeapon(),
-                ArmorEnum.LEATHER.toArmor(1), // TODO implementar foco druídico
+//                 Armadura de couro, um pacote de aventureiro e um foco druídico
+                ArmorEnum.LEATHER.toArmor(1),
+                GearEnum.ADVENTURER_PACK.toItem(1),
+                getDruidicFocus(),
+
                 getPack().toItem(1)
         );
     }
 
+    private Item getDruidicFocus() {
+        List<GearEnum> focuses = List.of(
+                GearEnum.DRUIDIC_FOCUS_SPRIG,
+                GearEnum.DRUIDIC_FOCUS_TOTEM,
+                GearEnum.DRUIDIC_FOCUS_WOODEN_STAFF,
+                GearEnum.DRUIDIC_FOCUS_YEW_WAND);
+        return focuses.get(random.nextInt(focuses.size())).toItem(1);
+    }
+
+//    (a) um pacote de estudioso ou (b) um pacote de explorador
     private GearEnum getPack() {
         List<GearEnum> packs = List.of(GearEnum.SCHOLAR_PACK, GearEnum.ADVENTURER_PACK);
         return packs.get(random.nextInt(packs.size()));
     }
 
+//     (a) um escudo de madeira ou (b) qualquer arma simples
     private Item getMainWeapon() {
-        List<Item> weapons = new ArrayList<>(
-                WeaponEnum.getByType(WeaponType.SIMPLE_MELEE).stream()
-                        .map(weap -> weap.toWeapon(1))
-                        .toList());
-        weapons.add(ArmorEnum.SHIELD.toArmor(1));
-        return weapons.get(random.nextInt(weapons.size()));
+        if (random.nextBoolean()) {
+            ArmorEnum.SHIELD.toArmor(1);
+        }
+        return getAnySimpleWeapon();
     }
 
+//    (a) uma cimitarra ou (b) qualquer arma corpo-a-corpo simples
     private Item getSecondaryWeapon() {
-        List<WeaponEnum> weapons = new ArrayList<>(WeaponEnum.getByType(WeaponType.SIMPLE_MELEE));
-        weapons.add(WeaponEnum.SCIMITAR);
-        return weapons.get(random.nextInt(weapons.size())).toWeapon(1);
+        if (random.nextBoolean()) {
+            WeaponEnum.SCIMITAR.toWeapon(1);
+        }
+        return getAnySimpleMeleeWeapon();
     }
 }
