@@ -17,13 +17,13 @@ public enum GearEnum {
     CHAIN("Chain (10 feet)", 5.0, 10.0, GearTypeEnum.ADVENTURING_GEAR),
     CHALK("Chalk (1 piece)", 0.01, 0.0, GearTypeEnum.ADVENTURING_GEAR),
     CLIMBER_KIT("Climber’s Kit", 25.0, 12.0, GearTypeEnum.ADVENTURING_GEAR),
-    COMPONENT_POUCH("Component Pouch", 25.0, 2.0, GearTypeEnum.ADVENTURING_GEAR),
+    COMPONENT_POUCH("Component Pouch", 25.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
     CROWBAR("Crowbar", 2.0, 5.0, GearTypeEnum.ADVENTURING_GEAR),
     GRAPPLING_HOOK("Grappling Hook", 2.0, 4.0, GearTypeEnum.ADVENTURING_GEAR),
     HAMMER("Hammer", 1.0, 3.0, GearTypeEnum.ADVENTURING_GEAR),
     HEALER_KIT("Healer’s Kit", 5.0, 3.0, GearTypeEnum.ADVENTURING_GEAR),
-    HOLY_SYMBOL_AMULET("Holy Symbol (Amulet)", 5.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
-    HOLY_SYMBOL_EMBLEM("Holy Symbol (Emblem)", 5.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
+    HOLY_SYMBOL_AMULET("Holy Symbol (Amulet)", 5.0, 0.5, GearTypeEnum.ADVENTURING_GEAR),
+    HOLY_SYMBOL_EMBLEM("Holy Symbol (Emblem)", 5.0, 0.0, GearTypeEnum.ADVENTURING_GEAR),
     HOLY_SYMBOL_RELIQUARY("Holy Symbol (Reliquary)", 5.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
     HOLY_WATER("Holy Water (flask)", 25.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
     HOURGLASS("Hourglass", 25.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
@@ -65,6 +65,7 @@ public enum GearEnum {
     WATERSKIN("Waterskin", 0.2, 5.0, GearTypeEnum.ADVENTURING_GEAR),
     WHETSTONE("Whetstone", 0.01, 1.0, GearTypeEnum.ADVENTURING_GEAR),
     GRIMOIRE("Grimoire", 50.0, 1.5, GearTypeEnum.ADVENTURING_GEAR),
+    QUIVER("Quiver", 1.0, 0.5, GearTypeEnum.ADVENTURING_GEAR),
 
     // ---------- CONTAINERS ----------
     CHEST("Chest", 5.0, 25.0, GearTypeEnum.CONTAINER),
@@ -81,10 +82,10 @@ public enum GearEnum {
     CLOTHES_TRAVELER("Clothes, Traveler’s", 2.0, 4.0, GearTypeEnum.CLOTHING),
 
     // ---------- AMMUNITION ----------
-    ARROWS("Arrows (20)", 1.0, 1.0, GearTypeEnum.AMMUNITION),
-    BLOWGUN_NEEDLES("Blowgun Needles (50)", 1.0, 1.0, GearTypeEnum.AMMUNITION),
-    CROSSBOW_BOLTS("Crossbow Bolts (20)", 1.0, 1.5, GearTypeEnum.AMMUNITION),
-    SLING_BULLETS("Sling Bullets (20)", 0.04, 1.5, GearTypeEnum.AMMUNITION),
+    ARROWS("Arrows (20)", 1.0, 0.5, GearTypeEnum.AMMUNITION),
+    BLOWGUN_NEEDLES("Blowgun Needles (50)", 1.0, 0.5, GearTypeEnum.AMMUNITION),
+    CROSSBOW_BOLTS("Crossbow Bolts (20)", 1.0, 0.75, GearTypeEnum.AMMUNITION),
+    SLING_BULLETS("Sling Bullets (20)", 0.04, 0.75, GearTypeEnum.AMMUNITION),
 
     // ---------- TRADE GOODS ----------
     WHEAT("Wheat (1 lb)", 0.01, 1.0, GearTypeEnum.TRADE_GOOD),
@@ -110,26 +111,25 @@ public enum GearEnum {
     SHIP_ROWBOAT("Rowboat", 50.0, 100.0, GearTypeEnum.VEHICLE),
 
     // ---------- PACKS ----------
-    DIPLOMAT_PACK("Diplomat's Pack", 40.0, 12.0, GearTypeEnum.PACK),
-    ADVENTURER_PACK("Adventurer's Pack", 39.0, 12.0, GearTypeEnum.PACK),
-    ENTERTAINER_PACK("Entertainer's Pack", 40.0, 11.0, GearTypeEnum.PACK),
-    PRIEST_PACK("Priest's Pack", 19.0, 11.0, GearTypeEnum.PACK),
-    SCHOLAR_PACK("Scholar's Pack", 40.0, 11.0, GearTypeEnum.PACK),
-    EXPLORER_PACK("Explorer's Pack", 50.0, 13.0, GearTypeEnum.PACK),
+    DIPLOMAT_PACK("Diplomat's Pack", 40.0, 20.0, GearTypeEnum.PACK),
+    ADVENTURER_PACK("Adventurer's Pack", 39.0, 27.8, GearTypeEnum.PACK),
+    ENTERTAINER_PACK("Entertainer's Pack", 40.0, 17.0, GearTypeEnum.PACK),
+    PRIEST_PACK("Priest's Pack", 19.0, 11.3, GearTypeEnum.PACK),
+    SCHOLAR_PACK("Scholar's Pack", 40.0, 5.0, GearTypeEnum.PACK),
+    EXPLORER_PACK("Explorer's Pack", 50.0, 26.7, GearTypeEnum.PACK),
     BURGLARS_PACK("Burglar's Pack", 16.0, 21.5, GearTypeEnum.PACK),
 
     // ---------- FOCUSES ----------
     DRUIDIC_FOCUS_SPRIG("Sprig of Mistletoe", 1.0, 0.0, GearTypeEnum.FOCUS),
     DRUIDIC_FOCUS_TOTEM("Totem", 1.0, 0.0, GearTypeEnum.FOCUS),
-    DRUIDIC_FOCUS_WOODEN_STAFF("Wooden Staff", 5.0, 4.0, GearTypeEnum.FOCUS),
-    DRUIDIC_FOCUS_YEW_WAND("Yew Wand", 10.0, 1.0, GearTypeEnum.FOCUS),
+    DRUIDIC_FOCUS_WOODEN_STAFF("Wooden Staff", 5.0, 2.0, GearTypeEnum.FOCUS),
+    DRUIDIC_FOCUS_YEW_WAND("Yew Wand", 10.0, 0.5, GearTypeEnum.FOCUS),
 
-    ARCANE_FOCUS_CRYSTAL("Crystal", 10.0, 1.0, GearTypeEnum.FOCUS),
-    ARCANE_FOCUS_ORB("Orb", 20.0, 3.0, GearTypeEnum.FOCUS),
-    ARCANE_FOCUS_ROD("Rod", 10.0, 2.0, GearTypeEnum.FOCUS),
-    ARCANE_FOCUS_STAFF("Staff", 5.0, 4.0, GearTypeEnum.FOCUS),
+    ARCANE_FOCUS_CRYSTAL("Crystal", 10.0, 0.5, GearTypeEnum.FOCUS),
+    ARCANE_FOCUS_ORB("Orb", 20.0, 1.5, GearTypeEnum.FOCUS),
+    ARCANE_FOCUS_ROD("Rod", 10.0, 1.0, GearTypeEnum.FOCUS),
+    ARCANE_FOCUS_STAFF("Staff", 5.0, 2.0, GearTypeEnum.FOCUS),
     ARCANE_FOCUS_WAND("Wand", 10.0, 1.0, GearTypeEnum.FOCUS);
-
 
     private final String name;
     private final Double price;

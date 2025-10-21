@@ -70,6 +70,7 @@ public class RangerRaceGenerator extends AbstractRaceGenerator {
 
         items.add(WeaponEnum.LONGBOW.toWeapon(1));
         items.add(GearEnum.ARROWS.toItem(20));
+        items.add(GearEnum.QUIVER.toItem(1));
 
         return items;
     }

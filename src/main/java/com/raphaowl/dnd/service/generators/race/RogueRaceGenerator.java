@@ -64,6 +64,7 @@ public class RogueRaceGenerator extends AbstractRaceGenerator {
         if (random.nextBoolean()) {
             items.add(WeaponEnum.SHORTBOW.toWeapon(1));
             items.add(GearEnum.ARROWS.toItem(20));
+            items.add(GearEnum.QUIVER.toItem(1));
         } else {
             items.add(WeaponEnum.SHORTSWORD.toWeapon(1));
         }
