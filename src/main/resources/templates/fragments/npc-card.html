@@ -107,30 +107,65 @@
                     <h5 class="border-bottom pb-1 mb-3 text-warning fw-bold">
                         <i class="ra ra-crossed-swords"></i> <span th:text="#{app.npcs.card.attack}"></span>
                     </h5>
-                    <ul class="list-group list-group-flush mb-4 small">
-                        <li th:each="attack : ${npc.attacks}" class="list-group-item bg-transparent text-dark px-0">
-                            <span class="fw-bolder" th:text="${attack.name}">Espada Longa</span>:
-                            <span class="text-success fw-bold" th:text="${attack.toHitBonus}">+4</span> para acertar,
-                            <span class="text-danger fw-bold" th:text="${attack.damageRoll}">1d8 + 2</span> de dano
-                            <small th:text="'(' + ${attack.type} + ')'" class="text-muted fst-italic"></small>
-                        </li>
-                        <li th:unless="${npc.attacks != null and !npc.attacks.isEmpty()}" class="list-group-item bg-transparent text-muted fst-italic px-0">
-                            <span th:text="#{app.npcs.card.attack.empty}"></span>
-                        </li>
-                    </ul>
+
+                    <table class="table table-borderless table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th th:text="#{app.npcs.card.attack.name}"></th>
+                                <th th:text="#{app.npcs.card.attack.damage}"></th>
+                                <th th:text="#{app.npcs.card.attack.type}"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="weapon : ${npc.getWeapons()}">
+                                <td>
+                                    <span class="fw-bolder" th:text="#{${'item.' + weapon.name}}"></span>
+                                </td>
+                                <td>
+                                    <span class="text-success fw-bold" th:text="${weapon.attack.damageDice}"></span>
+                                </td>
+                                <td class="text-danger fw-bold">
+                                    <i th:classappend="${weapon.attack.damageType.iconClass}"></i>
+                                    <span  th:text="#{${'damage.' + weapon.attack.damageType}}"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                     <h5 class="border-bottom pb-1 mb-3 text-warning fw-bold">
                         <i class="ra ra-backpack"></i> <span th:text="#{app.npcs.card.inventory}"></span>
                     </h5>
-                    <ul class="list-group list-group-flush mb-4 small">
-                        <li th:each="item : ${npc.inventory}" class="list-group-item bg-transparent text-dark px-0">
-                            <span class="fw-semibold" th:text="${item.name}">Rações de 3 dias</span>
-                            <small th:if="${item.description}" th:text="' - ' + ${item.description}" class="text-muted"></small>
-                        </li>
-                        <li th:unless="${npc.inventory != null and !npc.inventory.isEmpty()}" class="list-group-item bg-transparent text-muted fst-italic px-0">
-                            <span th:text="#{app.npcs.card.inventory.empty}"></span>
-                        </li>
-                    </ul>
+
+                    <table class="table table-borderless table-sm table-striped">
+                        <thead>
+                        <tr>
+                            <th th:text="#{app.npcs.card.inventory.name}"></th>
+                            <th><i class="ra ra-gold-bar"></i></th>
+                            <th><img th:src="@{/images/kettlebell.svg}" alt="Kettlebell Icon" width="16" height="16" style="color:white;"/></th>
+<!--                            <th th:text="#{app.npcs.card.inventory.type}"></th>-->
+                            <th th:text="#{app.npcs.card.inventory.ac}"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item : ${npc.inventory}">
+                            <td>
+                                <span class="fw-semibold" th:text="#{${'item.' + item.name}}"></span>
+                                <span class="fw-semibold"
+                                      th:text="${item.quantity > 1} ? ' (' + ${item.quantity} + ')' : ''">
+                                </span>
+                            </td>
+                            <td>
+                                <span class="fw-semibold" th:text="${item.price.intValue()}"></span>
+                            </td>
+                            <td>
+                                <span class="fw-semibold" th:text="${item.weight.intValue()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${item instanceof T(com.raphaowl.dnd.dtos.Armor)} ? ${item.ac} : '-'"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
                     <h5 class="border-bottom pb-1 mb-3 text-warning fw-bold">
                         <i class="ra ra-scroll-unfurled"></i> <span th:text="#{app.npcs.card.spells}"></span>

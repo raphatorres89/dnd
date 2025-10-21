@@ -21,5 +21,11 @@ public record Npc(
         Double challengeRating,
         List<Attack> attacks,
         List<Item> inventory) {
+
+    public List<Item> getWeapons() {
+        return inventory.stream()
+                .filter(item -> item instanceof Weapon)
+                .toList();
+    }
 }
 

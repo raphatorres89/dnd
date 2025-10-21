@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import com.raphaowl.dnd.dtos.Background;
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.dtos.Npc;
 import com.raphaowl.dnd.dtos.NpcFilterDto;
 import com.raphaowl.dnd.dtos.NpcStats;
@@ -14,6 +16,8 @@ import com.raphaowl.dnd.enums.GenderEnum;
 import com.raphaowl.dnd.service.generators.alignment.AlignmentGenerator;
 import com.raphaowl.dnd.service.generators.background.BackgroundFactory;
 import com.raphaowl.dnd.service.generators.background.BackgroundGenerator;
+import com.raphaowl.dnd.service.generators.items.ItemFactory;
+import com.raphaowl.dnd.service.generators.items.ItemGenerator;
 import com.raphaowl.dnd.service.generators.stats.NpcStatsGenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +35,11 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
     private BackgroundFactory backgroundFactory;
     @Autowired
     private NpcStatsGenerator npcStatsGenerator;
+    @Autowired
+    private ItemFactory itemFactory;
 
     protected abstract String generateName(GenderEnum gender);
     protected abstract List<ClassEnum> getPreferredClasses();
-//    protected abstract Integer getArmorClassBonus();
 
     @Override
     public Npc generate(NpcFilterDto filter) {
@@ -42,8 +47,12 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
         ClassEnum clazz = selectClass(filter.className());
         AlignmentEnum alignment = alignmentGenerator.generateAlignment(getRaceName(), clazz);
         BackgroundGenerator backgroundGenerator = backgroundFactory.getGenerator(filter.background());
+        Background background = backgroundGenerator.generate(alignment);
+        ItemGenerator itemGenerator = itemFactory.getGenerator(clazz);
+        List<Item> items = itemGenerator.getItems();
 
         double challengeRating = filter.challengeRating() != null ? filter.challengeRating() : 1.0;
+        Integer proficiencyBonus = calculateProficiencyBonus(challengeRating);
 
         NpcStats npcStats = npcStatsGenerator.generateStats(clazz, getRaceName(), challengeRating);
 
@@ -55,8 +64,25 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
                 alignment,
                 clazz,
                 npcStats,
-                backgroundGenerator.generate(alignment),
-                2, challengeRating,null, null);
+                background,
+                proficiencyBonus,
+                challengeRating,
+                null,
+                items);
+    }
+
+    private Integer calculateProficiencyBonus(double challengeRating) {
+        if (challengeRating < 5) {
+            return 2;
+        } else if (challengeRating < 9) {
+            return 3;
+        } else if (challengeRating < 13) {
+            return 4;
+        } else if (challengeRating < 17) {
+            return 5;
+        } else {
+            return 6;
+        }
     }
 
     private GenderEnum selectGender(GenderEnum genderFilter) {
