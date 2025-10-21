@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.raphaowl.dnd.dtos.Item;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.ToolEnum;
 import com.raphaowl.dnd.enums.ToolTypeEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
@@ -37,5 +38,32 @@ public abstract class AbstractItemGenerator implements ItemGenerator {
     protected Item getAnyInstrument() {
         List<ToolEnum> instruments = new ArrayList<>(ToolEnum.getByType(ToolTypeEnum.MUSICAL));
         return instruments.get(random.nextInt(instruments.size())).toItem(1);
+    }
+
+    protected Item getExplorerOrAdventurerPack() {
+        if (random.nextBoolean()) {
+            return GearEnum.EXPLORER_PACK.toItem(1);
+        }
+        return GearEnum.ADVENTURER_PACK.toItem(1);
+    }
+
+    protected Item getAnyArcaneFocus() {
+        List<GearEnum> items = List.of(
+                GearEnum.ARCANE_FOCUS_CRYSTAL,
+                GearEnum.ARCANE_FOCUS_ORB,
+                GearEnum.ARCANE_FOCUS_ROD,
+                GearEnum.ARCANE_FOCUS_STAFF,
+                GearEnum.ARCANE_FOCUS_WAND
+        );
+        return items.get(random.nextInt(items.size())).toItem(1);
+    }
+
+    protected Item getHolySymbol() {
+        List<GearEnum> items = List.of(
+                GearEnum.HOLY_SYMBOL_AMULET,
+                GearEnum.HOLY_SYMBOL_EMBLEM,
+                GearEnum.HOLY_SYMBOL_RELIQUARY
+        );
+        return items.get(random.nextInt(items.size())).toItem(1);
     }
 }

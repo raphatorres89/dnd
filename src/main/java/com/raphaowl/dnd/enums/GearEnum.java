@@ -22,7 +22,9 @@ public enum GearEnum {
     GRAPPLING_HOOK("Grappling Hook", 2.0, 4.0, GearTypeEnum.ADVENTURING_GEAR),
     HAMMER("Hammer", 1.0, 3.0, GearTypeEnum.ADVENTURING_GEAR),
     HEALER_KIT("Healer’s Kit", 5.0, 3.0, GearTypeEnum.ADVENTURING_GEAR),
-    HOLY_SYMBOL("Holy Symbol", 5.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
+    HOLY_SYMBOL_AMULET("Holy Symbol (Amulet)", 5.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
+    HOLY_SYMBOL_EMBLEM("Holy Symbol (Emblem)", 5.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
+    HOLY_SYMBOL_RELIQUARY("Holy Symbol (Reliquary)", 5.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
     HOLY_WATER("Holy Water (flask)", 25.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
     HOURGLASS("Hourglass", 25.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
     HUNTING_TRAP("Hunting Trap", 5.0, 25.0, GearTypeEnum.ADVENTURING_GEAR),
@@ -62,6 +64,7 @@ public enum GearEnum {
     VIAL("Vial", 1.0, 0.0, GearTypeEnum.ADVENTURING_GEAR),
     WATERSKIN("Waterskin", 0.2, 5.0, GearTypeEnum.ADVENTURING_GEAR),
     WHETSTONE("Whetstone", 0.01, 1.0, GearTypeEnum.ADVENTURING_GEAR),
+    GRIMOIRE("Grimoire", 50.0, 1.5, GearTypeEnum.ADVENTURING_GEAR),
 
     // ---------- CONTAINERS ----------
     CHEST("Chest", 5.0, 25.0, GearTypeEnum.CONTAINER),
@@ -113,6 +116,7 @@ public enum GearEnum {
     PRIEST_PACK("Priest's Pack", 19.0, 11.0, GearTypeEnum.PACK),
     SCHOLAR_PACK("Scholar's Pack", 40.0, 11.0, GearTypeEnum.PACK),
     EXPLORER_PACK("Explorer's Pack", 50.0, 13.0, GearTypeEnum.PACK),
+    BURGLARS_PACK("Burglar's Pack", 16.0, 21.5, GearTypeEnum.PACK),
 
     // ---------- FOCUSES ----------
     DRUIDIC_FOCUS_SPRIG("Sprig of Mistletoe", 1.0, 0.0, GearTypeEnum.FOCUS),

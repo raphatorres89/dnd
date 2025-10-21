@@ -60,6 +60,8 @@ public class ClericItemGenerator extends AbstractItemGenerator {
         items.add(getPack());
 //        Um escudo e um símbolo sagrado
         items.add(ArmorEnum.SHIELD.toArmor(1));
+        items.add(getHolySymbol());
+
         return items;
     }
 
