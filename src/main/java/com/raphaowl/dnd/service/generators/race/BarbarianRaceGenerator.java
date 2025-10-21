@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.List;
 
@@ -35,10 +35,16 @@ import org.springframework.stereotype.Component;
  *  Um pacote de aventureiro e quatro azagaias
  */
 @Component
-public class BarbarianItemGenerator extends AbstractItemGenerator {
+public class BarbarianRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.BARBARIAN;
+    }
+
+    @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 12);
     }
 
     @Override
@@ -46,13 +52,11 @@ public class BarbarianItemGenerator extends AbstractItemGenerator {
         return List.of(
                 getMainWeapon(),
                 getSubWeapon(),
-//                 Um pacote de aventureiro e quatro azagaias
                 GearEnum.ADVENTURER_PACK.toItem(1),
                 WeaponEnum.JAVELIN.toWeapon(4)
         );
     }
 
-//     (a) um machado grande ou (b) qualquer arma marcial corpo-a-corpo
     private Item getMainWeapon() {
         if (random.nextBoolean()) {
             return getAnySimpleMeleeWeapon();
@@ -60,11 +64,11 @@ public class BarbarianItemGenerator extends AbstractItemGenerator {
         return WeaponEnum.GREATAXE.toWeapon(1);
     }
 
-//     (a) dois machados de mão ou (b) qualquer arma simples
     private Item getSubWeapon() {
         if (random.nextBoolean()) {
             return WeaponEnum.HANDAXE.toWeapon(2);
         }
         return getAnySimpleWeapon();
     }
+
 }

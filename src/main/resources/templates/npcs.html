@@ -64,10 +64,10 @@
                 <div class="col-md-2">
                     <label for="filterNpcChallengeRating" class="form-label" th:text="#{app.npcs.filter.challengeRating}"></label>
                     <select id="filterNpcChallengeRating" class="form-select">
-                        <option th:each="cr : ${#numbers.sequence(0, 16)}"
+                        <option th:each="cr : ${#numbers.sequence(1, 16)}"
                                 th:value="${cr}"
                                 th:text="${cr}"
-                                th:selected="${cr == 0}">
+                                th:selected="${cr == 1}">
                         </option>
                     </select>
                 </div>

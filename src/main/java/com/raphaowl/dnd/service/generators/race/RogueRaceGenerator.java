@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,24 +39,28 @@ import org.springframework.stereotype.Component;
  *  Armadura de couro, duas adagas e ferramentas de ladrão
  */
 @Component
-public class RogueItemGenerator extends AbstractItemGenerator {
+public class RogueRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.ROGUE;
     }
 
     @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 8);
+    }
+
+    @Override
     public List<Item> getItems() {
         ArrayList<Item> items = new ArrayList<>();
 
-//         (a) uma rapieira ou (b) uma espada longa
         if (random.nextBoolean()) {
             items.add(WeaponEnum.RAPIER.toWeapon(1));
         } else {
             items.add(WeaponEnum.LONGSWORD.toWeapon(1));
         }
 
-//         (a) um arco curto e uma aljava com 20 flechas ou (b) uma espada curta
         if (random.nextBoolean()) {
             items.add(WeaponEnum.SHORTBOW.toWeapon(1));
             items.add(GearEnum.ARROWS.toItem(20));
@@ -64,7 +68,6 @@ public class RogueItemGenerator extends AbstractItemGenerator {
             items.add(WeaponEnum.SHORTSWORD.toWeapon(1));
         }
 
-//         (a) um pacote de assaltante ou (b) um pacote de aventureiro ou (c) um pacote de explorador
         int packChoice = random.nextInt(3);
         if (packChoice == 0) {
             items.add(GearEnum.BURGLARS_PACK.toItem(1));
@@ -74,7 +77,6 @@ public class RogueItemGenerator extends AbstractItemGenerator {
             items.add(GearEnum.EXPLORER_PACK.toItem(1));
         }
 
-//         Armadura de couro, duas adagas e ferramentas de ladrão
         items.add(ArmorEnum.LEATHER.toArmor(1));
         items.add(WeaponEnum.DAGGER.toWeapon(2));
         items.add(ToolEnum.THIEVES_TOOLS.toItem(1));

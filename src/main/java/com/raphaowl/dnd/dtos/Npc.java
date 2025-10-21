@@ -18,7 +18,8 @@ public record Npc(
         NpcStats statistics,
         Background background,
         Integer proficiencyBonus,
-        Double challengeRating,
+        Integer challengeRating,
+        Integer maxHP,
         List<Attack> attacks,
         List<Item> inventory) {
 

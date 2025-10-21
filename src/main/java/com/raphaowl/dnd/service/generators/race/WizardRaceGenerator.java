@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,38 +34,40 @@ import org.springframework.stereotype.Component;
  *  Um grimório
  */
 @Component
-public class WizardItemGenerator extends AbstractItemGenerator {
+public class WizardRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.WIZARD;
     }
 
     @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 6);
+    }
+
+    @Override
     public List<Item> getItems() {
         List<Item> items = new ArrayList<>();
 
-//       (a) um bordão ou (b) uma adaga
         if (random.nextBoolean()) {
             items.add(WeaponEnum.QUARTERSTAFF.toWeapon(1));
         } else {
             items.add(WeaponEnum.DAGGER.toWeapon(1));
         }
 
-//       (a) uma bolsa de componentes ou (b) um foco arcano
         if (random.nextBoolean()) {
             items.add(GearEnum.COMPONENT_POUCH.toItem(1));
         } else {
             items.add(getAnyArcaneFocus());
         }
 
-//       (a) um pacote de estudioso ou (b) um pacote de explorador
         if (random.nextBoolean()) {
             items.add(GearEnum.SCHOLAR_PACK.toItem(1));
         } else {
             items.add(GearEnum.EXPLORER_PACK.toItem(1));
         }
 
-//       Um grimório
         items.add(GearEnum.GRIMOIRE.toItem(1));
 
         return items;

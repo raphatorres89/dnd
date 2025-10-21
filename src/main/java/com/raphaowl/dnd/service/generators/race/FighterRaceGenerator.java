@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,17 +36,22 @@ import org.springframework.stereotype.Component;
  *  (a) um pacote de aventureiro ou (b) um pacote de explorador
  */
 @Component
-public class FighterItemGenerator extends AbstractItemGenerator {
+public class FighterRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.FIGHTER;
     }
 
     @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 10);
+    }
+
+    @Override
     public List<Item> getItems() {
         ArrayList<Item> items = new ArrayList<>();
 
-//       (a) cota de malha ou (b) gibão de peles, arco longo e 20 flechas
         if (random.nextBoolean()) {
             items.add(ArmorEnum.CHAIN_MAIL.toArmor(1));
         } else {
@@ -55,7 +60,6 @@ public class FighterItemGenerator extends AbstractItemGenerator {
             items.add(GearEnum.ARROWS.toItem(20));
         }
 
-//       (a) uma arma marcial e um escudo ou (b) duas armas marciais
         items.add(getAnyMartialWeapon());
         if (random.nextBoolean()) {
             items.add(ArmorEnum.SHIELD.toArmor(1));
@@ -63,7 +67,6 @@ public class FighterItemGenerator extends AbstractItemGenerator {
             items.add(getAnyMartialWeapon());
         }
 
-//       (a) uma besta leve e 20 virotes ou (b) dois machados de arremesso
         if (random.nextBoolean()) {
             items.add(WeaponEnum.LIGHT_CROSSBOW.toWeapon(1));
             items.add(GearEnum.CROSSBOW_BOLTS.toItem(20));
@@ -71,7 +74,6 @@ public class FighterItemGenerator extends AbstractItemGenerator {
             items.add(WeaponEnum.HANDAXE.toWeapon(2));
         }
 
-//       (a) um pacote de aventureiro ou (b) um pacote de explorador
         if (random.nextBoolean()) {
             items.add(GearEnum.ADVENTURER_PACK.toItem(1));
         } else {

@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
+import com.raphaowl.dnd.enums.ToolEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
 
 import org.springframework.stereotype.Component;
@@ -38,10 +39,16 @@ import org.springframework.stereotype.Component;
  *  Armadura de couro, um pacote de aventureiro e um foco druídico
  */
 @Component
-public class DruidItemGenerator extends AbstractItemGenerator {
+public class DruidRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.DRUID;
+    }
+
+    @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 8);
     }
 
     @Override
@@ -49,12 +56,11 @@ public class DruidItemGenerator extends AbstractItemGenerator {
         return List.of(
                 getMainWeapon(),
                 getSecondaryWeapon(),
-//                 Armadura de couro, um pacote de aventureiro e um foco druídico
+                getPack().toItem(1),
                 ArmorEnum.LEATHER.toArmor(1),
                 GearEnum.ADVENTURER_PACK.toItem(1),
                 getDruidicFocus(),
-
-                getPack().toItem(1)
+                ToolEnum.HERBALISM_KIT.toItem(1)
         );
     }
 
@@ -73,7 +79,6 @@ public class DruidItemGenerator extends AbstractItemGenerator {
         return packs.get(random.nextInt(packs.size()));
     }
 
-//     (a) um escudo de madeira ou (b) qualquer arma simples
     private Item getMainWeapon() {
         if (random.nextBoolean()) {
             ArmorEnum.SHIELD.toArmor(1);

@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,24 +37,28 @@ import org.springframework.stereotype.Component;
  *  Um arco longo e uma aljava com 20 flechas
  */
 @Component
-public class RangerItemGenerator extends AbstractItemGenerator {
+public class RangerRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.RANGER;
     }
 
     @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 10);
+    }
+
+    @Override
     public List<Item> getItems() {
         List<Item> items = new ArrayList<>();
 
-//         (a) brunea ou (b) armadura de couro
         if (random.nextBoolean()) {
             ArmorEnum.BREASTPLATE.toArmor(1);
         } else {
             ArmorEnum.LEATHER.toArmor(1);
         }
 
-//         (a) duas espadas curtas ou (b) duas armas simples corpo-a-corpo
         if (random.nextBoolean()) {
             items.add(getAnySimpleMeleeWeapon());
             items.add(getAnySimpleMeleeWeapon());
@@ -62,10 +66,8 @@ public class RangerItemGenerator extends AbstractItemGenerator {
             items.add(WeaponEnum.SHORTSWORD.toWeapon(2));
         }
 
-//         (a) um pacote de explorador ou (b) um pacote de aventureiro
         items.add(getExplorerOrAdventurerPack());
 
-//         Um arco longo e uma aljava com 20 flechas
         items.add(WeaponEnum.LONGBOW.toWeapon(1));
         items.add(GearEnum.ARROWS.toItem(20));
 

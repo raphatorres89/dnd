@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.List;
 
@@ -36,10 +36,16 @@ import org.springframework.stereotype.Component;
  *  Armadura de couro e uma adaga
  */
 @Component
-public class BardItemGenerator extends AbstractItemGenerator{
+public class BardRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.BARD;
+    }
+
+    @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 8);
     }
 
     @Override
@@ -61,7 +67,6 @@ public class BardItemGenerator extends AbstractItemGenerator{
         return getAnyInstrument();
     }
 
-//     (a) um pacote de diplomata ou (b) um pacote de artista
     private GearEnum getPack() {
         if (random.nextBoolean()) {
             return GearEnum.DIPLOMAT_PACK;
@@ -69,7 +74,6 @@ public class BardItemGenerator extends AbstractItemGenerator{
         return GearEnum.ENTERTAINER_PACK;
     }
 
-//     (a) uma rapieira, (b) uma espada longa ou (c) qualquer arma simples
     private Item getMainWeapon() {
         int choice = random.nextInt(3);
         Item weapon;

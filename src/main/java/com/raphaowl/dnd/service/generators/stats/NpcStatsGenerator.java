@@ -1,21 +1,22 @@
 package com.raphaowl.dnd.service.generators.stats;
 
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Random;
+
 import com.raphaowl.dnd.dtos.NpcStats;
 import com.raphaowl.dnd.enums.AbilityScoreEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.RaceEnum;
-import org.springframework.stereotype.Component;
 
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Random;
+import org.springframework.stereotype.Component;
 
 @Component
 public class NpcStatsGenerator {
 
     private final Random random = new Random();
 
-    public NpcStats generateStats(ClassEnum clazz, RaceEnum race, double challengeRating) {
+    public NpcStats generateStats(ClassEnum clazz, RaceEnum race, Integer challengeRating) {
         Map<AbilityScoreEnum, Integer> attributes = generateBaseAttributes(challengeRating);
         applyClassPriority(attributes, clazz);
         applyRaceBonus(attributes, race);
@@ -87,7 +88,7 @@ public class NpcStatsGenerator {
         }
     }
 
-    private int calculateHitPoints(ClassEnum clazz, int conMod, double cr) {
+    private int calculateHitPoints(ClassEnum clazz, int conMod, Integer cr) {
         int hitDie = switch (clazz) {
             case WIZARD, SORCERER -> 6;
             case ROGUE, BARD, CLERIC, DRUID, RANGER -> 8;
@@ -97,7 +98,6 @@ public class NpcStatsGenerator {
         };
 
         int avg = (hitDie / 2) + 1;
-        int levelApprox = (int) Math.ceil(cr);
-        return (avg + conMod) * Math.max(1, levelApprox);
+        return (avg + conMod) * Math.max(1, cr);
     }
 }

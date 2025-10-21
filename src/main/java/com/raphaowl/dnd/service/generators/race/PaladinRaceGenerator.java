@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,17 +35,22 @@ import org.springframework.stereotype.Component;
  *  Cota de malha e um símbolo sagrado
  */
 @Component
-public class PaladinItemGenerator extends AbstractItemGenerator{
+public class PaladinRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.PALADIN;
     }
 
     @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 10);
+    }
+
+    @Override
     public List<Item> getItems() {
         ArrayList<Item> items = new ArrayList<>();
 
-//         (a) uma arma marcial e um escudo ou (b) duas armas marciais
         if (random.nextBoolean()) {
             items.add(getAnyMartialWeapon());
             items.add(ArmorEnum.SHIELD.toArmor(1));
@@ -54,21 +59,18 @@ public class PaladinItemGenerator extends AbstractItemGenerator{
             items.add(getAnyMartialWeapon());
         }
 
-//         (a) cinco azagaias ou (b) qualquer arma simples corpoa-corpo
         if (random.nextBoolean()) {
             items.add(WeaponEnum.JAVELIN.toWeapon(5));
         } else {
             items.add(getAnySimpleMeleeWeapon());
         }
 
-//         (a) um pacote de sacerdote ou (b) um pacote de aventureiro
         if (random.nextBoolean()) {
             items.add(GearEnum.PRIEST_PACK.toItem(1));
         } else {
             items.add(GearEnum.ADVENTURER_PACK.toItem(1));
         }
 
-//         Cota de malha e um símbolo sagrado
         items.add(ArmorEnum.CHAIN_MAIL.toArmor(1));
         items.add(getHolySymbol());
 

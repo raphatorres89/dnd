@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.List;
 
@@ -33,24 +33,27 @@ import org.springframework.stereotype.Component;
  *  10 dardos
  */
 @Component
-public class MonkItemGenerator extends AbstractItemGenerator {
+public class MonkRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.MONK;
     }
 
     @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 10);
+    }
+
+    @Override
     public List<Item> getItems() {
         return List.of(
                 getMainWeapon(),
-//                 (a) um pacote de explorador ou (b) um pacote de aventureiro
                 getExplorerOrAdventurerPack(),
-//                 10 dardos
                 WeaponEnum.DART.toWeapon(10)
         );
     }
 
-    //     (a) uma espada curta ou (b) qualquer arma simples
     private Item getMainWeapon() {
         if (random.nextBoolean()) {
             return WeaponEnum.SHORTSWORD.toWeapon(1);

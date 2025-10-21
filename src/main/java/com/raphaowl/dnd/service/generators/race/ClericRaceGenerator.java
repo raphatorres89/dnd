@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +37,16 @@ import org.springframework.stereotype.Component;
  *  Um escudo e um símbolo sagrado
  */
 @Component
-public class ClericItemGenerator extends AbstractItemGenerator {
+public class ClericRaceGenerator extends AbstractRaceGenerator {
+
     @Override
     public ClassEnum getClassName() {
         return ClassEnum.CLERIC;
+    }
+
+    @Override
+    public Integer getHP(Integer level, Integer constitutionModifier) {
+        return getHP(level, constitutionModifier, 8);
     }
 
     @Override
@@ -49,7 +55,6 @@ public class ClericItemGenerator extends AbstractItemGenerator {
         items.add(getMainWeapon());
         items.add(getArmor());
 
-//         (a) um besta leve e 20 virotes ou (b) qualquer arma simples
         if (random.nextBoolean()) {
             items.add(WeaponEnum.HAND_CROSSBOW.toWeapon(1));
             items.add(GearEnum.CROSSBOW_BOLTS.toItem(20));
@@ -58,14 +63,12 @@ public class ClericItemGenerator extends AbstractItemGenerator {
         }
 
         items.add(getPack());
-//        Um escudo e um símbolo sagrado
         items.add(ArmorEnum.SHIELD.toArmor(1));
         items.add(getHolySymbol());
 
         return items;
     }
 
-//     (a) um pacote de sacerdote ou (b) um pacote de aventureiro
     private Item getPack() {
         if (random.nextBoolean()) {
             GearEnum.PRIEST_PACK.toItem(1);
@@ -73,7 +76,6 @@ public class ClericItemGenerator extends AbstractItemGenerator {
         return GearEnum.ADVENTURER_PACK.toItem(1);
     }
 
-//     (a) brunea, (b) armadura de couro ou (c) cota de malha (se for proficiente)
     private Item getArmor() {
         int choice = random.nextInt(3);
         Item armor;
@@ -87,7 +89,6 @@ public class ClericItemGenerator extends AbstractItemGenerator {
         return armor;
     }
 
-//     (a) uma maça ou (b) um martelo de guerra (se for proficiente)
     private Item getMainWeapon() {
         if (random.nextBoolean()) {
             WeaponEnum.MACE.toWeapon(1);

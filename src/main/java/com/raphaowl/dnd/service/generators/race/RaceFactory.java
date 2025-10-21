@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.List;
 import java.util.Map;
@@ -12,25 +12,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ItemFactory {
-    private final Map<ClassEnum, ItemGenerator> generatorsMap;
+public class RaceFactory {
+    private final Map<ClassEnum, RaceGenerator> generatorsMap;
 
     @Autowired
-    public ItemFactory(List<ItemGenerator> generators) {
+    public RaceFactory(List<RaceGenerator> generators) {
         this.generatorsMap = generators.stream()
                 .collect(Collectors.toMap(
-                        ItemGenerator::getClassName,
+                        RaceGenerator::getClassName,
                         Function.identity()
                 ));
     }
 
-    public ItemGenerator getGenerator(ClassEnum classEnum) {
-        ItemGenerator itemGenerator = generatorsMap.get(classEnum);
-        if (itemGenerator == null) {
-            List<ItemGenerator> items = List.copyOf(generatorsMap.values());
+    public RaceGenerator getGenerator(ClassEnum classEnum) {
+        RaceGenerator raceGenerator = generatorsMap.get(classEnum);
+        if (raceGenerator == null) {
+            List<RaceGenerator> items = List.copyOf(generatorsMap.values());
             Random random = new Random();
             return items.get(random.nextInt(items.size()));
         }
-        return itemGenerator;
+        return raceGenerator;
     }
 }

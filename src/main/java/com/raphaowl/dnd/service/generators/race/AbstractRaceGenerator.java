@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.items;
+package com.raphaowl.dnd.service.generators.race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,18 @@ import com.raphaowl.dnd.enums.WeaponType;
 import org.springframework.stereotype.Component;
 
 @Component
-public abstract class AbstractItemGenerator implements ItemGenerator {
+public abstract class AbstractRaceGenerator implements RaceGenerator {
 
     Random random = new Random();
+
+    protected Integer getHP(Integer level, Integer constitution, Integer dice) {
+        Integer constitutionModifier = (constitution - 10) / 2;
+        int pv = dice + constitutionModifier;
+        for (int i = level; i > 1; i--) {
+            pv += random.nextInt(1, dice) + constitutionModifier;
+        }
+        return pv;
+    }
 
     protected Item getAnyMartialWeapon() {
         List<WeaponEnum> weapons = new ArrayList<>(WeaponEnum.getByType(WeaponType.MARTIAL_MELEE));

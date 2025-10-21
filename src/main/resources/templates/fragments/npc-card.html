@@ -35,7 +35,7 @@
                                 <i class="ra ra-shield text-secondary"></i>
                                 <span class="text-primary" th:text="#{app.npcs.card.ac} + ': ' + ${npc.statistics.armorClass}"></span>
                                 <i class="ra ra-hearts text-danger"></i>
-                                <span class="text-danger" th:text="#{app.npcs.card.hp} + ': ' + ${npc.statistics.hitPoints()}"></span>
+                                <span class="text-danger" th:text="#{app.npcs.card.hp} + ': ' + ${npc.maxHP}"></span>
                             </div>
                             <small class="text-success">
                                 <i class="ra ra-star-key"></i> <span th:text="#{app.npcs.card.proficiency}"></span>

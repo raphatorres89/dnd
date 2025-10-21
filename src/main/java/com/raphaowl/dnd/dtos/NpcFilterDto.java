@@ -10,11 +10,11 @@ public record NpcFilterDto(
         GenderEnum gender,
         ClassEnum className,
         BackgroundEnum background,
-        Double challengeRating
+        Integer challengeRating
 ) {
     public NpcFilterDto {
-        if (challengeRating != null && (challengeRating < 0 || challengeRating > 16)) {
-            throw new IllegalArgumentException("O nível de desafio deve estar entre 0 e 16.");
+        if (challengeRating != null && (challengeRating < 1 || challengeRating > 16)) {
+            throw new IllegalArgumentException("O nível de desafio deve estar entre 1 e 16.");
         }
     }
 }
