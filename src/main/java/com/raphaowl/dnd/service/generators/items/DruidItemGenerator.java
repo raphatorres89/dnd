@@ -75,7 +75,7 @@ public class DruidItemGenerator extends AbstractItemGenerator {
     }
 
     private Item getSecondaryWeapon() {
-        List<WeaponEnum> weapons = WeaponEnum.getByType(WeaponType.SIMPLE_MELEE);
+        List<WeaponEnum> weapons = new ArrayList<>(WeaponEnum.getByType(WeaponType.SIMPLE_MELEE));
         weapons.add(WeaponEnum.SCIMITAR);
         return weapons.get(random.nextInt(weapons.size())).toWeapon(1);
     }
