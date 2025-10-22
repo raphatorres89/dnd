@@ -3,15 +3,26 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
+import com.raphaowl.dnd.enums.WeaponEnum;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Proficiência em Perícias: História, Persuasão
+ * Proficiência em Ferramentas: Um tipo de kit de jogos
+ * Idiomas: Um à sua escolha
+ * Equipamento: Um conjunto de trajes finos, um anel de
+ * sinete, um pergaminho de linhagem e uma algibeira
+ * contendo 25 po
+ */
 @Component
 public class NobleBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -88,4 +99,14 @@ public class NobleBackgroundGenerator extends AbstractBackgroundGenerator {
         return BackgroundEnum.NOBLE;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                GearEnum.CLOTHES_FINE.toItem(1),
+                GearEnum.SIGNET_RING.toItem(1),
+                GearEnum.LINEAGE_SCROLL.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(25)
+        );
+    }
 }

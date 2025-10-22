@@ -4,5 +4,6 @@ public enum ToolTypeEnum {
     ARTISAN,
     MUSICAL,
     GAMING,
+    CHEATING,
     GENERAL
 }

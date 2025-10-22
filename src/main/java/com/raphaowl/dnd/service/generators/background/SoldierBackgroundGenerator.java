@@ -3,15 +3,27 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Proficiência em Perícias: Atletismo, Intimidação
+ * Proficiência em Ferramentas: Um tipo de kit de jogo,
+ * veículo (terrestre)
+ * Equipamento: Uma insígnia de patente, um fetiche
+ * obtido de um inimigo caído (uma adaga, lâmina
+ * partida ou tira de estandarte), um conjunto de dados
+ * de osso ou baralho, um conjunto de roupas comuns e
+ * uma algibeira contendo 10 po
+ */
 @Component
 public class SoldierBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -91,4 +103,22 @@ public class SoldierBackgroundGenerator extends AbstractBackgroundGenerator {
         return BackgroundEnum.SOLDIER;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                GearEnum.SOLDIER_INSIGNIA.toItem(1),
+                GearEnum.ENEMY_TROPHY.toItem(1),
+                getCharm(),
+                GearEnum.CLOTHES_COMMON.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(10)
+        );
+    }
+
+    private Item getCharm() {
+        if (random.nextBoolean()) {
+            return GearEnum.BONE_DICE.toItem(1);
+        }
+        return GearEnum.CARD_DECK.toItem(1);
+    }
 }

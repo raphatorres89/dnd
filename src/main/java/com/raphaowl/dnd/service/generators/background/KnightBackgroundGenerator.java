@@ -3,15 +3,20 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * SAME AS NOBLE
+ */
 @Component
 public class KnightBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -88,4 +93,14 @@ public class KnightBackgroundGenerator extends AbstractBackgroundGenerator {
         return BackgroundEnum.KNIGHT;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                GearEnum.CLOTHES_FINE.toItem(1),
+                GearEnum.SIGNET_RING.toItem(1),
+                GearEnum.LINEAGE_SCROLL.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(25)
+        );
+    }
 }

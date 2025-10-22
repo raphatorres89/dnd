@@ -3,15 +3,21 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
+import com.raphaowl.dnd.enums.WeaponEnum;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * SAME AS THE SAILOR BACKGROUND
+ */
 @Component
 public class PirateBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -91,4 +97,15 @@ public class PirateBackgroundGenerator extends AbstractBackgroundGenerator {
         return BackgroundEnum.PIRATE;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                WeaponEnum.GLAIVE.toWeapon(1),
+                GearEnum.ROPE_SILK.toItem(1),
+                // TODO implementar bugigangas
+                GearEnum.CLOTHES_COMMON.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(10)
+        );
+    }
 }

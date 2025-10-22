@@ -66,6 +66,22 @@ public enum GearEnum {
     WHETSTONE("Whetstone", 0.01, 1.0, GearTypeEnum.ADVENTURING_GEAR),
     GRIMOIRE("Grimoire", 50.0, 1.5, GearTypeEnum.ADVENTURING_GEAR),
     QUIVER("Quiver", 1.0, 0.5, GearTypeEnum.ADVENTURING_GEAR),
+    LINEAGE_SCROLL("Lineage Scroll", 100.0, 0.0, GearTypeEnum.ADVENTURING_GEAR),
+    GUILD_LETTER("Guild Letter", 1.0, 0.1, GearTypeEnum.ADVENTURING_GEAR),
+    SMALL_KNIFE("Small Knife", 1.0, 0.5, GearTypeEnum.ADVENTURING_GEAR),
+    MAP_CITY("Map, City", 5.0, 0.1, GearTypeEnum.ADVENTURING_GEAR),
+    PET_MOUSE("Pet Mouse", 0.5, 0.2, GearTypeEnum.ADVENTURING_GEAR),
+    TOKEN_PARENTS("Token to Remember Parents By", 1.0, 0.1, GearTypeEnum.ADVENTURING_GEAR),
+    SOLDIER_INSIGNIA("Soldier's Insignia", 1.0, 0.1, GearTypeEnum.ADVENTURING_GEAR),
+    ENEMY_TROPHY("Enemy Trophy", 1.0, 1.0, GearTypeEnum.ADVENTURING_GEAR),
+    BONE_DICE("Bone Dice", 1.0, 0.5, GearTypeEnum.ADVENTURING_GEAR),
+    CARD_DECK("Deck of Cards", 1.0, 0.5, GearTypeEnum.ADVENTURING_GEAR),
+    INK_BOTTLE("Ink Bottle", 10.0, 0.0, GearTypeEnum.ADVENTURING_GEAR),
+    QUILL("Quill", 0.02, 0.0, GearTypeEnum.ADVENTURING_GEAR),
+    LETTER_FROM_DECEASED_COLLEAGUE("Letter from Deceased Colleague", 0.5, 0.1, GearTypeEnum.ADVENTURING_GEAR),
+    LOVE_LETTER("Love Letter", 0.5, 0.1, GearTypeEnum.ADVENTURING_GEAR),
+    LOCK_OF_HAIR("Lock of Hair", 0.5, 0.1, GearTypeEnum.ADVENTURING_GEAR),
+    JEWELRY("Jewelry", 25.0, 0.5, GearTypeEnum.ADVENTURING_GEAR),
 
     // ---------- CONTAINERS ----------
     CHEST("Chest", 5.0, 25.0, GearTypeEnum.CONTAINER),
@@ -94,7 +110,7 @@ public enum GearEnum {
     WOOD("Wood (1 lb)", 0.01, 1.0, GearTypeEnum.TRADE_GOOD),
     SILK("Silk (1 sq yard)", 10.0, 0.5, GearTypeEnum.TRADE_GOOD),
     SPICES("Spices (1 lb)", 1.0, 1.0, GearTypeEnum.TRADE_GOOD),
-    GOLD("Gold (1 lb)", 50.0, 1.0, GearTypeEnum.TRADE_GOOD),
+    GOLD("Gold (1 lb)", 1.0, 1.0, GearTypeEnum.TRADE_GOOD),
 
     // ---------- MOUNTS ----------
     HORSE_DRAFT("Horse, Draft", 50.0, 540.0, GearTypeEnum.MOUNT),

@@ -3,15 +3,27 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
+import com.raphaowl.dnd.enums.WeaponEnum;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Proficiência em Perícias: Adestrar Animais,
+ * Sobrevivência
+ * Proficiência em Ferramentas: Um tipo de ferramenta
+ * de artesão, veículos (terrestre)
+ * Equipamento: Um conjunto de ferramentas de artesão
+ * (à sua escolha), uma pá, um pote de ferro, um conjunto
+ * de roupas comuns e uma algibeira contendo 10 po
+ */
 @Component
 public class FolkHeroBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -91,4 +103,15 @@ public class FolkHeroBackgroundGenerator extends AbstractBackgroundGenerator {
         return BackgroundEnum.FOLK_HERO;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                getAnyArtisanTool(),
+                GearEnum.SHOVEL.toItem(1),
+                GearEnum.POT_IRON.toItem(1),
+                GearEnum.CLOTHES_COMMON.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(10)
+        );
+    }
 }

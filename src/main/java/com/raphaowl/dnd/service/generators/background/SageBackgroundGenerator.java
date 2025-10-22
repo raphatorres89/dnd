@@ -3,15 +3,26 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Proficiência em Perícias: Arcanismo, História
+ * Idiomas: Dois à sua escolha
+ * Equipamento: Um vidro de tinta escura, uma pena, uma
+ * faca pequena, uma carta de um falecido colega
+ * perguntando a você algo que você nunca terá a chance
+ * de responder, um conjunto de roupas comuns e uma
+ * algibeira contendo 10 po
+ */
 @Component
 public class SageBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -91,4 +102,16 @@ public class SageBackgroundGenerator extends AbstractBackgroundGenerator {
         return BackgroundEnum.SAGE;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                GearEnum.INK_BOTTLE.toItem(1),
+                GearEnum.QUILL.toItem(1),
+                GearEnum.SMALL_KNIFE.toItem(1),
+                GearEnum.LETTER_FROM_DECEASED_COLLEAGUE.toItem(1),
+                GearEnum.CLOTHES_COMMON.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(10)
+        );
+    }
 }

@@ -3,15 +3,20 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * SAME AS GUILD ARTISAN
+ */
 @Component
 public class GuildMerchantBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -91,4 +96,14 @@ public class GuildMerchantBackgroundGenerator extends AbstractBackgroundGenerato
         return BackgroundEnum.GUILD_MERCHANT;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                getAnyArtisanTool(),
+                GearEnum.GUILD_LETTER.toItem(1),
+                GearEnum.CLOTHES_TRAVELER.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(15)
+        );
+    }
 }

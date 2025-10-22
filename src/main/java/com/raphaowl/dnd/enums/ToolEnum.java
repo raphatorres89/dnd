@@ -54,7 +54,13 @@ public enum ToolEnum {
     HERBALISM_KIT("Herbalism Kit", ToolTypeEnum.GENERAL, 5.0, 3.0),
     NAVIGATOR_TOOLS("Navigator’s Tools", ToolTypeEnum.GENERAL, 25.0, 2.0),
     POISONER_KIT("Poisoner’s Kit", ToolTypeEnum.GENERAL, 50.0, 2.0),
-    THIEVES_TOOLS("Thieves’ Tools", ToolTypeEnum.GENERAL, 25.0, 1.0);
+    THIEVES_TOOLS("Thieves’ Tools", ToolTypeEnum.GENERAL, 25.0, 1.0),
+
+    // ----- FIELDS -----
+    BOTTLE_FILLED_COLORED_LIQUIDS("Bottle Filled with Colored Liquids", ToolTypeEnum.CHEATING, 10.0, 0.5),
+    RIGGED_DICE("Rigged Dice", ToolTypeEnum.CHEATING, 1.0, 0.0),
+    MARKED_CARDS("Marked Deck of Cards", ToolTypeEnum.CHEATING, 5.0, 0.0),
+    SIGNET_RING_OF_FICTITIOUS_DUKE("Signet Ring of Fictitious Duke", ToolTypeEnum.CHEATING, 100.0, 0.1);
 
     private final String name;
     private final ToolTypeEnum type;

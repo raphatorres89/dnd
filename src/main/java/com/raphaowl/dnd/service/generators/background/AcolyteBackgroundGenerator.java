@@ -3,15 +3,26 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Proficiência em Perícias: Intuição, Religião
+ * Idiomas: Dois à sua escolha
+ * Equipamento: Um símbolo sagrado (um presente dado
+ * quando você entrou no templo), um livro de preces ou
+ * uma conta de orações, 5 varetas de incenso,
+ * vestimentas, um conjunto de roupas comuns e uma
+ * algibeira contendo 15 po
+ */
 @Component
 public class AcolyteBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -83,6 +94,17 @@ public class AcolyteBackgroundGenerator extends AbstractBackgroundGenerator {
     @Override
     public BackgroundEnum getBackgroundName() {
         return BackgroundEnum.ACOLYTE;
+    }
+
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                getAnyArtisanTool(),
+                GearEnum.GUILD_LETTER.toItem(1),
+                GearEnum.CLOTHES_TRAVELER.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(15)
+        );
     }
 
 }

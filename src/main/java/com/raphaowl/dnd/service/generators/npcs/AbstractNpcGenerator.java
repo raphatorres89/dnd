@@ -1,5 +1,6 @@
 package com.raphaowl.dnd.service.generators.npcs;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -50,7 +51,9 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
         BackgroundGenerator backgroundGenerator = backgroundFactory.getGenerator(filter.background());
         Background background = backgroundGenerator.generate(alignment);
         RaceGenerator raceGenerator = raceFactory.getGenerator(clazz);
-        List<Item> items = raceGenerator.getItems();
+        List<Item> items = new ArrayList<>();
+        items.addAll(raceGenerator.getItems());
+        items.addAll(backgroundGenerator.getItems());
 
         Integer challengeRating = filter.challengeRating();
         Integer proficiencyBonus = calculateProficiencyBonus(challengeRating);

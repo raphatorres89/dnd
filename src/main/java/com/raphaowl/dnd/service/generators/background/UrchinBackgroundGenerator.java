@@ -3,15 +3,27 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Proficiência em Perícias: Furtividade, Prestidigitação
+ * Proficiência em Ferramentas: Kit de disfarce,
+ * ferramentas de ladrão
+ * Equipamento: Uma faca pequena, um mapa da cidade
+ * em que você cresceu, um rato de estimação, um
+ * pequeno objeto para lembrar dos seus pais, um
+ * conjunto de roupas comuns e uma algibeira contendo
+ * 10 po
+ */
 @Component
 public class UrchinBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -91,4 +103,16 @@ public class UrchinBackgroundGenerator extends AbstractBackgroundGenerator {
         return BackgroundEnum.URCHIN;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                GearEnum.SMALL_KNIFE.toItem(1),
+                GearEnum.MAP_CITY.toItem(1),
+                GearEnum.PET_MOUSE.toItem(1),
+                GearEnum.TOKEN_PARENTS.toItem(1),
+                GearEnum.CLOTHES_COMMON.toItem(1),
+                GearEnum.POUCH.toItem(1),
+                GearEnum.GOLD.toItem(10)
+        );
+    }
 }

@@ -3,15 +3,27 @@ package com.raphaowl.dnd.service.generators.background;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.BackgroundEnum;
 import com.raphaowl.dnd.enums.BondsEnum;
 import com.raphaowl.dnd.enums.FlawsEnum;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.IdealEnum;
 import com.raphaowl.dnd.enums.PersonalityTrait;
+import com.raphaowl.dnd.enums.ToolEnum;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Proficiência em Perícias: Medicina, Religião
+ * Proficiência em Ferramentas: Kit de herbalismo
+ * Idiomas: Um à sua escolha
+ * Equipamento: Um estojo de pergaminho cheio de notas
+ * dos seus estudos e orações, um cobertor de inverno,
+ * um conjunto de roupas comuns, um kit de herbalismo
+ * e 5 po.
+ */
 @Component
 public class HermitBackgroundGenerator extends AbstractBackgroundGenerator {
 
@@ -91,4 +103,15 @@ public class HermitBackgroundGenerator extends AbstractBackgroundGenerator {
         return BackgroundEnum.HERMIT;
     }
 
+    @Override
+    public List<Item> getItems() {
+        return List.of(
+                GearEnum.PARCHMENT.toItem(1),
+                GearEnum.BLANKET.toItem(1),
+                GearEnum.CASE_MAP_SCROLL.toItem(1),
+                GearEnum.CLOTHES_COMMON.toItem(1),
+                ToolEnum.HERBALISM_KIT.toItem(1),
+                GearEnum.GOLD.toItem(5)
+        );
+    }
 }
