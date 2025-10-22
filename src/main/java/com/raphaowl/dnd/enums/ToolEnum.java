@@ -42,18 +42,9 @@ public enum ToolEnum {
     SHAWM("Shawm", ToolTypeEnum.MUSICAL, 2.0, 1.0),
     VIOL("Viol", ToolTypeEnum.MUSICAL, 30.0, 1.0),
 
-    // ---------- GAMING SETS ----------
-    DICE_SET("Dice Set", ToolTypeEnum.GAMING, 1.0, 0.0),
-    DRAGONCHESS_SET("Dragonchess Set", ToolTypeEnum.GAMING, 1.0, 0.5),
-    PLAYING_CARD_SET("Playing Card Set", ToolTypeEnum.GAMING, 5.0, 0.0),
-    THREE_DRAGON_ANTE_SET("Three-Dragon Ante Set", ToolTypeEnum.GAMING, 1.0, 0.0),
-
     // ---------- GENERAL TOOLS ----------
     DISGUISE_KIT("Disguise Kit", ToolTypeEnum.GENERAL, 25.0, 3.0),
-    FORGERY_KIT("Forgery Kit", ToolTypeEnum.GENERAL, 15.0, 5.0),
     HERBALISM_KIT("Herbalism Kit", ToolTypeEnum.GENERAL, 5.0, 3.0),
-    NAVIGATOR_TOOLS("Navigator’s Tools", ToolTypeEnum.GENERAL, 25.0, 2.0),
-    POISONER_KIT("Poisoner’s Kit", ToolTypeEnum.GENERAL, 50.0, 2.0),
     THIEVES_TOOLS("Thieves’ Tools", ToolTypeEnum.GENERAL, 25.0, 1.0),
 
     // ----- FIELDS -----
