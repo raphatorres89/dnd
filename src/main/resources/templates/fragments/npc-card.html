@@ -11,8 +11,9 @@
                         <i th:class="${npc.className.iconClass}"></i>
                         <span th:text="#{${'class.' + npc.className.name()}}"></span>
                     </span>
-                    <span class="badge bg-danger rounded-pill fw-bold">CR
-                        <span th:text="${npc.challengeRating} ?: '0'"></span>
+                    <span class="badge bg-danger rounded-pill fw-bold">
+                        <span th:text="#{app.npcs.filter.level}"></span>
+                        <span th:text="${npc.level} ?: '1'"></span>
                     </span>
                 </div>
             </div>
@@ -142,7 +143,6 @@
                             <th th:text="#{app.npcs.card.inventory.name}"></th>
                             <th><i class="ra ra-gold-bar"></i></th>
                             <th><img th:src="@{/images/kettlebell.svg}" alt="Kettlebell Icon" width="16" height="16" style="color:white;"/></th>
-<!--                            <th th:text="#{app.npcs.card.inventory.type}"></th>-->
                             <th th:text="#{app.npcs.card.inventory.ac}"></th>
                         </tr>
                         </thead>

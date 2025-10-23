@@ -55,11 +55,11 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
         items.addAll(raceGenerator.getItems());
         items.addAll(backgroundGenerator.getItems());
 
-        Integer challengeRating = filter.challengeRating();
+        Integer challengeRating = filter.level();
         Integer proficiencyBonus = calculateProficiencyBonus(challengeRating);
 
-        NpcStats npcStats = npcStatsGenerator.generateStats(clazz, getRaceName(), filter.challengeRating());
-        Integer hp = raceGenerator.getHP(filter.challengeRating(), npcStats.attributes().get(AbilityScoreEnum.CON));
+        NpcStats npcStats = npcStatsGenerator.generateStats(clazz, getRaceName(), filter.level());
+        Integer hp = raceGenerator.getHP(filter.level(), npcStats.attributes().get(AbilityScoreEnum.CON));
 
         return new Npc(
                 new UUID(random.nextLong(), random.nextLong()),

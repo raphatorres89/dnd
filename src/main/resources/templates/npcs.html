@@ -62,8 +62,8 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label for="filterNpcChallengeRating" class="form-label" th:text="#{app.npcs.filter.challengeRating}"></label>
-                    <select id="filterNpcChallengeRating" class="form-select">
+                    <label for="filterNpcLevel" class="form-label" th:text="#{app.npcs.filter.level}"></label>
+                    <select id="filterNpcLevel" class="form-select">
                         <option th:each="cr : ${#numbers.sequence(1, 16)}"
                                 th:value="${cr}"
                                 th:text="${cr}"
@@ -93,9 +93,9 @@
             const gender = $('#filterNpcGender').val();
             const npcClass = $('#filterNpcClass').val();
             const background = $('#filterNpcBackground').val();
-            const challengeRating = $('#filterNpcChallengeRating').val();
+            const level = $('#filterNpcLevel').val();
 
-            const url = `/npcs/generate?race=${race}&gender=${gender}&className=${npcClass}&background=${background}&challengeRating=${challengeRating}`;
+            const url = `/npcs/generate?race=${race}&gender=${gender}&className=${npcClass}&background=${background}&level=${level}`;
 
             const $container = $('#npcsContainer');
             $container.html('<p class="text-center w-100"><i class="ra ra-sword"></i> [[#{app.npcs.filter.message.loading}]]</p>');
