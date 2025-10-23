@@ -5,7 +5,5 @@ import java.util.Map;
 import com.raphaowl.dnd.enums.AbilityScoreEnum;
 
 public record NpcStats(
-        Map<AbilityScoreEnum, Integer> attributes,
-        int hitPoints,
-        Integer armorClass
+        Map<AbilityScoreEnum, Integer> attributes
 ) {}

@@ -20,15 +20,7 @@ public class NpcStatsGenerator {
         Map<AbilityScoreEnum, Integer> attributes = generateBaseAttributes(challengeRating);
         applyClassPriority(attributes, clazz);
         applyRaceBonus(attributes, race);
-
-        int constitutionModifier = (attributes.get(AbilityScoreEnum.CON) - 10) / 2;
-        int hitPoints = calculateHitPoints(clazz, constitutionModifier, challengeRating);
-        int armorClass = 10 + ((attributes.get(AbilityScoreEnum.DEX) - 10) /2);
-
-        return new NpcStats(
-                attributes,
-                hitPoints,
-                armorClass);
+        return new NpcStats(attributes);
     }
 
     private Map<AbilityScoreEnum, Integer> generateBaseAttributes(double cr) {
@@ -86,18 +78,5 @@ public class NpcStatsGenerator {
             }
             default -> {}
         }
-    }
-
-    private int calculateHitPoints(ClassEnum clazz, int conMod, Integer cr) {
-        int hitDie = switch (clazz) {
-            case WIZARD, SORCERER -> 6;
-            case ROGUE, BARD, CLERIC, DRUID, RANGER -> 8;
-            case FIGHTER, PALADIN -> 10;
-            case BARBARIAN -> 12;
-            default -> 8;
-        };
-
-        int avg = (hitDie / 2) + 1;
-        return (avg + conMod) * Math.max(1, cr);
     }
 }

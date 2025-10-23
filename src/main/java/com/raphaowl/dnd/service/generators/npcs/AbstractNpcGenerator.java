@@ -3,9 +3,11 @@ package com.raphaowl.dnd.service.generators.npcs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
 
+import com.raphaowl.dnd.dtos.Armor;
 import com.raphaowl.dnd.dtos.Background;
 import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.dtos.Npc;
@@ -13,6 +15,8 @@ import com.raphaowl.dnd.dtos.NpcFilterDto;
 import com.raphaowl.dnd.dtos.NpcStats;
 import com.raphaowl.dnd.enums.AbilityScoreEnum;
 import com.raphaowl.dnd.enums.AlignmentEnum;
+import com.raphaowl.dnd.enums.ArmorEnum;
+import com.raphaowl.dnd.enums.ArmorTypeEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GenderEnum;
 import com.raphaowl.dnd.service.generators.alignment.AlignmentGenerator;
@@ -60,6 +64,7 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
 
         NpcStats npcStats = npcStatsGenerator.generateStats(clazz, getRaceName(), filter.level());
         Integer hp = raceGenerator.getHP(filter.level(), npcStats.attributes().get(AbilityScoreEnum.CON));
+        Integer armorClass = calculateArmorClass(npcStats, items);
 
         return new Npc(
                 new UUID(random.nextLong(), random.nextLong()),
@@ -73,8 +78,38 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
                 proficiencyBonus,
                 challengeRating,
                 hp,
-                null,
+                armorClass,
                 items);
+    }
+
+    private static int calculateArmorClass(NpcStats npcStats, List<Item> items) {
+        Integer armorClass = 0;
+
+        Optional<Item> shieldOpt = items.stream()
+                .filter(item -> item instanceof Armor && ((Armor) item).getType() == ArmorTypeEnum.SHIELD)
+                .findFirst();
+
+        if (shieldOpt.isPresent()) {
+            Armor shield = (Armor) shieldOpt.get();
+            armorClass += shield.getAc();
+        }
+
+        Optional<Item> armorOpt = items.stream()
+                .filter(item -> item instanceof Armor && ((Armor) item).getType() != ArmorTypeEnum.SHIELD)
+                .findFirst();
+
+        if (armorOpt.isPresent()) {
+            Armor armor = (Armor) armorOpt.get();
+            int baseAC = armor.getAc();
+            if (armor.getType() == ArmorTypeEnum.LIGHT) {
+                return armorClass + baseAC + Math.floorDiv(npcStats.attributes().get(AbilityScoreEnum.DEX) - 10, 2);
+            } else if (armor.getType() == ArmorTypeEnum.MEDIUM) {
+                return armorClass + baseAC + Math.min(Math.floorDiv(npcStats.attributes().get(AbilityScoreEnum.DEX) - 10, 2), 2);
+            } else {
+                return armorClass + baseAC;
+            }
+        }
+        return 10 + Math.floorDiv(npcStats.attributes().get(AbilityScoreEnum.DEX) - 10, 2);
     }
 
     private Integer calculateProficiencyBonus(double challengeRating) {

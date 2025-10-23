@@ -20,7 +20,7 @@ public record Npc(
         Integer proficiencyBonus,
         Integer level,
         Integer maxHP,
-        List<Attack> attacks,
+        Integer armorClass,
         List<Item> inventory) {
 
     public List<Item> getWeapons() {
