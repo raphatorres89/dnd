@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ import org.springframework.stereotype.Component;
  *  Armadura de couro e uma adaga
  */
 @Component
-public class BardRaceGenerator extends AbstractRaceGenerator {
+public class BardClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

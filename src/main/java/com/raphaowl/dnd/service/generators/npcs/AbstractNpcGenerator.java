@@ -15,15 +15,14 @@ import com.raphaowl.dnd.dtos.NpcFilterDto;
 import com.raphaowl.dnd.dtos.NpcStats;
 import com.raphaowl.dnd.enums.AbilityScoreEnum;
 import com.raphaowl.dnd.enums.AlignmentEnum;
-import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ArmorTypeEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GenderEnum;
 import com.raphaowl.dnd.service.generators.alignment.AlignmentGenerator;
 import com.raphaowl.dnd.service.generators.background.BackgroundFactory;
 import com.raphaowl.dnd.service.generators.background.BackgroundGenerator;
-import com.raphaowl.dnd.service.generators.race.RaceFactory;
-import com.raphaowl.dnd.service.generators.race.RaceGenerator;
+import com.raphaowl.dnd.service.generators.classes.ClassesFactory;
+import com.raphaowl.dnd.service.generators.classes.ClassesGenerator;
 import com.raphaowl.dnd.service.generators.stats.NpcStatsGenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +41,7 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
     @Autowired
     private NpcStatsGenerator npcStatsGenerator;
     @Autowired
-    private RaceFactory raceFactory;
+    private ClassesFactory classesFactory;
 
     protected abstract String generateName(GenderEnum gender);
     protected abstract List<ClassEnum> getPreferredClasses();
@@ -54,16 +53,16 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
         AlignmentEnum alignment = alignmentGenerator.generateAlignment(getRaceName(), clazz);
         BackgroundGenerator backgroundGenerator = backgroundFactory.getGenerator(filter.background());
         Background background = backgroundGenerator.generate(alignment);
-        RaceGenerator raceGenerator = raceFactory.getGenerator(clazz);
+        ClassesGenerator classesGenerator = classesFactory.getGenerator(clazz);
         List<Item> items = new ArrayList<>();
-        items.addAll(raceGenerator.getItems());
+        items.addAll(classesGenerator.getItems());
         items.addAll(backgroundGenerator.getItems());
 
         Integer challengeRating = filter.level();
         Integer proficiencyBonus = calculateProficiencyBonus(challengeRating);
 
         NpcStats npcStats = npcStatsGenerator.generateStats(clazz, getRaceName(), filter.level());
-        Integer hp = raceGenerator.getHP(filter.level(), npcStats.attributes().get(AbilityScoreEnum.CON));
+        Integer hp = classesGenerator.getHP(filter.level(), npcStats.attributes().get(AbilityScoreEnum.CON));
         Integer armorClass = calculateArmorClass(npcStats, items);
 
         return new Npc(

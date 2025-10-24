@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ import org.springframework.stereotype.Component;
  *  Um escudo e um símbolo sagrado
  */
 @Component
-public class ClericRaceGenerator extends AbstractRaceGenerator {
+public class ClericClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

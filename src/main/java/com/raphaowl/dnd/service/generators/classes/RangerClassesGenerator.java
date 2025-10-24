@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ import org.springframework.stereotype.Component;
  *  Um arco longo e uma aljava com 20 flechas
  */
 @Component
-public class RangerRaceGenerator extends AbstractRaceGenerator {
+public class RangerClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

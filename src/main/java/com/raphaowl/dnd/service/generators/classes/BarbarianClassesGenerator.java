@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ import org.springframework.stereotype.Component;
  *  Um pacote de aventureiro e quatro azagaias
  */
 @Component
-public class BarbarianRaceGenerator extends AbstractRaceGenerator {
+public class BarbarianClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

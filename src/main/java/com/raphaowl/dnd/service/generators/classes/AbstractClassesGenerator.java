@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import com.raphaowl.dnd.enums.WeaponType;
 import org.springframework.stereotype.Component;
 
 @Component
-public abstract class AbstractRaceGenerator implements RaceGenerator {
+public abstract class AbstractClassesGenerator implements ClassesGenerator {
 
     Random random = new Random();
 

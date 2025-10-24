@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import org.springframework.stereotype.Component;
  *  Armadura de couro, duas adagas e ferramentas de ladrão
  */
 @Component
-public class RogueRaceGenerator extends AbstractRaceGenerator {
+public class RogueClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

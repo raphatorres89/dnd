@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ import org.springframework.stereotype.Component;
  *  Cota de malha e um símbolo sagrado
  */
 @Component
-public class PaladinRaceGenerator extends AbstractRaceGenerator {
+public class PaladinClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

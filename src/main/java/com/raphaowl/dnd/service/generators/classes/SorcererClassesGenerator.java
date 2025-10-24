@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ import org.springframework.stereotype.Component;
  *  (a) um pacote de explorador ou (b) um pacote de aventureiro
  */
 @Component
-public class SorcererRaceGenerator extends AbstractRaceGenerator {
+public class SorcererClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

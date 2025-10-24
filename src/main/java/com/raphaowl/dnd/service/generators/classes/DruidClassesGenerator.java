@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ import org.springframework.stereotype.Component;
  *  Armadura de couro, um pacote de aventureiro e um foco druídico
  */
 @Component
-public class DruidRaceGenerator extends AbstractRaceGenerator {
+public class DruidClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

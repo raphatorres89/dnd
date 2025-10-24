@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ import org.springframework.stereotype.Component;
  *  Um grimório
  */
 @Component
-public class WizardRaceGenerator extends AbstractRaceGenerator {
+public class WizardClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

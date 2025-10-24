@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ import org.springframework.stereotype.Component;
  *  10 dardos
  */
 @Component
-public class MonkRaceGenerator extends AbstractRaceGenerator {
+public class MonkClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {

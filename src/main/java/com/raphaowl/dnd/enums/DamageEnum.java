@@ -14,17 +14,18 @@ public enum DamageEnum {
     // Danos Elementais/Mágicos/Simples
     ACID("acid", "ra ra-acid text-success"),
     COLD("cold", "ra ra-snowflake .text-secondary"),
-    LIGHTNING("lightning", "ra ra-lightning-bolt text-warning"),
-    SLASHING("slashing", "ra ra-spinning-sword text-secondary"),
     FIRE("fire", "ra ra-fire text-danger"),
+    FORCE("force", "ra ra-blaster text-primary"),
+    LIGHTNING("lightning", "ra ra-lightning-bolt text-warning"),
+    NECROTIC("necrotic", "ra ra-skull text-secondary"),
+    PIERCING("piercing", "ra ra-spear-head text-secondary"),
     POISON("poison", "ra ra-vial text-success"),
     PSYCHIC("psychic", "ra ra-brain-freeze text-warning"),
+    RADIANT("radiant", "ra ra-sunbeams text-warning"),
+    SLASHING("slashing", "ra ra-spinning-sword text-secondary"),
     THUNDER("thunder", "ra ra-focused-lightning text-warning"),
     BLUDGEONING("bludgeoning", "ra ra-broken-bone text-secondary"),
-    PIERCING("piercing", "ra ra-spear-head text-secondary"),
     DAMAGE_FROM_SPELLS("damage from spells", "ra ra-blaster text-primary" ),
-    RADIANT("radiant", "ra ra-sunbeams text-warning"),
-    NECROTIC("necrotic", "ra ra-skull text-secondary"),
 
     // Resistências Físicas Complexas (ex: Imunidade a armas não-mágicas)
     NONMAGICAL_WEAPONS_3P("bludgeoning, piercing, and slashing from nonmagical weapons", "ra ra-lightning-sword text-info"),

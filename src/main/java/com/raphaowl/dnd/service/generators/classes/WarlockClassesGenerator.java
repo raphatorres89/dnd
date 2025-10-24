@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.service.generators.race;
+package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ import org.springframework.stereotype.Component;
  *  Armadura de couro, qualquer arma simples e duas adagas
  */
 @Component
-public class WarlockRaceGenerator extends AbstractRaceGenerator {
+public class WarlockClassesGenerator extends AbstractClassesGenerator {
 
     @Override
     public ClassEnum getClassName() {
