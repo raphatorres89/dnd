@@ -66,7 +66,7 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
         Integer hp = classesGenerator.getHP(filter.level(), npcStats.attributes().get(AbilityScoreEnum.CON));
         Integer armorClass = calculateArmorClass(npcStats, items);
 
-        List<Spell> spells = classesGenerator.getSpells(filter.level());
+        List<Spell> spells = classesGenerator.getSpells(filter.level(), npcStats);
 
         return new Npc(
                 new UUID(random.nextLong(), random.nextLong()),

@@ -232,6 +232,7 @@
                     <table class="table table-borderless table-sm table-striped">
                         <thead>
                         <tr>
+                            <th>Nível</th>
                             <th th:text="#{app.npcs.card.inventory.name}"></th>
                             <th><i class="ra ra-book"></i></th>
                             <th>Damage Type</th>
@@ -240,6 +241,9 @@
                         </thead>
                         <tbody>
                         <tr th:each="spell : ${npc.spells}">
+                            <td>
+                                <span class="fw-semibold" th:text="${spell.level}"></span>
+                            </td>
                             <td>
                                 <span class="fw-semibold" th:text="#{${'spell.' + spell.name}}"></span>
                             </td>

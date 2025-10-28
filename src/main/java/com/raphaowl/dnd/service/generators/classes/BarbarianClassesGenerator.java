@@ -3,10 +3,8 @@ package com.raphaowl.dnd.service.generators.classes;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Spell;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
-import com.raphaowl.dnd.enums.SpellEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
 
 import org.springframework.stereotype.Component;
@@ -71,15 +69,5 @@ public class BarbarianClassesGenerator extends AbstractClassesGenerator {
             return WeaponEnum.HANDAXE.toWeapon(2);
         }
         return getAnySimpleWeapon();
-    }
-
-    @Override
-    public List<Spell> getSpells(Integer npcLevel) {
-        return List.of();
-    }
-
-    @Override
-    protected List<SpellEnum> getSpellEnumList() {
-        return List.of();
     }
 }

@@ -3,9 +3,11 @@ package com.raphaowl.dnd.service.generators.classes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Spell;
+import com.raphaowl.dnd.dtos.NpcStats;
+import com.raphaowl.dnd.enums.AbilityScoreEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.SpellEnum;
@@ -277,8 +279,55 @@ public class WizardClassesGenerator extends AbstractClassesGenerator {
     }
 
     @Override
-    public List<Spell> getSpells(Integer npcLevel) {
-        return List.of();
+    protected void generateSpells(Set<SpellEnum> spells, Integer npcLevel, NpcStats npcStats) {
+
+        // --- 1. GERAÇÃO DE TRUQUES (Círculo 0) ---
+        int cantrips = switch (npcLevel) {
+            case 1, 2, 3 -> 3;
+            case 4, 5, 6, 7, 8, 9 -> 4;
+            default -> 5;
+        };
+        for (int i = 0; i < cantrips; i++) {
+            spells.add(addUniqueSpell(spells, 0));
+        }
+
+        // --- 2. CÁLCULO DE MAGIAS PREPARADAS ---
+        // Regra D&D 5e: Nível de Mago + Modificador de Inteligência (mínimo de 1)
+        int maxPreparedSpells = Math.max(1, npcLevel + (npcStats.attributes().get(AbilityScoreEnum.INT) - 10) / 2);
+
+        // --- 3. NÍVEL MÁXIMO DE MAGIA (maxSpellLevel) ---
+        // Mago é um conjurador de nível completo:
+        int maxSpellLevel = Math.min(9, (npcLevel + 1) / 2); // Progressão completa, max 9
+
+        // --- 4. DISTRIBUIÇÃO PONDERADA DE MAGIAS PREPARADAS ---
+        // O Mago prepara 'maxPreparedSpells' magias do seu Livro.
+        // Para simplificar, assumimos que as magias que o Mago prepara são as que
+        // o NPC usará e que são escolhidas do seu (invisível) Livro de Magias.
+
+        for (int i = 0; i < maxPreparedSpells; i++) {
+
+            int selectedLevel;
+
+            // Em Nível 1, o Mago só pode preparar magias de 1º Círculo.
+            if (maxSpellLevel == 1) {
+                selectedLevel = 1;
+            } else {
+                // Distribuição Ponderada: prioriza magias de círculos mais baixos (buffs, utilidade)
+                // e garante que haja alguma magia de círculo mais alto.
+                int potentialLevel = (int) (Math.random() * maxSpellLevel) + 1;
+
+                // Força que 75% das magias preparadas sejam de círculos <= maxSpellLevel - 1.
+                if (i < maxPreparedSpells * 0.75) {
+                    selectedLevel = Math.min(potentialLevel, Math.max(1, maxSpellLevel - 1));
+                } else {
+                    selectedLevel = potentialLevel;
+                }
+                selectedLevel = Math.min(selectedLevel, maxSpellLevel);
+            }
+
+            // Adiciona uma magia única do círculo escolhido ao conjunto de magias que o NPC pode usar.
+            spells.add(addUniqueSpell(spells, selectedLevel));
+        }
     }
 
     @Override

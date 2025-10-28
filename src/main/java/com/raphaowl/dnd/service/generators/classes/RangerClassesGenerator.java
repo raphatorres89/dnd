@@ -1,16 +1,12 @@
 package com.raphaowl.dnd.service.generators.classes;
 
-import static java.util.stream.Collectors.toList;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Spell;
+import com.raphaowl.dnd.dtos.NpcStats;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
@@ -109,6 +105,57 @@ public class RangerClassesGenerator extends AbstractClassesGenerator {
     }
 
     @Override
+    protected void generateSpells(Set<SpellEnum> spells, Integer npcLevel, NpcStats npcStats) {
+        // 1. O Ranger só conjura a partir do Nível 2.
+        if (npcLevel < 2) return;
+
+        // O Ranger NÃO tem Truques (Círculo 0) na tabela básica.
+
+        // --- 2. MAGIAS CONHECIDAS (knownSpells) ---
+        // Progressão fixa conforme a Tabela de Classe de Ranger
+        int knownSpells = switch (npcLevel) {
+            case 2 -> 2; case 3, 4 -> 3; case 5, 6 -> 4; case 7, 8 -> 5;
+            case 9 -> 6; case 10 -> 7; case 11 -> 8; case 12, 13 -> 9;
+            case 14, 15 -> 10; case 16, 17, 18, 19, 20 -> 11;
+            default -> 0; // Se for 1 (retorna antes)
+        };
+
+        // --- 3. NÍVEL MÁXIMO DE MAGIA (maxSpellLevel) ---
+        // Progressão de meio-conjurador (Correta)
+        int maxSpellLevel =
+                npcLevel < 5 ? 1 :
+                        npcLevel < 9 ? 2 :
+                                npcLevel < 13 ? 3 :
+                                        npcLevel < 17 ? 4 : 5;
+
+        // --- 4. DISTRIBUIÇÃO PONDERADA DE MAGIAS ---
+        for (int i = 0; i < knownSpells; i++) {
+
+            int selectedLevel;
+
+            // Em Nível 2-4, o Ranger só pode ter magias de 1º Círculo.
+            if (maxSpellLevel == 1) {
+                selectedLevel = 1;
+            } else {
+                // Heurística de Ponderação: Garante que os níveis mais baixos sejam mais comuns.
+                int potentialLevel = (int) (Math.random() * maxSpellLevel) + 1;
+
+                // Força que 75% das magias sejam de círculos <= maxSpellLevel - 1.
+                if (i < knownSpells * 0.75) {
+                    selectedLevel = Math.min(potentialLevel, Math.max(1, maxSpellLevel - 1));
+                } else {
+                    selectedLevel = potentialLevel;
+                }
+                // Garante que o nível escolhido não ultrapasse o limite real.
+                selectedLevel = Math.min(selectedLevel, maxSpellLevel);
+            }
+
+            // O Ranger não conhece Truques por padrão, então o círculo mínimo é 1.
+            spells.add(addUniqueSpell(spells, selectedLevel));
+        }
+    }
+
+    @Override
     public ClassEnum getClassName() {
         return ClassEnum.RANGER;
     }
@@ -142,44 +189,5 @@ public class RangerClassesGenerator extends AbstractClassesGenerator {
         items.add(GearEnum.QUIVER.toItem(1));
 
         return items;
-    }
-
-    @Override
-    public List<Spell> getSpells(Integer npcLevel) {
-        Set<SpellEnum> spells = new HashSet<>();
-        if (npcLevel >= 2) {
-            spells.add(addUniqueSpell(spells, 1));
-            spells.add(addUniqueSpell(spells, 1));
-        }
-        if (npcLevel >= 3) {
-            spells.add(addUniqueSpell(spells, 1));
-        }
-        if (npcLevel >= 5) {
-            spells.add(addUniqueSpell(spells, 2));
-        }
-        if (npcLevel >= 7) {
-            spells.add(addUniqueSpell(spells, 2));
-        }
-        if (npcLevel >= 9) {
-            spells.add(addUniqueSpell(spells, 3));
-        }
-        if (npcLevel >= 11) {
-            spells.add(addUniqueSpell(spells, 3));
-        }
-        if (npcLevel >= 13) {
-            spells.add(addUniqueSpell(spells, 4));
-        }
-        if (npcLevel >= 15) {
-            spells.add(addUniqueSpell(spells, 4));
-        }
-        if (npcLevel >= 17) {
-            spells.add(addUniqueSpell(spells, 5));
-        }
-        if (npcLevel >= 19) {
-            spells.add(addUniqueSpell(spells, 5));
-        }
-        return spells.stream()
-                .map(spell -> spell.toSpell(npcLevel))
-                .toList();
     }
 }

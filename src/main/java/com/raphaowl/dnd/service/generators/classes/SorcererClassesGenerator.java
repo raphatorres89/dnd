@@ -3,9 +3,10 @@ package com.raphaowl.dnd.service.generators.classes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Spell;
+import com.raphaowl.dnd.dtos.NpcStats;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.SpellEnum;
@@ -193,8 +194,67 @@ public class SorcererClassesGenerator extends AbstractClassesGenerator {
     }
 
     @Override
-    public List<Spell> getSpells(Integer npcLevel) {
-        return List.of();
+    protected void generateSpells(Set<SpellEnum> spells, Integer npcLevel, NpcStats npcStats) {
+
+        // --- 1. GERAÇÃO DE TRUQUES (Cantrips) ---
+        // Segue a progressão oficial: 4 (Nv 1-3), 5 (Nv 4-9), 6 (Nv 10+)
+        int cantrips = switch (npcLevel) {
+            case 1, 2, 3 -> 4;
+            case 4, 5, 6, 7, 8, 9 -> 5;
+            default -> 6;
+        };
+        for (int i = 0; i < cantrips; i++) {
+            spells.add(addUniqueSpell(spells, 0)); // Círculo 0 = Truques
+        }
+
+        // --- 2. CÁLCULO DE MAGIAS CONHECIDAS (knownSpells) ---
+        // Progressão fixa conforme a Tabela de Classe de Feiticeiro
+        int knownSpells = switch (npcLevel) {
+            case 1 -> 2; case 2 -> 3; case 3 -> 4; case 4 -> 5; case 5 -> 6;
+            case 6 -> 7; case 7 -> 8; case 8 -> 9; case 9 -> 10; case 10 -> 11;
+            case 11 -> 12; case 12 -> 12; case 13 -> 13; case 14 -> 13; case 15 -> 14;
+            case 16 -> 14; case 17 -> 15; case 18, 19, 20 -> 15; default -> 2;
+        };
+
+        // --- 3. NÍVEL MÁXIMO DE MAGIA (maxSpellLevel) ---
+        // A progressão do círculo máximo (slots) está correta
+        int maxSpellLevel =
+                npcLevel <= 2 ? 1 :
+                        npcLevel <= 4 ? 2 :
+                                npcLevel <= 6 ? 3 :
+                                        npcLevel <= 8 ? 4 :
+                                                npcLevel <= 10 ? 5 :
+                                                        npcLevel <= 12 ? 6 :
+                                                                npcLevel <= 14 ? 7 :
+                                                                        npcLevel <= 16 ? 8 : 9;
+
+        // --- 4. DISTRIBUIÇÃO PONDERADA DE MAGIAS ---
+        for (int i = 0; i < knownSpells; i++) {
+
+            int selectedLevel;
+
+            // Em níveis muito baixos, o Feiticeiro só pode ter magias de 1º Círculo.
+            if (maxSpellLevel == 1) {
+                selectedLevel = 1;
+            } else {
+                // Heurística de Ponderação: Garante que os níveis mais baixos sejam mais comuns.
+                // Calcula um nível potencial aleatório entre 1 e maxSpellLevel
+                int potentialLevel = (int) (Math.random() * maxSpellLevel) + 1;
+
+                // Força que 75% das magias sejam de círculos <= maxSpellLevel - 1.
+                if (i < knownSpells * 0.75) {
+                    // Limita o nível escolhido ao penúltimo círculo disponível (ou 1, se for o caso)
+                    selectedLevel = Math.min(potentialLevel, Math.max(1, maxSpellLevel - 1));
+                } else {
+                    // Os 25% restantes podem ser do círculo mais alto
+                    selectedLevel = potentialLevel;
+                }
+                // Garante que o nível escolhido não ultrapasse o limite real.
+                selectedLevel = Math.min(selectedLevel, maxSpellLevel);
+            }
+
+            spells.add(addUniqueSpell(spells, selectedLevel));
+        }
     }
 
     @Override

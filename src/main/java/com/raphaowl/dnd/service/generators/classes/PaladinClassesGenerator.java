@@ -3,9 +3,11 @@ package com.raphaowl.dnd.service.generators.classes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Spell;
+import com.raphaowl.dnd.dtos.NpcStats;
+import com.raphaowl.dnd.enums.AbilityScoreEnum;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
@@ -101,8 +103,59 @@ public class PaladinClassesGenerator extends AbstractClassesGenerator {
     }
 
     @Override
-    public List<Spell> getSpells(Integer npcLevel) {
-        return List.of();
+    protected void generateSpells(Set<SpellEnum> spells, Integer npcLevel, NpcStats npcStats) {
+
+        // O Paladino só conjura a partir do Nível 2
+        if (npcLevel < 2) return;
+
+        // O Paladino NÃO aprende Truques (Círculo 0) por padrão em D&D 5e.
+
+        // --- 1. CÁLCULO DE MAGIAS PREPARADAS ---
+        // Regra D&D 5e: Nível/2 (arredondado para baixo) + Modificador de Carisma (mínimo de 1)
+
+        // (npcLevel / 2) realiza a divisão inteira (arredonda para baixo)
+        int basePrepared = npcLevel / 2;
+
+        // O número total de magias que o Paladino pode ter preparadas (todas únicas)
+        int maxPreparedSpells = Math.max(1, basePrepared + (npcStats.attributes().get(AbilityScoreEnum.CHA) - 10) / 2);
+
+        // --- 2. NÍVEL MÁXIMO DE MAGIA (maxSpellLevel) ---
+        // Progressão de meio-conjurador (mesma do Ranger)
+        int maxSpellLevel =
+                npcLevel < 5 ? 1 :
+                        npcLevel < 9 ? 2 :
+                                npcLevel < 13 ? 3 :
+                                        npcLevel < 17 ? 4 : 5;
+
+        // --- 3. DISTRIBUIÇÃO PONDERADA DE MAGIAS ---
+
+        // Usamos a mesma lógica de distribuição ponderada para selecionar as 'maxPreparedSpells'.
+        for (int i = 0; i < maxPreparedSpells; i++) {
+
+            int selectedLevel;
+
+            if (maxSpellLevel == 1) {
+                selectedLevel = 1;
+            } else {
+                // Heurística de Ponderação: Garante que os níveis mais baixos sejam mais comuns.
+                // O Paladino tende a pegar mais magias de 1º e 2º círculo (Smite, Bless)
+                int potentialLevel = (int) (Math.random() * maxSpellLevel) + 1;
+
+                // Força que a maioria das magias seja dos círculos mais baixos
+                if (i < maxPreparedSpells * 0.7) {
+                    // 70% das magias: limitar a (max - 1) ou 1, o que for maior
+                    selectedLevel = Math.min(potentialLevel, Math.max(1, maxSpellLevel - 1));
+                } else {
+                    // 30% restantes podem ser do círculo mais alto
+                    selectedLevel = potentialLevel;
+                }
+                // Garante que o nível escolhido não ultrapasse o limite real.
+                selectedLevel = Math.min(selectedLevel, maxSpellLevel);
+            }
+
+            // Adiciona uma magia única do círculo escolhido
+            spells.add(addUniqueSpell(spells, selectedLevel));
+        }
     }
 
     @Override

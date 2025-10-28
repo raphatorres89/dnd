@@ -2,9 +2,10 @@ package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Spell;
+import com.raphaowl.dnd.dtos.NpcStats;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
@@ -186,8 +187,69 @@ public class BardClassesGenerator extends AbstractClassesGenerator {
     }
 
     @Override
-    public List<Spell> getSpells(Integer npcLevel) {
-        return List.of();
+    protected void generateSpells(Set<SpellEnum> spells, Integer npcLevel, NpcStats npcStats) {
+        // 1. GERAÇÃO DE TRUQUES (MANTIDO)
+        int cantrips = switch (npcLevel) {
+            case 1, 2, 3 -> 2;
+            case 4, 5, 6, 7, 8, 9 -> 3;
+            default -> 4;
+        };
+        for (int i = 0; i < cantrips; i++) {
+            spells.add(addUniqueSpell(spells, 0));
+        }
+
+        // 2. MAGIAS CONHECIDAS (MANTIDO)
+        int knownSpells = switch (npcLevel) {
+            case 1 -> 4; case 2 -> 5; case 3 -> 6; case 4 -> 7; case 5 -> 8;
+            case 6 -> 9; case 7 -> 10; case 8 -> 11; case 9 -> 12; case 10 -> 14;
+            case 11 -> 15; case 12 -> 15; case 13 -> 16; case 14 -> 18; case 15 -> 19;
+            case 16 -> 19; case 17 -> 20; case 18, 19, 20 -> 22; default -> 4;
+        };
+
+        // 3. NÍVEL MÁXIMO DE MAGIA (MANTIDO)
+        int maxSpellLevel =
+                npcLevel <= 2 ? 1 :
+                        npcLevel <= 4 ? 2 :
+                                npcLevel <= 6 ? 3 :
+                                        npcLevel <= 8 ? 4 :
+                                                npcLevel <= 10 ? 5 :
+                                                        npcLevel <= 12 ? 6 :
+                                                                npcLevel <= 14 ? 7 :
+                                                                        npcLevel <= 16 ? 8 : 9;
+
+        // 4. DISTRIBUIÇÃO CORRIGIDA E PONDERADA
+        for (int i = 0; i < knownSpells; i++) {
+            // Gera um círculo de magia aleatório entre 1 e o nível máximo permitido.
+            // É essencial que addUniqueSpell aceite um 'maxLevel' e selecione
+            // o círculo da magia, dando preferência aos níveis mais baixos.
+
+            // Se você não tem uma lógica de ponderação, você pode forçar uma distribuição simples,
+            // garantindo que magias de nível mais alto sejam raras:
+
+            int selectedLevel;
+            if (npcLevel <= 2) {
+                selectedLevel = 1; // Níveis iniciais: apenas magias de 1º círculo
+            } else {
+                // Gera um número aleatório. Magias de nível mais baixo devem ter mais chance.
+                // Exemplo: 50% de chance de ser nível 1, 25% nível 2, 12.5% nível 3, etc.
+                // Aqui, usamos o nível atual da iteração, mas limitado pelo maxSpellLevel.
+
+                // Uma heurística mais simples para um gerador:
+                // 75% das magias devem ser de círculos de magia <= maxSpellLevel - 1.
+                int potentialLevel = (int) (Math.random() * maxSpellLevel) + 1;
+
+                // Garantimos que magias mais poderosas (maxSpellLevel) sejam mais raras.
+                if (i < knownSpells * 0.75) {
+                    // 75% das magias: limitar a (max - 1) ou 1, o que for maior
+                    selectedLevel = Math.min(potentialLevel, Math.max(1, maxSpellLevel - 1));
+                } else {
+                    // 25% das magias: podem ser do círculo mais alto
+                    selectedLevel = Math.min(potentialLevel, maxSpellLevel);
+                }
+            }
+
+            spells.add(addUniqueSpell(spells, selectedLevel));
+        }
     }
 
     @Override

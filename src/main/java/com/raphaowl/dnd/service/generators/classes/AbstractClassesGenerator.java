@@ -1,11 +1,15 @@
 package com.raphaowl.dnd.service.generators.classes;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 import com.raphaowl.dnd.dtos.Item;
+import com.raphaowl.dnd.dtos.NpcStats;
+import com.raphaowl.dnd.dtos.Spell;
 import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.SpellEnum;
 import com.raphaowl.dnd.enums.ToolEnum;
@@ -20,7 +24,24 @@ public abstract class AbstractClassesGenerator implements ClassesGenerator {
 
     Random random = new Random();
 
-    protected abstract List<SpellEnum> getSpellEnumList();
+    protected List<SpellEnum> getSpellEnumList() {
+        // Default implementation returns an empty list
+        return List.of();
+    };
+
+    protected void generateSpells(Set<SpellEnum> spells, Integer npcLevel, NpcStats npcStats) {
+        // Default implementation does nothing
+    }
+
+    public List<Spell> getSpells(Integer npcLevel, NpcStats npcStats) {
+        Set<SpellEnum> spells = new HashSet<>();
+        generateSpells(spells, npcLevel, npcStats);
+
+        return spells.stream()
+                .map(spell -> spell.toSpell(npcLevel))
+                .sorted(Comparator.comparingInt(Spell::getLevel))
+                .toList();
+    }
 
     protected SpellEnum addUniqueSpell(Set<SpellEnum> spells, int level) {
         SpellEnum spell;

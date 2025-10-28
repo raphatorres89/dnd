@@ -3,9 +3,11 @@ package com.raphaowl.dnd.service.generators.classes;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import com.raphaowl.dnd.dtos.Item;
-import com.raphaowl.dnd.dtos.Spell;
+import com.raphaowl.dnd.dtos.NpcStats;
+import com.raphaowl.dnd.enums.AbilityScoreEnum;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
@@ -204,8 +206,62 @@ public class ClericClassesGenerator extends AbstractClassesGenerator {
     }
 
     @Override
-    public List<Spell> getSpells(Integer npcLevel) {
-        return List.of();
+    protected void generateSpells(Set<SpellEnum> spells, Integer npcLevel, NpcStats npcStats) { // Adicionado Modificador SAB
+
+        // --- 1. Geração de Truques (Cantrips) ---
+        int cantrips = switch (npcLevel) {
+            case 1, 2, 3 -> 3;
+            case 4, 5, 6, 7, 8, 9 -> 4;
+            default -> 5; // Nível 10+
+        };
+        for (int i = 0; i < cantrips; i++) {
+            spells.add(addUniqueSpell(spells, 0)); // Círculo 0 = Truques
+        }
+
+        // --- 2. Cálculo do Total de Magias Preparadas ---
+        // Regra D&D 5e: Nível de Clérigo + Modificador de Sabedoria (Mínimo de 1 magia)
+        int maxPreparedSpells = Math.max(1, npcLevel + (npcStats.attributes().get(AbilityScoreEnum.WIS) - 10) / 2);
+
+        // O círculo mais alto de magia que o NPC pode conjurar.
+        // Ex: Nv 5 = 3º Círculo, Nv 17 = 9º Círculo.
+        int maxSpellCircle = Math.min(9, (npcLevel + 1) / 2); // Fórmula padrão (arredondado para baixo)
+
+        // --- 3. Seleção Aleatória de Magias (Limitada pelo total preparado) ---
+        // Selecionamos magias de todos os círculos disponíveis, limitadas pelo total.
+        int spellsToSelect = maxPreparedSpells;
+
+        for (int circle = 1; circle <= maxSpellCircle; circle++) {
+            // Garantir que não selecionamos mais magias do que o NPC pode preparar no total
+            if (spellsToSelect <= 0) break;
+
+            // Decidimos aleatoriamente quantas magias deste círculo selecionar.
+            // É comum que NPCs priorizem magias de círculos mais altos, mas usaremos uma distribuição simples.
+
+            // Vamos forçar a seleção de pelo menos uma magia dos círculos mais altos
+            int numToSelectInCircle = 0;
+            if (circle == maxSpellCircle) {
+                numToSelectInCircle = Math.min(2, spellsToSelect); // Tenta pegar pelo menos 1-2 da mais alta
+            } else {
+                // Distribuição para círculos mais baixos
+                numToSelectInCircle = Math.min(spellsToSelect,
+                                               // Ex: 3 magias do Nv 1 e 2 magias do Nv 2, se tiver slots.
+                                               circle == 1 ? 3 : 2);
+            }
+
+            for (int i = 0; i < numToSelectInCircle; i++) {
+                spells.add(addUniqueSpell(spells, circle));
+            }
+
+            spellsToSelect -= numToSelectInCircle;
+        }
+
+        // Se ainda restarem magias para preparar, adicione magias de círculos inferiores aleatórios.
+        while (spellsToSelect > 0) {
+            // Adiciona magias aleatórias de círculos já acessíveis (1 a maxSpellCircle - 1)
+            // (Você precisaria de uma função para escolher um círculo aleatório com peso)
+            spells.add(addUniqueSpell(spells, 1)); // Exemplo: Adiciona mais magias de 1º círculo
+            spellsToSelect--;
+        }
     }
 
     private Item getPack() {
