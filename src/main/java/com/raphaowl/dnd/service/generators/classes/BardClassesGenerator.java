@@ -1,11 +1,14 @@
 package com.raphaowl.dnd.service.generators.classes;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Item;
+import com.raphaowl.dnd.dtos.Spell;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
+import com.raphaowl.dnd.enums.SpellEnum;
 import com.raphaowl.dnd.enums.ToolEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
 
@@ -39,6 +42,155 @@ import org.springframework.stereotype.Component;
 public class BardClassesGenerator extends AbstractClassesGenerator {
 
     @Override
+    protected List<SpellEnum> getSpellEnumList() {
+        return Arrays.asList(
+                // Truques (Cantrips)
+                SpellEnum.BLADE_WARD,
+                SpellEnum.DANCING_LIGHTS,
+                SpellEnum.FRIENDS,
+                SpellEnum.LIGHT,
+                SpellEnum.MAGE_HAND,
+                SpellEnum.MENDING,
+                SpellEnum.MESSAGE,
+                SpellEnum.MINOR_ILLUSION,
+                SpellEnum.PRESTIDIGITATION,
+                SpellEnum.TRUE_STRIKE,
+                SpellEnum.VICIOUS_MOCKERY,
+
+                // Nível 1
+                SpellEnum.ANIMAL_FRIENDSHIP,
+                SpellEnum.BANE,
+                SpellEnum.CHARM_PERSON,
+                SpellEnum.COMPREHEND_LANGUAGES,
+                SpellEnum.CURE_WOUNDS,
+                SpellEnum.DETECT_MAGIC,
+                SpellEnum.DISGUISE_SELF,
+                SpellEnum.DISSONANT_WHISPERS,
+                SpellEnum.FAERIE_FIRE,
+                SpellEnum.FEATHER_FALL,
+                SpellEnum.HEALING_WORD,
+                SpellEnum.HEROISM,
+                SpellEnum.IDENTIFY,
+                SpellEnum.ILLUSORY_SCRIPT,
+                SpellEnum.LONGSTRIDER,
+                SpellEnum.SILENT_IMAGE,
+                SpellEnum.SLEEP,
+                SpellEnum.TASHA_HIDEOUS_LAUGHTER,
+                SpellEnum.THUNDERWAVE,
+                SpellEnum.UNSEEN_SERVANT,
+
+                // Nível 2
+                SpellEnum.ANIMAL_MESSENGER,
+                SpellEnum.BLINDNESS_DEAFNESS,
+                SpellEnum.CALM_EMOTIONS,
+                SpellEnum.CLOUD_OF_DAGGERS,
+                SpellEnum.CROWN_OF_MADNESS,
+                SpellEnum.DETECT_THOUGHTS,
+                SpellEnum.ENHANCE_ABILITY,
+                SpellEnum.ENTHRALL,
+                SpellEnum.HEAT_METAL,
+                SpellEnum.HOLD_PERSON,
+                SpellEnum.INVISIBILITY,
+                SpellEnum.KNOCK,
+                SpellEnum.LESSER_RESTORATION,
+                SpellEnum.LOCATE_ANIMALS_OR_PLANTS,
+                SpellEnum.LOCATE_OBJECT,
+                SpellEnum.MAGIC_MOUTH,
+                SpellEnum.PHANTASMAL_FORCE,
+                SpellEnum.SEE_INVISIBILITY,
+                SpellEnum.SHATTER,
+                SpellEnum.SILENCE,
+                SpellEnum.SUGGESTION,
+                SpellEnum.ZONE_OF_TRUTH,
+
+                // Nível 3
+                SpellEnum.BESTOW_CURSE,
+                SpellEnum.CLAIRVOYANCE,
+                SpellEnum.DISPEL_MAGIC,
+                SpellEnum.FEAR,
+                SpellEnum.FEIGN_DEATH,
+                SpellEnum.GLYPH_OF_WARDING,
+                SpellEnum.HYPNOTIC_PATTERN,
+                SpellEnum.LEMUNDS_TINY_HUT,
+                SpellEnum.MAJOR_IMAGE,
+                SpellEnum.NONDETECTION,
+                SpellEnum.PLANT_GROWTH,
+                SpellEnum.SENDING,
+                SpellEnum.SPEAK_WITH_DEAD,
+                SpellEnum.SPEAK_WITH_PLANTS,
+                SpellEnum.STINKING_CLOUD,
+                SpellEnum.TONGUES,
+
+                // Nível 4
+                SpellEnum.COMPULSION,
+                SpellEnum.CONFUSION,
+                SpellEnum.DIMENSION_DOOR,
+                SpellEnum.FREEDOM_OF_MOVEMENT,
+                SpellEnum.GREATER_INVISIBILITY,
+                SpellEnum.HALLUCINATORY_TERRAIN,
+                SpellEnum.LOCATE_CREATURE,
+                SpellEnum.POLYMORPH,
+
+                // Nível 5
+                SpellEnum.ANIMATE_OBJECTS,
+                SpellEnum.AWAKEN,
+                SpellEnum.DOMINATE_PERSON,
+                SpellEnum.DREAM,
+                SpellEnum.GEAS,
+                SpellEnum.GREATER_RESTORATION,
+                SpellEnum.HOLD_MONSTER,
+                SpellEnum.LEGEND_LORE,
+                SpellEnum.MASS_CURE_WOUNDS,
+                SpellEnum.MISLEAD,
+                SpellEnum.MODIFY_MEMORY,
+                SpellEnum.PLANAR_BINDING,
+                SpellEnum.RAISE_DEAD,
+                SpellEnum.SCRYING,
+                SpellEnum.SEEMING,
+                SpellEnum.TELEPORTATION_CIRCLE,
+
+                // Nível 6
+                SpellEnum.EYEBITE,
+                SpellEnum.FIND_THE_PATH,
+                SpellEnum.GUARDS_AND_WARDS,
+                SpellEnum.MASS_SUGGESTION,
+                SpellEnum.OTTOS_IRRESISTIBLE_DANCE,
+                SpellEnum.PROGRAMMED_ILLUSION,
+                SpellEnum.TRUE_SEEING,
+
+                // Nível 7
+                SpellEnum.ETHEREALNESS,
+                SpellEnum.FORCECAGE,
+                SpellEnum.MIRAGE_ARCANE,
+                SpellEnum.MORDENKAINENS_MAGNIFICENT_MANSION,
+                SpellEnum.MORDENKAINENS_SWORD,
+                SpellEnum.PROJECT_IMAGE,
+                SpellEnum.REGENERATE,
+                SpellEnum.RESURRECTION,
+                SpellEnum.SYMBOL,
+                SpellEnum.TELEPORT,
+
+                // Nível 8
+                SpellEnum.DOMINATE_MONSTER,
+                SpellEnum.FEEBLEMIND,
+                SpellEnum.GLIBNESS,
+                SpellEnum.MIND_BLANK,
+                SpellEnum.POWER_WORD_STUN,
+
+                // Nível 9
+                SpellEnum.FORESIGHT,
+                SpellEnum.POWER_WORD_HEAL,
+                SpellEnum.POWER_WORD_KILL,
+                SpellEnum.TRUE_POLYMORPH
+        );
+    }
+
+    @Override
+    public List<Spell> getSpells(Integer npcLevel) {
+        return List.of();
+    }
+
+    @Override
     public ClassEnum getClassName() {
         return ClassEnum.BARD;
     }
@@ -59,7 +211,6 @@ public class BardClassesGenerator extends AbstractClassesGenerator {
         );
     }
 
-//    (a) um lute ou (b) qualquer outro instrumento musical
     private Item getInstrument() {
         if (random.nextBoolean()) {
             return ToolEnum.LUTE.toItem(1);

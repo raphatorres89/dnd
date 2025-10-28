@@ -13,6 +13,7 @@ import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.dtos.Npc;
 import com.raphaowl.dnd.dtos.NpcFilterDto;
 import com.raphaowl.dnd.dtos.NpcStats;
+import com.raphaowl.dnd.dtos.Spell;
 import com.raphaowl.dnd.enums.AbilityScoreEnum;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.ArmorTypeEnum;
@@ -65,6 +66,8 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
         Integer hp = classesGenerator.getHP(filter.level(), npcStats.attributes().get(AbilityScoreEnum.CON));
         Integer armorClass = calculateArmorClass(npcStats, items);
 
+        List<Spell> spells = classesGenerator.getSpells(filter.level());
+
         return new Npc(
                 new UUID(random.nextLong(), random.nextLong()),
                 generateName(gender),
@@ -78,7 +81,8 @@ public abstract class AbstractNpcGenerator implements NpcGenerator {
                 challengeRating,
                 hp,
                 armorClass,
-                items);
+                items,
+                spells);
     }
 
     private static int calculateArmorClass(NpcStats npcStats, List<Item> items) {

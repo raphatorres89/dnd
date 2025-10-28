@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Item;
+import com.raphaowl.dnd.dtos.Spell;
 import com.raphaowl.dnd.enums.ArmorEnum;
 import com.raphaowl.dnd.enums.ClassEnum;
 import com.raphaowl.dnd.enums.GearEnum;
+import com.raphaowl.dnd.enums.SpellEnum;
 import com.raphaowl.dnd.enums.ToolEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
 
@@ -83,5 +85,15 @@ public class RogueClassesGenerator extends AbstractClassesGenerator {
         items.add(ToolEnum.THIEVES_TOOLS.toItem(1));
 
         return items;
+    }
+
+    @Override
+    public List<Spell> getSpells(Integer npcLevel) {
+        return List.of();
+    }
+
+    @Override
+    protected List<SpellEnum> getSpellEnumList() {
+        return List.of();
     }
 }

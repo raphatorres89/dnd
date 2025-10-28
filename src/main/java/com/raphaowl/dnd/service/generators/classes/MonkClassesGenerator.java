@@ -3,7 +3,9 @@ package com.raphaowl.dnd.service.generators.classes;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Item;
+import com.raphaowl.dnd.dtos.Spell;
 import com.raphaowl.dnd.enums.ClassEnum;
+import com.raphaowl.dnd.enums.SpellEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
 
 import org.springframework.stereotype.Component;
@@ -54,10 +56,20 @@ public class MonkClassesGenerator extends AbstractClassesGenerator {
         );
     }
 
+    @Override
+    public List<Spell> getSpells(Integer npcLevel) {
+        return List.of();
+    }
+
     private Item getMainWeapon() {
         if (random.nextBoolean()) {
             return WeaponEnum.SHORTSWORD.toWeapon(1);
         }
         return getAnySimpleWeapon();
+    }
+
+    @Override
+    protected List<SpellEnum> getSpellEnumList() {
+        return List.of();
     }
 }

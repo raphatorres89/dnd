@@ -21,7 +21,8 @@ public record Npc(
         Integer level,
         Integer maxHP,
         Integer armorClass,
-        List<Item> inventory) {
+        List<Item> inventory,
+        List<Spell> spells) {
 
     public List<Item> getWeapons() {
         return inventory.stream()

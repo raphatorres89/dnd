@@ -3,9 +3,11 @@ package com.raphaowl.dnd.service.generators.classes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import com.raphaowl.dnd.dtos.Item;
 import com.raphaowl.dnd.enums.GearEnum;
+import com.raphaowl.dnd.enums.SpellEnum;
 import com.raphaowl.dnd.enums.ToolEnum;
 import com.raphaowl.dnd.enums.ToolTypeEnum;
 import com.raphaowl.dnd.enums.WeaponEnum;
@@ -17,6 +19,23 @@ import org.springframework.stereotype.Component;
 public abstract class AbstractClassesGenerator implements ClassesGenerator {
 
     Random random = new Random();
+
+    protected abstract List<SpellEnum> getSpellEnumList();
+
+    protected SpellEnum addUniqueSpell(Set<SpellEnum> spells, int level) {
+        SpellEnum spell;
+        do {
+            spell = getAleatorySpellFromLevel(level);
+        } while (spells.contains(spell));
+        return spell;
+    }
+
+    private SpellEnum getAleatorySpellFromLevel(Integer level) {
+        List<SpellEnum> spellsOfLevel = getSpellEnumList().stream()
+                .filter(spell -> spell.getLevel() == level)
+                .toList();
+        return spellsOfLevel.get(random.nextInt(spellsOfLevel.size()));
+    }
 
     protected Integer getHP(Integer level, Integer constitution, Integer dice) {
         Integer constitutionModifier = (constitution - 10) / 2;

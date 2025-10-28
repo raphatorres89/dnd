@@ -27,9 +27,9 @@ public class NpcFactory {
     public NpcGenerator getGenerator(RaceEnum race) {
         NpcGenerator generator = generatorsMap.get(race);
         if (generator == null) {
-            List<NpcGenerator> races = List.copyOf(generatorsMap.values());
+            List<NpcGenerator> npcs = List.copyOf(generatorsMap.values());
             Random random = new Random();
-            return races.get(random.nextInt(races.size()));
+            return npcs.get(random.nextInt(npcs.size()));
         }
         return generator;
     }
