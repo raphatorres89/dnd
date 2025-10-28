@@ -13,8 +13,8 @@ public record NpcFilterDto(
         Integer level
 ) {
     public NpcFilterDto {
-        if (level != null && (level < 1 || level > 16)) {
-            throw new IllegalArgumentException("O nível deve estar entre 1 e 16.");
+        if (level != null && (level < 1 || level > 20)) {
+            throw new IllegalArgumentException("O nível deve estar entre 1 e 20.");
         }
     }
 }

@@ -64,7 +64,7 @@
                 <div class="col-md-2">
                     <label for="filterNpcLevel" class="form-label" th:text="#{app.npcs.filter.level}"></label>
                     <select id="filterNpcLevel" class="form-select">
-                        <option th:each="cr : ${#numbers.sequence(1, 16)}"
+                        <option th:each="cr : ${#numbers.sequence(1, 20)}"
                                 th:value="${cr}"
                                 th:text="${cr}"
                                 th:selected="${cr == 1}">
