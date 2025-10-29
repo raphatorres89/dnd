@@ -84,6 +84,6 @@ public enum GearEnum {
     private final GearTypeEnum type;
 
     public Item toItem(Integer quantity) {
-        return new Item(quantity, this.name(), price, weight);
+        return new Item(quantity, this.name(), price, weight, type.getIconClass());
     }
 }

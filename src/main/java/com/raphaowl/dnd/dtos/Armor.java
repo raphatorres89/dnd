@@ -15,7 +15,7 @@ public class Armor extends Item {
 
     public Armor(Integer quantity, String name, Double price, Double weight, Integer ac,
             Boolean stealthDisadvantage, String strengthRequirement, ArmorTypeEnum type) {
-        super(quantity, name, price, weight);
+        super(quantity, name, price, weight, type.getIconClass());
         this.ac = ac;
         this.stealthDisadvantage = stealthDisadvantage;
         this.strengthRequirement = strengthRequirement;

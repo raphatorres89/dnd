@@ -43,11 +43,25 @@ public abstract class AbstractClassesGenerator implements ClassesGenerator {
                 .toList();
     }
 
+    private static final int MAX_ATTEMPTS = 50;
+
     protected SpellEnum addUniqueSpell(Set<SpellEnum> spells, int level) {
-        SpellEnum spell;
+        SpellEnum spell = null;
+        int attempts = 0;
+
         do {
+            // 1. Tenta obter uma magia aleatória
             spell = getAleatorySpellFromLevel(level);
+            attempts++;
+
+            // 2. SALVAGUARDA: Se o número de tentativas exceder o limite, pare.
+            // Isso assume que todas as magias do nível já foram adicionadas.
+            if (attempts > MAX_ATTEMPTS) {
+                return null; // Retorna null para sinalizar que não há mais magias únicas.
+            }
+
         } while (spells.contains(spell));
+
         return spell;
     }
 

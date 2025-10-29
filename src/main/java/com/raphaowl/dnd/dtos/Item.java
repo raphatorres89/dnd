@@ -12,4 +12,5 @@ public class Item {
         private String name;
         private Double price;
         private Double weight;
+        private String iconClass;
 }

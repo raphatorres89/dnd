@@ -59,7 +59,7 @@ public enum ToolEnum {
     private final Double weight;
 
     public Item toItem(Integer quantity) {
-        return new Item(quantity, this.name(), price, weight);
+        return new Item(quantity, this.name(), price, weight, type.getIconClass());
     }
 
     public static List<ToolEnum> getByType(ToolTypeEnum type) {

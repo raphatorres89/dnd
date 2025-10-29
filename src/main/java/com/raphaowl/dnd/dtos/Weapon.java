@@ -12,7 +12,7 @@ public class Weapon extends Item {
     private WeaponType type;
 
     public Weapon(Integer quantity, String name, Double price, Double weight, Attack attack, WeaponType type) {
-        super(quantity, name, price, weight);
+        super(quantity, name, price, weight, type.getIconClass());
         this.attack = attack;
         this.type = type;
     }

@@ -208,6 +208,8 @@
                         <tbody>
                         <tr th:each="item : ${npc.inventory}">
                             <td>
+
+                                <i class="fw-semibold" th:classappend="${item.iconClass}"></i>
                                 <span class="fw-semibold" th:text="#{${'item.' + item.name}}"></span>
                                 <span class="fw-semibold"
                                       th:text="${item.quantity > 1} ? ' (' + ${item.quantity} + ')' : ''">
@@ -232,33 +234,39 @@
                     <table class="table table-borderless table-sm table-striped">
                         <thead>
                         <tr>
-                            <th>Nível</th>
-                            <th th:text="#{app.npcs.card.inventory.name}"></th>
-                            <th><i class="ra ra-book"></i></th>
-                            <th>Damage Type</th>
-                            <th>Damage</th>
+                            <th>
+                                <span th:text="#{app.npcs.card.level}"></span>
+                            </th>
+                            <th>
+                                <i class="ra ra-book"></i>
+                                <span th:text="#{app.npcs.card.inventory.name}"></span>
+                            </th>
+                            <th>
+                                <span th:text="#{app.npcs.card.inventory.damage.type}"></span>
+                            </th>
+                            <th>
+                                <span th:text="#{app.npcs.card.inventory.damage}"></span>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="spell : ${npc.spells}">
-                            <td>
-                                <span class="fw-semibold" th:text="${spell.level}"></span>
+                            <td class="fw-semibold">
+                                <span th:if="${spell.level == 0}">-</span>
+                                <span th:if="${spell.level != 0}" th:text="${spell.level}">-</span>
                             </td>
                             <td>
+                                <i th:classappend="${spell.school.iconClass}" data-bs-toggle="popover" th:title="#{${'spell.school.' + spell.school.name()}}"></i>
                                 <span class="fw-semibold" th:text="#{${'spell.' + spell.name}}"></span>
                             </td>
-                            <td>
-                                <span class="fw-semibold" th:text="#{${'spell.school.' + spell.school.name()}}"></span>
-                            </td>
-                            <td class="fw-semibold">
+                            <td class="text-danger fw-bold">
                                 <span th:if="${spell.damageType != null}">
                                     <i th:classappend="${spell.damageType.iconClass}"></i>
                                     <span th:text="#{${'damage.' + spell.damageType}}"></span>
                                 </span>
-<!--                                <i th:if="${spell.damageType != null}" th:classappend="${spell.damageType.iconClass}"></i>                                <span  th:text="#{${'damage.' + spell.damageType}}"></span>-->
                             </td>
                             <td>
-                                <span class="fw-semibold" th:text="${spell.damage}"></span>
+                                <span class="text-success fw-bold" th:text="${spell.damage}"></span>
                             </td>
                         </tr>
                         </tbody>
