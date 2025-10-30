@@ -133,6 +133,30 @@
                         </tbody>
                     </table>
 
+                    <table class="table table-borderless table-sm table-striped">
+                        <thead>
+                        <tr>
+                            <th th:text="#{app.npcs.card.attack.name}"></th>
+                            <th th:text="#{app.npcs.card.attack.damage}"></th>
+                            <th th:text="#{app.npcs.card.attack.type}"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="spell : ${npc.getAttackSpells()}">
+                            <td>
+                                <span class="fw-bolder" th:text="#{${'spell.' + spell.name}}"></span>
+                            </td>
+                            <td>
+                                <span class="text-success fw-bold" th:text="${spell.damage}"></span>
+                            </td>
+                            <td class="text-danger fw-bold">
+                                <i th:classappend="${spell.damageType.iconClass}"></i>
+                                <span  th:text="#{${'damage.' + spell.damageType}}"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
                     <h5 class="border-bottom pb-1 mb-3 text-warning fw-bold">
                         <svg fill="currentColor" height="16px" width="16px" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
                             <g>

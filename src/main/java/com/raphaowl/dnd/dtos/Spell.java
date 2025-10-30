@@ -16,4 +16,8 @@ public class Spell {
     private MagicSchool school;
     private DamageEnum damageType;
     private String damage;
+
+    public Boolean getIsAttack() {
+        return damageType != null && damage != null && !damage.isBlank();
+    }
 }

@@ -29,5 +29,11 @@ public record Npc(
                 .filter(item -> item instanceof Weapon)
                 .toList();
     }
+
+    public List<Spell> getAttackSpells() {
+        return spells.stream()
+                .filter(Spell::getIsAttack)
+                .toList();
+    }
 }
 
