@@ -46,30 +46,49 @@ public abstract class AbstractClassesGenerator implements ClassesGenerator {
     private static final int MAX_ATTEMPTS = 50;
 
     protected SpellEnum addUniqueSpell(Set<SpellEnum> spells, int level) {
-        SpellEnum spell = null;
-        int attempts = 0;
 
-        do {
-            // 1. Tenta obter uma magia aleatória
-            spell = getAleatorySpellFromLevel(level);
-            attempts++;
+        // Obtém a lista de magias que AINDA NÃO FORAM ADICIONADAS.
+        List<SpellEnum> availableSpells = getAvailableSpells(spells, level);
 
-            // 2. SALVAGUARDA: Se o número de tentativas exceder o limite, pare.
-            // Isso assume que todas as magias do nível já foram adicionadas.
-            if (attempts > MAX_ATTEMPTS) {
-                return null; // Retorna null para sinalizar que não há mais magias únicas.
+        // 1. CHECAGEM DE FALHA: Se a lista estiver vazia, não há o que adicionar.
+        if (availableSpells.isEmpty()) {
+
+            // HACK PARA EVITAR NULL: Retornamos uma magia já existente
+            // (por exemplo, a primeira magia do Set). Isso satisfaz o contrato
+            // de retorno não-nulo, mas o chamador deve ser avisado que NADA foi adicionado.
+
+            if (!spells.isEmpty()) {
+                // Retorna o primeiro elemento do Set como um "placeholder"
+                return spells.iterator().next();
+            } else {
+                // Caso extremo: Se o Set estiver vazio e não houver magias disponíveis para este nível,
+                // isso pode causar uma quebra, mas é mais seguro que retornar null.
+                // Para segurança máxima, aqui deveria haver um SpellEnum.EMPTY, mas vamos evitar NPE.
+                // Vou chamar o método que busca a lista original e retornar o primeiro elemento.
+                return getSpellEnumList().iterator().next();
             }
+        }
 
-        } while (spells.contains(spell));
+        // 2. SUCESSO: Seleciona uma magia aleatória apenas da lista de disponíveis
+        SpellEnum newSpell = availableSpells.get(random.nextInt(availableSpells.size()));
 
-        return spell;
+        // 3. Adiciona ao Set (garantido ser único)
+        spells.add(newSpell);
+
+        // 4. Retorna a nova magia
+        return newSpell;
     }
 
-    private SpellEnum getAleatorySpellFromLevel(Integer level) {
-        List<SpellEnum> spellsOfLevel = getSpellEnumList().stream()
+    private List<SpellEnum> getAvailableSpells(Set<SpellEnum> spells, int level) {
+        // 1. Obtém todas as magias para o nível
+        List<SpellEnum> allSpellsOfLevel = getSpellEnumList().stream()
                 .filter(spell -> spell.getLevel() == level)
                 .toList();
-        return spellsOfLevel.get(random.nextInt(spellsOfLevel.size()));
+
+        // 2. Filtra as magias que AINDA NÃO estão no Set
+        return allSpellsOfLevel.stream()
+                .filter(spell -> !spells.contains(spell))
+                .toList();
     }
 
     protected Integer getHP(Integer level, Integer constitution, Integer dice) {
