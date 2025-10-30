@@ -5,6 +5,7 @@ import java.util.List;
 import com.raphaowl.dnd.dtos.Npc;
 import com.raphaowl.dnd.dtos.NpcFilterDto;
 import com.raphaowl.dnd.service.NpcService;
+import com.raphaowl.dnd.utils.ModCalculator;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +36,11 @@ public class NpcController {
 
         List<Npc> npcs = npcService.generateNpcs(filter, count);
         model.addAttribute("npcs", npcs);
-
+        model.addAttribute("modCalculator", (ModCalculator) this::calculateModifier);
         return "fragments/npc-card :: cards";
+    }
+
+    private Integer calculateModifier(Integer score) {
+        return (int) Math.floor((score - 10) / 2.0);
     }
 }
