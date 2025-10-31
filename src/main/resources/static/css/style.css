@@ -7,6 +7,40 @@ h1, h2, h3 {
     padding-bottom: 0.5rem;
 }
 
+.copper {
+    color: #b87333; /* cor cobre */
+}
+
+.copper-bg {
+    background-color: #b87333; /* fundo cobre */
+    color: white !important;
+}
+
+.silver {
+    color: #c0c0c0; /* cor prata */
+}
+
+.silver-bg {
+    background-color: #c0c0c0; /* fundo prata */
+    color: black !important;
+}
+
+.gold {
+    color: #ffd700; /* cor ouro */
+}
+
+.gold-bg {
+    background-color: #ffd700; /* fundo ouro */
+    color: black !important;
+}
+
+.icon-h1 {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    margin-right: 0.15em;
+}
+
 .hero-section {
     position: relative;
     height: 100vh;
