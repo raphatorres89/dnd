@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(
+          pageTitle='Gerador de Tavernas',
+          content=~{::content},
+          headExtra=~{}
+      )}">
+<body>
+<th:block th:fragment="content">
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="parchment-bg">
+
+                <h1 class="text-center mb-4" th:text="${tavern.name}">O Caldeirão Envelhecido</h1>
+
+                <hr class="hr-light my-4">
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p class="mb-1"><strong>Dono:</strong> <span th:text="${tavern.owner}"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-1"><strong>Especialidade da Casa:</strong> <span th:text="${tavern.specialty}"></span></p>
+                    </div>
+                </div>
+
+                <h2 class="mt-4">📋 Cardápio do Dia</h2>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item" th:each="item : ${tavern.menu}" th:text="${item}">
+                        Ensopado do Dia: Carne de Ogro (3 PC)
+                    </li>
+                </ul>
+
+                <h2 class="mt-4">🗣️ Rumores Locais</h2>
+                <div class="list-group mb-4">
+                    <div class="list-group-item" th:each="rumor : ${tavern.rumors}">
+                        <p class="mb-1" th:text="${rumor.description}">O Barão está enviando seus guardas para as ruínas do forte na floresta. Algo de valor foi encontrado.</p>
+                        <small class="fst-italic fw-lighter">Contado por: <span th:text="${rumor.source}">Um bêbado</span></small>
+                    </div>
+                </div>
+
+                <h2 class="mt-4">⚔️ Mural de Aventuras</h2>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-action fs-5" th:each="quest : ${tavern.quests}" th:text="${quest}">
+                        Side Quest: Eliminar o ninho de aranhas gigantes no porão da taverna vizinha.
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</th:block>
+</body>

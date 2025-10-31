@@ -67,9 +67,7 @@
                                 <span class="fw-bold text-primary" th:text="#{${'attributes.prefix.' + entry.key}}"></span><br>
                                 <span class="fs-5 text-dark" th:text="${entry.value}"></span>
                                 <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill text-bg-light">
-                                    <span class=""
-                                          th:text="${modCalculator.calculate(entry.value)}">
-                                    </span>
+                                    <span th:text="${modCalculator.calculate(entry.value)}"></span>
                                 </span>
                             </div>
                         </div>
