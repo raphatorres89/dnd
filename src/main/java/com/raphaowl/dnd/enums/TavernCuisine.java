@@ -24,4 +24,13 @@ public enum TavernCuisine {
     public static TavernCuisine getRandomName() {
         return VALUES[random.nextInt(VALUES.length)];
     }
+
+    public static TavernCuisine from(String name) {
+        for (TavernCuisine cuisine : VALUES) {
+            if (cuisine.name().equalsIgnoreCase(name)) {
+                return cuisine;
+            }
+        }
+        return null;
+    }
 }

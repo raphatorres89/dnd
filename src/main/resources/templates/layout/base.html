@@ -34,12 +34,14 @@
 
     <script>
         const modal = document.getElementById('monsterDetailModal');
-        modal.addEventListener('shown.bs.modal', function () {
-            const popoverTriggerList = [].slice.call(modal.querySelectorAll('[data-bs-toggle="popover"]'));
-            popoverTriggerList.map(function (popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl);
+        if (modal) {
+            modal.addEventListener('shown.bs.modal', function () {
+                const popoverTriggerList = [].slice.call(modal.querySelectorAll('[data-bs-toggle="popover"]'));
+                popoverTriggerList.map(function (popoverTriggerEl) {
+                    return new bootstrap.Popover(popoverTriggerEl);
+                });
             });
-        });
+        }
     </script>
 
     <script th:inline="javascript">

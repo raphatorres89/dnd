@@ -29,9 +29,9 @@ public class Tavern {
     private final List<MenuEntry> menu;
     private final List<TavernQuest> quests;
 
-    public Tavern() {
+    public Tavern(TavernCuisine tavernCuisine) {
         this.name = TavernName.getRandomName();
-        this.cuisine = TavernCuisine.getRandomName();
+        this.cuisine = tavernCuisine != null ? tavernCuisine : TavernCuisine.getRandomName();
         this.owner = TavernOwner.getRandomName();
         this.specialty = TavernSpecialty.getRandomName();
         this.rumors = aleatoryRumors();
@@ -60,7 +60,7 @@ public class Tavern {
                                         .toList());
 
         // Determina o número de bebidas (garante 3, max 5)
-        int numDrinks = random.nextInt(3) + 3; // 3, 4 ou 5
+        int numDrinks = random.nextInt(2) + 3;
 
         // Embaralha as bebidas e seleciona o número desejado
         Collections.shuffle(availableDrinks, random);

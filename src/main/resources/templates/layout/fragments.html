@@ -139,6 +139,13 @@
                        href="/monsters"
                        th:text="#{app.menu.monsters}"></a>
                 </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link"
+                       th:classappend="${currentUri == '/taverns' ? 'active' : ''}"
+                       th:aria-current="${currentUri == '/taverns' ? 'page' : ''}"
+                       href="/taverns"
+                       th:text="#{app.menu.taverns}"></a>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"
