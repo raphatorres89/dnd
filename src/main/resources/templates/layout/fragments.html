@@ -52,6 +52,13 @@
                                href="/taverns"
                                th:text="#{app.menu.taverns}"></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               th:classappend="${currentUri == '/quests' ? 'active' : ''}"
+                               th:aria-current="${currentUri == '/quests' ? 'page' : ''}"
+                               href="/quests"
+                               th:text="#{app.menu.quests}"></a>
+                        </li>
 
                         <li class="nav-item dropdown ms-auto">
                             <a class="nav-link dropdown-toggle"
@@ -132,19 +139,26 @@
                        href="/npcs"
                        th:text="#{app.menu.npcs}"></a>
                 </li>
-                <li class="nav-item mb-3">
+                <li class="nav-item">
                     <a class="nav-link"
                        th:classappend="${currentUri == '/monsters' ? 'active' : ''}"
                        th:aria-current="${currentUri == '/monsters' ? 'page' : ''}"
                        href="/monsters"
                        th:text="#{app.menu.monsters}"></a>
                 </li>
-                <li class="nav-item mb-3">
+                <li class="nav-item">
                     <a class="nav-link"
                        th:classappend="${currentUri == '/taverns' ? 'active' : ''}"
                        th:aria-current="${currentUri == '/taverns' ? 'page' : ''}"
                        href="/taverns"
                        th:text="#{app.menu.taverns}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:classappend="${currentUri == '/quests' ? 'active' : ''}"
+                       th:aria-current="${currentUri == '/quests' ? 'page' : ''}"
+                       href="/quests"
+                       th:text="#{app.menu.quests}"></a>
                 </li>
 
                 <li class="nav-item dropdown">
