@@ -12,28 +12,40 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
 
-            <div class="card bg-gray-100 shadow-lg rounded-lg p-4 border border-gray-300 mb-4">
+            <div class="card p-4 mb-4">
+                <form action="/taverns" method="GET">
+                    <div class="row g-3 align-items-center">
 
-                <form action="/taverns" method="GET" class="d-flex align-items-center">
-                    <label for="cuisineFilter" class="form-label mb-0 me-3 text-gray-700 font-semibold">
-                        <span th:text="#{app.taverns.filter.label}"></span>
-                    </label>
+                        <!-- Label -->
+                        <div class="col-12 col-md-auto">
+                            <label for="cuisineFilter" class="form-label mb-0 me-md-3">
+                                <span th:text="#{app.taverns.filter.label}"></span>
+                            </label>
+                        </div>
 
-                    <select id="cuisineFilter" name="cuisine" class="form-select w-auto me-3">
-                        <option value="" th:text="#{app.taverns.filter.any}"
-                                th:selected="${selectedCuisine == null or selectedCuisine == ''}">
-                        </option>
+                        <!-- Select -->
+                        <div class="col-12 col-md">
+                            <select id="cuisineFilter" name="cuisine" class="form-select">
+                                <option value="" th:text="#{app.taverns.filter.any}"
+                                        th:selected="${selectedCuisine == null or selectedCuisine == ''}">
+                                </option>
 
-                        <option th:each="cuisine : ${cuisines}"
-                                th:value="${cuisine}"
-                                th:text="#{tavern.cuisine.__${cuisine}__}"
-                                th:selected="${selectedCuisine == cuisine.name()}">
-                        </option>
-                    </select>
+                                <option th:each="cuisine : ${cuisines}"
+                                        th:value="${cuisine}"
+                                        th:text="#{tavern.cuisine.__${cuisine}__}"
+                                        th:selected="${selectedCuisine == cuisine.name()}">
+                                </option>
+                            </select>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-2 px-4 rounded transition duration-150"
-                        th:text="#{app.taverns.filter.button}">
-                    </button>
+                        <!-- Button -->
+                        <div class="col-12 col-md-auto">
+                            <button type="submit" class="btn btn-primary text-white w-100 w-md-auto py-2 px-4"
+                                    th:text="#{app.taverns.filter.button}">
+                            </button>
+                        </div>
+
+                    </div>
                 </form>
             </div>
 
@@ -68,8 +80,10 @@
                         <span th:text="#{tavern.food.__${entry.item()}__}" class="me-auto"></span>
                     </div>
 
-                    <span class="badge rounded-pill" th:classappend="${entry.item().priceUnit.getColor()}"
-                          th:text="${entry.price()}"></span>
+                    <span class="badge rounded-pill" th:classappend="${entry.item().priceUnit.getColor()}">
+                        <span th:text="${entry.price()}"></span>
+                        <span th:text="#{money.__${entry.item().priceUnit.name()}__}"></span>
+                    </span>
                 </li>
             </ul>
 

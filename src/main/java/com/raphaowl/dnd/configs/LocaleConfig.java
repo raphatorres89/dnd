@@ -1,7 +1,5 @@
 package com.raphaowl.dnd.configs;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
@@ -19,7 +17,13 @@ public class LocaleConfig implements WebMvcConfigurer {
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:i18n/messages");
+        messageSource.setBasenames("classpath:i18n/items",
+                                   "classpath:i18n/messages",
+                                   "classpath:i18n/monsters",
+                                   "classpath:i18n/npcs",
+                                   "classpath:i18n/spells",
+                                   "classpath:i18n/taverns"
+                                   );
         messageSource.setDefaultEncoding("UTF-8");
 
         messageSource.setCacheSeconds(3600);
