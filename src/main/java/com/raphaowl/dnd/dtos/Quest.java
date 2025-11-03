@@ -20,7 +20,7 @@ public class Quest {
     private String hook;
     private String objective;
     private String complication;
-    private List<String> reward;
+    private List<Item> reward;
     private String environment;
     private List<MonsterNameEnum> suggestedMonsters;
     private List<String> factionsInvolved;

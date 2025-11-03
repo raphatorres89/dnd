@@ -3,6 +3,7 @@ package com.raphaowl.dnd.service;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Quest;
+import com.raphaowl.dnd.enums.GearEnum;
 import com.raphaowl.dnd.enums.MonsterNameEnum;
 import com.raphaowl.dnd.enums.QuestDifficulty;
 import com.raphaowl.dnd.enums.QuestType;
@@ -26,7 +27,7 @@ public class QuestService {
                 "Mineiros relatam sussurros vindos do subsolo.",
                 "Investigar os túneis e descobrir a origem.",
                 "A criatura é manipulada por um culto local.",
-                List.of("50 gp", "reconhecimento da Guilda dos Mineradores"),
+                List.of(GearEnum.GOLD.toItem(50)),
                 "Subterrâneo",
                 List.of(MonsterNameEnum.DARKMANTLE, MonsterNameEnum.GRIMLOCK, MonsterNameEnum.CULT_FANATIC),
                 List.of("Guilda dos Mineradores", "Culto da Pedra Sombria"),

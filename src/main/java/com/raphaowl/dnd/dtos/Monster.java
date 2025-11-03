@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.raphaowl.dnd.enums.AlignmentEnum;
 import com.raphaowl.dnd.enums.DamageEnum;
-import com.raphaowl.dnd.enums.MonsterEnum;
+import com.raphaowl.dnd.enums.SizeEnum;
 import com.raphaowl.dnd.enums.MonsterNameEnum;
 import com.raphaowl.dnd.enums.MonsterSubtypeEnum;
 import com.raphaowl.dnd.enums.MonsterTypeEnum;
@@ -18,7 +18,7 @@ import lombok.Builder;
 public record Monster(
         String index,
         MonsterNameEnum name,
-        MonsterEnum size,
+        SizeEnum size,
         MonsterTypeEnum type,
         String subtype,
         AlignmentEnum alignment,

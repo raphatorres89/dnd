@@ -25,7 +25,7 @@
                     <label for="filterSize" class="form-label visually-hidden" th:text="#{app.monsters.filter.size}"></label>
                     <select id="filterSize" class="form-select">
                         <option value="" th:text="#{app.monsters.filter.size.all}"></option>
-                        <option th:each="size : ${T(com.raphaowl.dnd.enums.MonsterEnum).values()}"
+                        <option th:each="size : ${T(com.raphaowl.dnd.enums.SizeEnum).values()}"
                                 th:value="${size.name()}"
                                 th:text="#{${'size.' + size.name()}}">
                         </option>
@@ -61,7 +61,8 @@
                 </tr>
             </thead>
             <tbody th:each="monster : ${monsters}">
-                <tr class="monster-row"
+                <tr class="monster-row monster-link"
+                    th:attr="data-monster-id=${monster.index}"
                     th:data-id="${monster.index}"
                     th:data-size="${monster.size()}"
                     th:data-cr="${monster.challengeRating.doubleValue()}"
@@ -78,49 +79,7 @@
     </div>
 
     <!-- Modal -->
-    <th:block th:replace="fragments/monster-modal :: monster-modal"></th:block>
-
-    <!--    <div class="modal fade" id="monsterDetailModal" tabindex="-1" aria-labelledby="monsterDetailModalLabel" aria-hidden="true">-->
-<!--        <div class="modal-dialog">-->
-<!--            <div class="modal-content">-->
-<!--                <div class="modal-header">-->
-<!--                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="#{app.monsters.modal.title}"></h1>-->
-<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                </div>-->
-<!--                <div class="modal-body">-->
-<!--                    <div id="monsterDetails" class="space-y-2 text-sm">-->
-<!--                        <span class="visually-hidden"><i class="ra ra-sword"></i> <span th:text="#{app.monsters.modal.loading}" /></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="modal-footer">-->
-<!--                    <button type="button"-->
-<!--                            class="btn btn-secondary"-->
-<!--                            data-bs-dismiss="modal"-->
-<!--                            th:text="#{app.monsters.modal.button}" />-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-    <!-- Script click na row -->
-    <script>
-        $(document).ready(function() {
-            // 1. Ouve o clique em qualquer linha com a classe 'monster-row'
-            $('#monsterTable').on('click', '.monster-row', function() {
-                // 2. Obtém o ID do monstro a partir do atributo data-id da linha
-                var monsterId = $(this).data('id');
-
-                // 3. Define a URL do seu endpoint no backend
-                var url = '/monsters/' + monsterId;
-
-                // 4. Limpa o modal e mostra o spinner de carregamento
-                $('#monsterDetails').load(url, function () {
-                    // Callback: o conteúdo foi carregado. Agora, exiba o modal.
-                    $('#monsterDetailModal').modal('show');
-                });
-            });
-        });
-    </script>
+    <th:block th:replace="~{fragments/monster-modal :: monster-modal}"></th:block>
 
     <!-- Script de filtragem -->
     <script>

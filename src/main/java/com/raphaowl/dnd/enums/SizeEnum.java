@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum MonsterEnum {
+public enum SizeEnum {
     TINY(1),
     SMALL(2),
     MEDIUM(3),
@@ -20,13 +20,13 @@ public enum MonsterEnum {
     private final int primaryIcons;
 
     @JsonCreator
-    public static MonsterEnum fromString(String value) {
+    public static SizeEnum fromString(String value) {
         if (value == null) {
             return null;
         }
         String normalized = value.trim().toLowerCase();
 
-        return Stream.of(MonsterEnum.values())
+        return Stream.of(SizeEnum.values())
                 .filter(g -> g.name().toLowerCase().equals(normalized))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Nome não reconhecido: " + value));

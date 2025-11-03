@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layout/base :: base(
-          pageTitle='Gerador de Tavernas',
+          pageTitle='Gerador de Quests',
           content=~{::content},
           headExtra=~{}
       )}">
@@ -13,11 +13,11 @@
         <h1 class="mb-3">🍺 Gerador de Quests</h1>
         <a href="/quests" class="btn btn-primary mb-4">Gerar Nova Quest</a>
 
-        <div class="card bg-secondary text-light p-3">
+        <div class="card text-light p-3">
 
             <h2 th:text="${quest.title}" class="mb-2"></h2>
 
-            <span class="badge bg-warning text-dark" th:text="${quest.difficulty}"></span>
+            <span class="badge bg-warning text-dark m-1" th:text="${quest.difficulty}"></span>
             <span class="badge bg-info text-dark" th:text="${quest.type}"></span>
 
             <hr>
@@ -26,7 +26,14 @@
             <p><strong>Local:</strong> <span th:text="${quest.location}"></span></p>
             <p><strong>Objetivo:</strong> <span th:text="${quest.objective}"></span></p>
             <p><strong>Complicação:</strong> <span th:text="${quest.complication}"></span></p>
-            <p><strong>Recompensa:</strong> <span th:text="${quest.reward}"></span></p>
+            <p><strong>Recompensa:</strong>
+                <span th:each="item : ${quest.reward}">
+                    <i th:class="${item.iconClass}"></i>
+                    <span th:text="#{item.__${item.name}__}"></span>
+                    <span th:text="${item.quantity > 1} ? ' (' + ${item.quantity} + ')' : ''">
+                    </span>
+                </span>
+            </p>
 
             <hr>
 
@@ -53,16 +60,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("click", function(e) {
-            const link = e.target.closest(".monster-link");
-            if (!link) return;
+    <th:block th:replace="~{fragments/monster-modal :: monster-modal}"></th:block>
 
-            const monsterId = link.getAttribute("data-monster-id");
-            openMonsterModal(monsterId);
-        });
-    </script>
-
-    <th:block th:replace="fragments/monster-modal :: monster-modal"></th:block>
 </th:block>
 </body>
