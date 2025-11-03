@@ -1,0 +1,31 @@
+<th:block th:fragment="monster-modal">
+    <!-- Modal -->
+    <div class="modal fade" id="monsterDetailModal" tabindex="-1" aria-labelledby="monsterDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg"> <!-- maior modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="monsterDetailModalLabel" th:text="#{app.monsters.modal.title}">Detalhes do Monstro</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="monsterDetails">
+                        <span class="text-muted">Carregando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para abrir modal -->
+    <script>
+        // Agora a função pode ser reaproveitada em qualquer lugar
+        function openMonsterModal(monsterId) {
+            const url = '/monsters/' + monsterId;
+
+            $('#monsterDetails').html('<span class="text-muted">Carregando...</span>');
+            $('#monsterDetails').load(url, function() {
+                $('#monsterDetailModal').modal('show');
+            });
+        }
+    </script>
+</th:block>

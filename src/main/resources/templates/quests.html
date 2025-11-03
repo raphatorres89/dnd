@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(
+          pageTitle='Gerador de Tavernas',
+          content=~{::content},
+          headExtra=~{}
+      )}">
+<body>
+<th:block th:fragment="content">
+
+    <div class="container">
+
+        <h1 class="mb-3">🍺 Gerador de Quests</h1>
+        <a href="/quests" class="btn btn-primary mb-4">Gerar Nova Quest</a>
+
+        <div class="card bg-secondary text-light p-3">
+
+            <h2 th:text="${quest.title}" class="mb-2"></h2>
+
+            <span class="badge bg-warning text-dark" th:text="${quest.difficulty}"></span>
+            <span class="badge bg-info text-dark" th:text="${quest.type}"></span>
+
+            <hr>
+
+            <p><strong>Gancho:</strong> <span th:text="${quest.hook}"></span></p>
+            <p><strong>Local:</strong> <span th:text="${quest.location}"></span></p>
+            <p><strong>Objetivo:</strong> <span th:text="${quest.objective}"></span></p>
+            <p><strong>Complicação:</strong> <span th:text="${quest.complication}"></span></p>
+            <p><strong>Recompensa:</strong> <span th:text="${quest.reward}"></span></p>
+
+            <hr>
+
+            <h5>NPCs Envolvidos</h5>
+            <ul>
+                <li th:each="npc : ${quest.keyNPCs}" th:text="${npc}"></li>
+            </ul>
+
+            <h5>Facções</h5>
+            <ul>
+                <li th:each="fac : ${quest.factionsInvolved}" th:text="${fac}"></li>
+            </ul>
+
+            <h5>Monstros sugeridos</h5>
+            <ul>
+                <li th:each="monster : ${quest.suggestedMonsters}">
+                    <a href="javascript:void(0)"
+                       th:text="#{monster.name.__${monster.name()}__}"
+                       th:attr="data-monster-id=${monster.index}"
+                       class="monster-link">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("click", function(e) {
+            const link = e.target.closest(".monster-link");
+            if (!link) return;
+
+            const monsterId = link.getAttribute("data-monster-id");
+            openMonsterModal(monsterId);
+        });
+    </script>
+
+    <th:block th:replace="fragments/monster-modal :: monster-modal"></th:block>
+</th:block>
+</body>

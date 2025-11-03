@@ -78,27 +78,29 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="monsterDetailModal" tabindex="-1" aria-labelledby="monsterDetailModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="#{app.monsters.modal.title}"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="monsterDetails" class="space-y-2 text-sm">
-                        <span class="visually-hidden"><i class="ra ra-sword"></i> <span th:text="#{app.monsters.modal.loading}" /></span>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                            th:text="#{app.monsters.modal.button}" />
-                </div>
-            </div>
-        </div>
-    </div>
+    <th:block th:replace="fragments/monster-modal :: monster-modal"></th:block>
+
+    <!--    <div class="modal fade" id="monsterDetailModal" tabindex="-1" aria-labelledby="monsterDetailModalLabel" aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="#{app.monsters.modal.title}"></h1>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <div id="monsterDetails" class="space-y-2 text-sm">-->
+<!--                        <span class="visually-hidden"><i class="ra ra-sword"></i> <span th:text="#{app.monsters.modal.loading}" /></span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button"-->
+<!--                            class="btn btn-secondary"-->
+<!--                            data-bs-dismiss="modal"-->
+<!--                            th:text="#{app.monsters.modal.button}" />-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <!-- Script click na row -->
     <script>
