@@ -3,7 +3,7 @@ package com.raphaowl.dnd.controllers.web;
 import java.util.List;
 
 import com.raphaowl.dnd.dtos.Monster;
-import com.raphaowl.dnd.service.MonsterJsonService;
+import com.raphaowl.dnd.service.MonsterService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,18 +18,18 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MonsterController {
 
-    private final MonsterJsonService monsterJsonService;
+    private final MonsterService monsterService;
 
     @GetMapping
     public String getMonsters(Model model) {
-        List<Monster> allMonsters = monsterJsonService.getAllMonsters();
+        List<Monster> allMonsters = monsterService.getAllMonsters();
         model.addAttribute("monsters", allMonsters);
         return "monsters";
     }
 
     @GetMapping("/{index}")
     public String getMonster(@PathVariable String index, Model model) {
-        Monster monster = monsterJsonService.getMonster(index);
+        Monster monster = monsterService.getMonster(index);
         model.addAttribute("monster", monster);
         return "fragments/monster-details :: content";
     }

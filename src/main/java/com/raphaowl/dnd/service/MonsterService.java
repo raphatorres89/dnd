@@ -1,58 +1,51 @@
 package com.raphaowl.dnd.service;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
 
-import com.raphaowl.dnd.clients.MonsterClient;
 import com.raphaowl.dnd.dtos.Monster;
+import com.raphaowl.dnd.mappers.MonsterJsonLoader;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
-
 @Service
-@AllArgsConstructor
 public class MonsterService {
 
-    private final MonsterClient monsterClient;
+    private final MonsterJsonLoader jsonLoader = new MonsterJsonLoader();
+    private List<Monster> allMonsters;
 
-    public List<Monster> getMonsters() {
-        return monsterClient.list(
-                Map.of("limit", 100),
-                List.of("index",
-                        "name",
-                        "size",
-                        "challenge_rating",
-                        "image"));
+    public List<Monster> getAllMonsters() {
+        String resourcePath = "/data/monsters.json";
+
+        try {
+            ClassPathResource resource = new ClassPathResource(resourcePath);
+
+            try (InputStream inputStream = resource.getInputStream()) {
+                return jsonLoader.loadItemsFromJson(inputStream);
+            }
+        } catch (IOException e) {
+            System.err.println("Falha ao carregar o arquivo JSON do Classpath: " + resourcePath);
+            return List.of();
+        }
     }
 
     public Monster getMonster(String index) {
-        return monsterClient.get(
-                Map.of("index", index),
-                List.of("charisma",
-                        "dexterity",
-                        "constitution",
-                        "name",
-                        "strength",
-                        "wisdom",
-                        "xp",
-                        "updated_at",
-                        "type",
-                        "subtype",
-                        "size",
-                        "languages",
-                        "intelligence",
-                        "index",
-                        "image",
-                        "hit_points_roll",
-                        "hit_points",
-                        "hit_dice",
-                        "damage_vulnerabilities",
-                        "damage_resistances",
-                        "damage_immunities",
-                        "condition_immunities{name}",
-                        "challenge_rating",
-                        "alignment"
-                ));
+        String resourcePath = "/data/" + index + ".json";
+
+        try {
+            // Usa ClassPathResource para encontrar o recurso, seja no JAR ou no sistema de arquivos
+            ClassPathResource resource = new ClassPathResource(resourcePath);
+
+            // Obtém o recurso como um stream
+            try (InputStream inputStream = resource.getInputStream()) {
+                return jsonLoader.loadItemFromJson(inputStream);
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar recurso do classpath: " + resourcePath);
+            e.printStackTrace();
+            return null;
+        }
     }
 }
