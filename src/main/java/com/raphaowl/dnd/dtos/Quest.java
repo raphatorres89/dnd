@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.raphaowl.dnd.enums.MonsterNameEnum;
 import com.raphaowl.dnd.enums.QuestDifficulty;
+import com.raphaowl.dnd.enums.QuestEnum;
 import com.raphaowl.dnd.enums.QuestType;
 
 import lombok.AllArgsConstructor;
@@ -12,6 +13,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Quest {
+    private QuestEnum id;
     private String title;
     private String description;
     private QuestDifficulty difficulty;

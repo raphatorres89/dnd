@@ -97,8 +97,9 @@
 
             <h2 class="mt-4">⚔️ <span th:text="#{app.taverns.mural}"></span></h2>
             <ul class="list-group">
-                <li class="list-group-item" th:each="quest : ${tavern.quests}"
-                    th:text="#{tavern.quest.__${quest}__}"></li>
+                <li class="list-group-item" th:each="quest : ${tavern.quests}">
+                    <a th:href="${'/quests/' + quest.name()}" th:text="#{tavern.quest.__${quest}__}" target="_blank"></a>
+                </li>
             </ul>
         </div>
     </div>

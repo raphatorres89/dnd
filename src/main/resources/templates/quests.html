@@ -15,16 +15,17 @@
 
         <div class="card text-light p-3">
 
-            <h2 th:text="${quest.title}" class="mb-2"></h2>
+            <h2 th:text="#{tavern.quest.__${quest.id}__.title}" class="mb-2"></h2>
 
             <span class="badge bg-warning text-dark m-1" th:text="${quest.difficulty}"></span>
             <span class="badge bg-info text-dark" th:text="${quest.type}"></span>
 
             <hr>
 
-            <p><strong>Gancho:</strong> <span th:text="${quest.hook}"></span></p>
-            <p><strong>Local:</strong> <span th:text="${quest.location}"></span></p>
-            <p><strong>Objetivo:</strong> <span th:text="${quest.objective}"></span></p>
+            <p><strong>Resumo:</strong> <span th:text="#{tavern.quest.__${quest.id}__.summary}"></span></p>
+            <p><strong>Descrição:</strong> <span th:text="#{tavern.quest.__${quest.id}__.description}"></span></p>
+            <p><strong>Local:</strong> <span th:text="#{tavern.quest.__${quest.id}__.location}"></span></p>
+            <p><strong>Gancho:</strong> <span th:text="#{tavern.quest.__${quest.id}__.hooks}"></span></p>
             <p><strong>Complicação:</strong> <span th:text="${quest.complication}"></span></p>
             <p><strong>Recompensa:</strong>
                 <span th:each="item : ${quest.reward}">
@@ -39,12 +40,16 @@
 
             <h5>NPCs Envolvidos</h5>
             <ul>
-                <li th:each="npc : ${quest.keyNPCs}" th:text="${npc}"></li>
+                <li th:each="npc : ${quest.keyNPCs}">
+                    <span th:text="${npc}"></span>
+                </li>
             </ul>
 
             <h5>Facções</h5>
             <ul>
-                <li th:each="fac : ${quest.factionsInvolved}" th:text="${fac}"></li>
+                <li th:each="fac : ${quest.factionsInvolved}">
+                    <span th:text="${fac}"></span>
+                </li>
             </ul>
 
             <h5>Monstros sugeridos</h5>

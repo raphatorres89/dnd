@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum TavernQuest {
+public enum QuestEnum {
     // Missões de Baixo Nível (Fácil de Encontrar)
     RAT_INFESTATION(QuestDifficulty.LOW, QuestType.HUNT),
     DELIVER_PACKAGE(QuestDifficulty.LOW, QuestType.FETCH),
@@ -28,12 +28,12 @@ public enum TavernQuest {
     TRUCE_NEGOTIATION(QuestDifficulty.MEDIUM, QuestType.SOCIAL);
 
     private static final Random random = new Random();
-    private static final TavernQuest[] VALUES = values();
+    private static final QuestEnum[] VALUES = values();
 
     private final QuestDifficulty difficulty;
     private final QuestType type;
 
-    public static TavernQuest getRandomName() {
+    public static QuestEnum getRandomName() {
         return VALUES[random.nextInt(VALUES.length)];
     }
 }

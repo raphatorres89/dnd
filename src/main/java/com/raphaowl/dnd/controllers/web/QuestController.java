@@ -5,6 +5,7 @@ import com.raphaowl.dnd.service.QuestService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.AllArgsConstructor;
@@ -19,6 +20,12 @@ public class QuestController {
     @GetMapping
     public String quests(Model model) {
         model.addAttribute("quest", questService.getQuest());
+        return "quests";
+    }
+
+    @GetMapping("/{id}")
+    public String quests(@PathVariable("id") String id, Model model) {
+        model.addAttribute("quest", questService.findById(id));
         return "quests";
     }
 }

@@ -13,7 +13,7 @@ import com.raphaowl.dnd.enums.RumorSource;
 import com.raphaowl.dnd.enums.TavernCuisine;
 import com.raphaowl.dnd.enums.TavernName;
 import com.raphaowl.dnd.enums.TavernOwner;
-import com.raphaowl.dnd.enums.TavernQuest;
+import com.raphaowl.dnd.enums.QuestEnum;
 import com.raphaowl.dnd.enums.TavernRumor;
 import com.raphaowl.dnd.enums.TavernSpecialty;
 
@@ -27,7 +27,7 @@ public class Tavern {
     private final TavernSpecialty specialty;
     private final List<RumorEntry> rumors;
     private final List<MenuEntry> menu;
-    private final List<TavernQuest> quests;
+    private final List<QuestEnum> quests;
 
     public Tavern(TavernCuisine tavernCuisine) {
         this.name = TavernName.getRandomName();
@@ -39,11 +39,11 @@ public class Tavern {
         this.quests = aleatoryQuests();
     }
 
-    private List<TavernQuest> aleatoryQuests() {
-        Set<TavernQuest> uniqueQuests = new HashSet<>();
+    private List<QuestEnum> aleatoryQuests() {
+        Set<QuestEnum> uniqueQuests = new HashSet<>();
 
         while (uniqueQuests.size() < 3) {
-            uniqueQuests.add(TavernQuest.getRandomName());
+            uniqueQuests.add(QuestEnum.getRandomName());
         }
         return List.copyOf(uniqueQuests);
     }
