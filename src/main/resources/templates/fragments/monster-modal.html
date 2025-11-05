@@ -36,4 +36,75 @@
             });
         }
     </script>
+
+    <script>
+        (function () {
+            let zoomOpen = false;
+            let backdrop, zoomImg, closeBtn;
+
+            function closeZoom() {
+                if (!zoomOpen) return;
+                zoomOpen = false;
+
+                backdrop.classList.remove("active");
+                zoomImg.classList.remove("active");
+                closeBtn.classList.remove("active");
+
+                setTimeout(() => {
+                    backdrop.remove();
+                    zoomImg.remove();
+                    closeBtn.remove();
+
+                    backdrop = zoomImg = closeBtn = null;
+                }, 200);
+
+                document.removeEventListener("keydown", escClose);
+            }
+
+            function escClose(e) {
+                if (e.key === "Escape") closeZoom();
+            }
+
+            document.addEventListener("click", function (e) {
+                const img = e.target.closest(".monster-img");
+                if (!img) return;
+
+                e.stopPropagation(); // 🛑 evita empilhar eventos
+
+                if (zoomOpen) {
+                    closeZoom();
+                    return;
+                }
+                zoomOpen = true;
+
+                backdrop = document.createElement("div");
+                backdrop.className = "zoom-backdrop";
+                backdrop.addEventListener("click", closeZoom);
+                document.body.appendChild(backdrop);
+
+                zoomImg = document.createElement("img");
+                zoomImg.src = img.src;
+                zoomImg.className = "zoom-image";
+                zoomImg.addEventListener("click", (ev) => ev.stopPropagation());
+                document.body.appendChild(zoomImg);
+
+                closeBtn = document.createElement("div");
+                closeBtn.className = "zoom-close-btn";
+                closeBtn.innerHTML = "&times;";
+                closeBtn.addEventListener("click", (ev) => {
+                    ev.stopPropagation(); // 🛑 evita trigger duplo
+                    closeZoom();
+                });
+                document.body.appendChild(closeBtn);
+
+                setTimeout(() => {
+                    backdrop.classList.add("active");
+                    zoomImg.classList.add("active");
+                    closeBtn.classList.add("active");
+                }, 10);
+
+                document.addEventListener("keydown", escClose);
+            });
+        })();
+    </script>
 </th:block>
