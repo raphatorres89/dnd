@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class MonsterService {
 
+    private static final String resourceBasePath = "/data/monsters/%s.json";
     private final MonsterJsonLoader jsonLoader = new MonsterJsonLoader();
-    private List<Monster> allMonsters;
 
     public List<Monster> getAllMonsters() {
-        String resourcePath = "/data/monsters.json";
+        String resourcePath = String.format(resourceBasePath, "monsters");
 
         try {
             ClassPathResource resource = new ClassPathResource(resourcePath);
@@ -32,7 +32,7 @@ public class MonsterService {
     }
 
     public Monster getMonster(String index) {
-        String resourcePath = "/data/" + index + ".json";
+        String resourcePath = String.format(resourceBasePath, index);
 
         try {
             // Usa ClassPathResource para encontrar o recurso, seja no JAR ou no sistema de arquivos

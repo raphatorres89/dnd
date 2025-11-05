@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 // R = Root DTO (e.g., MonsterRoot) - Usado para carregar listas
 // D = Data DTO (e.g., MonsterData) - Usado para carregar listas
 // T = Item DTO (e.g., Monster) - O objeto que você quer carregar (lista ou único)
-public abstract class AbstractJsonLoader<R, D, T> {
+public abstract class AbstractJsonLoader<R, T> {
 
     protected final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -27,8 +27,8 @@ public abstract class AbstractJsonLoader<R, D, T> {
             ParameterizedType pType = (ParameterizedType) superClass;
             // Pega o primeiro tipo genérico (R)
             this.rootType = pType.getActualTypeArguments()[0];
-            // Pega o terceiro tipo genérico (T) e o converte para Class<T>
-            this.itemClass = (Class<T>) pType.getActualTypeArguments()[2];
+            // Pega o segundo tipo genérico (T) e o converte para Class<T>
+            this.itemClass = (Class<T>) pType.getActualTypeArguments()[1];
         } else {
             this.rootType = null;
             this.itemClass = null;
