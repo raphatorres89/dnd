@@ -1,8 +1,6 @@
 package com.raphaowl.dnd.service.generators.stats;
 
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import com.raphaowl.dnd.dtos.NpcStats;
 import com.raphaowl.dnd.enums.AbilityScoreEnum;
@@ -14,34 +12,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class NpcStatsGenerator {
 
+    private static final int POINT_BUY_TOTAL = 27;
+    private static final Map<Integer, Integer> POINT_BUY_COST = Map.of(
+            8, 0, 9, 1, 10, 2, 11, 3, 12, 4, 13, 5, 14, 7, 15, 9
+    );
     private final Random random = new Random();
 
-    public NpcStats generateStats(ClassEnum clazz, RaceEnum race, Integer challengeRating) {
-        Map<AbilityScoreEnum, Integer> attributes = generateBaseAttributes(challengeRating);
-        applyClassPriority(attributes, clazz);
+    public NpcStats generateStats(ClassEnum clazz, RaceEnum race, Integer npcLevel) {
+        Map<AbilityScoreEnum, Integer> attributes = generatePointBuyAttributes(clazz);
         applyRaceBonus(attributes, race);
         return new NpcStats(attributes);
     }
 
-    private Map<AbilityScoreEnum, Integer> generateBaseAttributes(double cr) {
+    private Map<AbilityScoreEnum, Integer> generatePointBuyAttributes(ClassEnum clazz) {
         Map<AbilityScoreEnum, Integer> attrs = new EnumMap<>(AbilityScoreEnum.class);
-
-        int base = switch ((int) Math.ceil(cr)) {
-            case 0, 1 -> 10;
-            case 2, 3, 4 -> 12;
-            case 5, 6, 7, 8 -> 13;
-            case 9, 10, 11, 12 -> 15;
-            default -> 16;
-        };
-
         for (AbilityScoreEnum ability : AbilityScoreEnum.values()) {
-            attrs.put(ability, base + random.nextInt(3) - 1);
+            attrs.put(ability, 8);
         }
 
-        return attrs;
-    }
-
-    private void applyClassPriority(Map<AbilityScoreEnum, Integer> attrs, ClassEnum clazz) {
+        // Defina os atributos prioritários
         AbilityScoreEnum primary = switch (clazz) {
             case ROGUE, RANGER -> AbilityScoreEnum.DEX;
             case WIZARD -> AbilityScoreEnum.INT;
@@ -56,8 +45,45 @@ public class NpcStatsGenerator {
             default -> AbilityScoreEnum.WIS;
         };
 
-        attrs.computeIfPresent(primary, (k, v) -> v + 2);
-        attrs.computeIfPresent(secondary, (k, v) -> v + 1);
+        int pointsLeft = POINT_BUY_TOTAL;
+
+        // Atribua 15 ao primário, se possível
+        int costPrimary = POINT_BUY_COST.get(15) - POINT_BUY_COST.get(8);
+        if (pointsLeft >= costPrimary) {
+            attrs.put(primary, 15);
+            pointsLeft -= costPrimary;
+        }
+
+        // Atribua 14 ao secundário, se possível
+        int costSecondary = POINT_BUY_COST.get(14) - POINT_BUY_COST.get(8);
+        if (secondary != primary && pointsLeft >= costSecondary) {
+            attrs.put(secondary, 14);
+            pointsLeft -= costSecondary;
+        }
+
+        // Distribua o restante aleatoriamente
+        List<AbilityScoreEnum> others = new ArrayList<>(Arrays.asList(AbilityScoreEnum.values()));
+        others.remove(primary);
+        if (secondary != primary) others.remove(secondary);
+
+        while (pointsLeft > 0 && !others.isEmpty()) {
+            Collections.shuffle(others, random);
+            boolean spent = false;
+            for (AbilityScoreEnum ability : others) {
+                int current = attrs.get(ability);
+                if (current < 13) { // Limite para não gastar muitos pontos nos atributos menos importantes
+                    int cost = POINT_BUY_COST.get(current + 1) - POINT_BUY_COST.get(current);
+                    if (pointsLeft >= cost) {
+                        attrs.put(ability, current + 1);
+                        pointsLeft -= cost;
+                        spent = true;
+                        break;
+                    }
+                }
+            }
+            if (!spent) break;
+        }
+        return attrs;
     }
 
     private void applyRaceBonus(Map<AbilityScoreEnum, Integer> attrs, RaceEnum race) {

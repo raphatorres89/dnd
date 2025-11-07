@@ -1,10 +1,14 @@
 body {
-    font-family: 'MedievalSharp', cursive !important;
     padding-top: 56px; /* ajusta conforme a altura do header */
 }
 
 h1, h2, h3 {
+    font-family: 'MedievalSharp', cursive !important;
     padding-bottom: 0.5rem;
+}
+
+.nav, .navbar-brand {
+    font-family: 'MedievalSharp', cursive !important;
 }
 
 .copper {

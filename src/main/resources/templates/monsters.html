@@ -16,13 +16,14 @@
 
         <div class="card shadow p-4 mb-4">
             <div class="row g-3">
+
                 <div class="col-md-4">
-                    <label for="filterName" class="form-label visually-hidden" th:text="#{app.monsters.filter.name}"></label>
+                    <label for="filterName" class="form-label" th:text="#{app.monsters.filter.name}"></label>
                     <input type="text" id="filterName" class="form-control" th:placeholder="#{app.monsters.filter.name.placeholder}">
                 </div>
 
                 <div class="col-md-4">
-                    <label for="filterSize" class="form-label visually-hidden" th:text="#{app.monsters.filter.size}"></label>
+                    <label for="filterSize" class="form-label" th:text="#{app.monsters.filter.size}"></label>
                     <select id="filterSize" class="form-select">
                         <option value="" th:text="#{app.monsters.filter.size.all}"></option>
                         <option th:each="size : ${T(com.raphaowl.dnd.enums.SizeEnum).values()}"
@@ -33,7 +34,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="filterCr" class="form-label visually-hidden" th:text="#{app.monsters.filter.challenge_rating}"></label>
+                    <label for="filterCr" class="form-label" th:text="#{app.monsters.filter.challenge_rating}"></label>
                     <select id="filterCr" class="form-select">
                         <option value="" th:text="#{app.monsters.filter.size.challenge_rating.all}"></option>
                         <option value="1">CR <= 1</option>
@@ -47,7 +48,7 @@
 
             <div class="row mt-4">
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-secondary w-100" onclick="clearFilters()" th:text="#{app.monsters.filter.button}"></button>
+                    <button type="button" class="btn btn-primary w-100" onclick="clearFilters()" th:text="#{app.monsters.filter.button}"></button>
                 </div>
             </div>
         </div>
