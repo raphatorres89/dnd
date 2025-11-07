@@ -1,9 +1,9 @@
 body {
+    font-family: 'MedievalSharp', cursive !important;
     padding-top: 56px; /* ajusta conforme a altura do header */
 }
 
 h1, h2, h3 {
-    font-family: serif !important; /* Fontes robustas/medievais */
     padding-bottom: 0.5rem;
 }
 
