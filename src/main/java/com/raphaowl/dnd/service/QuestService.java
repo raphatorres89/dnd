@@ -80,6 +80,6 @@ public class QuestService {
 
     private String getMessage(String id, String suffix) {
         Locale locale = LocaleContextHolder.getLocale();
-        return messageSource.getMessage("tavern.quest." + id + "." + suffix, null, locale);
+        return messageSource.getMessage("quest." + id + "." + suffix, null, locale);
     }
 }

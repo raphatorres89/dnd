@@ -22,7 +22,8 @@ public class LocaleConfig implements WebMvcConfigurer {
                                    "classpath:i18n/monsters",
                                    "classpath:i18n/npcs",
                                    "classpath:i18n/spells",
-                                   "classpath:i18n/taverns"
+                                   "classpath:i18n/taverns",
+                                   "classpath:i18n/quests"
                                    );
         messageSource.setDefaultEncoding("UTF-8");
 
