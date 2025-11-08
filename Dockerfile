@@ -1,6 +1,6 @@
 # 1. ESTÁGIO DE BUILD (Compilação)
 # Usamos a imagem OpenJDK com o JDK 21
-FROM openjdk:21-jdk-slim AS build
+FROM eclipse-temurin:21 AS build
 WORKDIR /app
 
 # Copia os arquivos necessários para o build do Gradle:
@@ -21,7 +21,7 @@ RUN ./gradlew bootJar -x test
 
 # 2. ESTÁGIO DE EXECUÇÃO (Runtime)
 # Reutilizamos a mesma imagem leve que funcionou no seu Dockerfile antigo
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21
 WORKDIR /app
 
 # Copia o arquivo JAR gerado pelo Gradle.
