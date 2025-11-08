@@ -10,64 +10,82 @@
     <div class="container mt-4">
         <div class="row text-center mb-4">
             <h1>
-                🍺 <span th:text="#{app.quests.title}"></span>
+                ⛫ <span th:text="#{app.quests.title}"></span>
             </h1>
         </div>
 
         <a href="/quests" class="btn btn-primary mb-4" th:text="#{app.quests.button}"></a>
 
-        <div class="card shadow p-4 mb-4">
+        <div class="card shadow-lg p-4 mb-4" style="border-radius: 1.5rem;">
             <div class="row g-3">
-                <h2 th:text="#{tavern.quest.__${quest.id}__.title}" class="mb-2"></h2>
+                <h2 class="mb-2 fw-bold" th:text="#{tavern.quest.__${quest.id}__.title}"></h2>
 
-                <span class="badge bg-warning text-dark m-1" th:text="${quest.difficulty}"></span>
-                <span class="badge bg-info text-dark" th:text="${quest.type}"></span>
+                <div class="mb-3">
+                    <span class="badge bg-warning text-dark m-1 fs-6 px-3 py-2" th:text="#{app.quests.difficulty.__${quest.difficulty.name()}__}"></span>
+                    <span class="badge bg-info text-dark fs-6 px-3 py-2" th:text="#{app.quests.type.__${quest.type.name()}__}"></span>
+                </div>
 
-                <hr>
+                <hr class="my-3">
 
-                <p><strong th:text="#{app.quests.summary}"></strong>: <span th:text="#{tavern.quest.__${quest.id}__.summary}"></span></p>
-                <p><strong th:text="#{app.quests.description}"></strong>: <span th:text="#{tavern.quest.__${quest.id}__.description}"></span></p>
-                <p><strong th:text="#{app.quests.location}"></strong>: <span th:text="#{tavern.quest.__${quest.id}__.location}"></span></p>
-                <p><strong th:text="#{app.quests.hooks}"></strong>: <span th:text="#{tavern.quest.__${quest.id}__.hooks}"></span></p>
-                <p><strong th:text="#{app.quests.complications}"></strong>: <span th:text="${quest.complication}"></span></p>
-                <p><strong th:text="#{app.quests.rewards}"></strong>:
-                    <span th:each="item : ${quest.reward}">
-                        <i th:class="${item.iconClass}"></i>
-                        <span th:text="#{item.__${item.name}__}"></span>
-                        <span th:text="${item.quantity > 1} ? ' (' + ${item.quantity} + ')' : ''">
-                        </span>
-                    </span>
+                <p>
+                    <strong class="text-secondary" th:text="#{app.quests.summary}"></strong>:
+                    <span th:text="#{tavern.quest.__${quest.id}__.summary}"></span>
+                </p>
+                <p>
+                    <strong class="text-secondary" th:text="#{app.quests.description}"></strong>:
+                    <span th:text="#{tavern.quest.__${quest.id}__.description}"></span>
+                </p>
+                <p>
+                    <strong class="text-secondary" th:text="#{app.quests.location}"></strong>:
+                    <span th:text="#{tavern.quest.__${quest.id}__.location}"></span>
+                </p>
+                <p>
+                    <strong class="text-secondary" th:text="#{app.quests.hooks}"></strong>:
+                    <span th:text="#{tavern.quest.__${quest.id}__.hooks}"></span>
+                </p>
+                <p>
+                    <strong class="text-secondary" th:text="#{app.quests.rewards}"></strong>:
+                    <span th:each="item : ${quest.reward}" class="me-2">
+                <i th:class="${item.iconClass}"></i>
+                <span class="fw-semibold" th:text="#{item.__${item.name}__}"></span>
+                <span th:text="${item.quantity > 1} ? ' (' + ${item.quantity} + ')' : ''"></span>
+            </span>
                 </p>
 
-                <hr>
+                <hr class="my-3">
 
-                <h5 th:text="#{app.quests.npc_involved}"></h5>
-                <ul>
-                    <li th:each="npc : ${quest.keyNPCs}">
-                        <span th:text="${npc}"></span>
-                    </li>
-                </ul>
-
-                <h5 th:text="#{app.quests.factions_involved}"></h5>
-                <ul>
-                    <li th:each="fac : ${quest.factionsInvolved}">
-                        <span th:text="${fac}"></span>
-                    </li>
-                </ul>
-
-                <h5 th:text="#{app.quests.suggested_monsters}"></h5>
-                <ul>
-                    <li th:each="monster : ${quest.suggestedMonsters}">
-                        <a href="javascript:void(0)"
-                           th:text="#{monster.name.__${monster.name()}__}"
-                           th:attr="data-monster-id=${monster.index}"
-                           class="monster-link">
-                        </a>
-                    </li>
-                </ul>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="text-success" th:text="#{app.quests.npc_involved}"></h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent border-0 ps-0" th:each="npc : ${quest.keyNPCs}">
+                                <span th:text="${npc}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="text-success" th:text="#{app.quests.factions_involved}"></h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent border-0 ps-0" th:each="fac : ${quest.factionsInvolved}">
+                                <span th:text="${fac}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="text-success" th:text="#{app.quests.suggested_monsters}"></h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent border-0 ps-0" th:each="monster : ${quest.suggestedMonsters}">
+                                <a href="javascript:void(0)"
+                                   th:text="#{monster.name.__${monster.name()}__}"
+                                   th:attr="data-monster-id=${monster.index}"
+                                   class="monster-link text-decoration-none fw-semibold">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
     <th:block th:replace="~{fragments/monster-modal :: monster-modal}"></th:block>
 
