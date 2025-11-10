@@ -8,14 +8,82 @@
 <body>
 
 <th:block th:fragment="content">
+
     <section class="hero-section d-flex align-items-center justify-content-center text-center text-light">
         <div class="overlay"></div>
+
         <div class="container position-relative">
-            <h1 class="display-4 fw-bold mb-3" th:text="#{app.home.welcome.title}"></h1>
-            <p class="lead" th:text="#{app.home.welcome.message}"></p>
-            <a th:text="#{app.home.welcome.button}" href="/npcs" class="btn btn-outline-light btn-lg mt-3"></a>
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
+                th:text="#{app.home.welcome.title}">Bem-vindo ao Reino</h1>
+
+            <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-1s"
+               th:text="#{app.home.welcome.message}">
+                Descubra aventuras épicas e histórias lendárias.
+            </p>
+
+            <a href="/npcs"
+               class="btn btn-lg btn-primary px-5 shadow-lg animate__animated animate__fadeInUp animate__delay-2s"
+               th:text="#{app.home.welcome.button}">Explorar</a>
         </div>
     </section>
+
+    <style>
+        /* === Base do seu CSS === */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: url('/images/logo.png') no-repeat center center;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .hero-section .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* escurece a imagem */
+            z-index: 1;
+        }
+
+        .hero-section .container {
+            z-index: 2;
+        }
+
+        .hero-section h1,
+        .hero-section p {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        /* === Melhorias visuais === */
+        h1 {
+            letter-spacing: 1px;
+        }
+
+        p.lead {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* === Efeitos sutis === */
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            z-index: 1;
+        }
+    </style>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 </th:block>
 
 </body>

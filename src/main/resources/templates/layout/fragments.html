@@ -219,7 +219,12 @@
 
 <div th:fragment="footer">
     <footer>
-        <p>&copy; <span th:text="${#dates.year(#dates.createNow())}">2025</span> - Ferramentas do Mestre Raphão Torres</p>
+        <div class="text-center mt-4 mb-5">
+            <p>&copy; <span th:text="${#dates.year(#dates.createNow())}"></span> - D&D Spirit</p>
+            <a href="https://www.patreon.com/dndspirit" target="_blank" rel="noopener noreferrer">
+                <img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Apoie no Patreon">
+            </a>
+        </div>
     </footer>
 </div>
 
