@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="pt">
 <body>
 
 <div th:fragment="header">
@@ -31,28 +31,28 @@
                                th:aria-current="${currentUri == '/' ? 'page' : ''}"
                                href="/">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
                             <a class="nav-link"
                                th:classappend="${currentUri == '/npcs' ? 'active' : ''}"
                                th:aria-current="${currentUri == '/npcs' ? 'page' : ''}"
                                href="/npcs"
                                th:text="#{app.menu.npcs}"></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
                             <a class="nav-link"
                                th:classappend="${currentUri == '/monsters' ? 'active' : ''}"
                                th:aria-current="${currentUri == '/monsters' ? 'page' : ''}"
                                href="/monsters"
                                th:text="#{app.menu.monsters}"></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
                             <a class="nav-link"
                                th:classappend="${currentUri == '/taverns' ? 'active' : ''}"
                                th:aria-current="${currentUri == '/taverns' ? 'page' : ''}"
                                href="/taverns"
                                th:text="#{app.menu.taverns}"></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" sec:authorize="isAuthenticated()">
                             <a class="nav-link"
                                th:classappend="${currentUri == '/quests' ? 'active' : ''}"
                                th:aria-current="${currentUri == '/quests' ? 'page' : ''}"
@@ -112,6 +112,38 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <!-- Usuário logado -->
+                        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                <img th:src="${#authentication.principal.attributes['picture']}"
+                                     alt="Avatar"
+                                     class="rounded-circle me-2"
+                                     style="width: 32px; height: 32px; object-fit: cover;">
+
+                                <span th:text="${#authentication.principal.attributes['name']}"></span>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li class="dropdown-header">
+                                    <small th:text="${#authentication.principal.attributes['email']}"></small>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form th:action="@{/logout}" method="post">
+                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                                        <button type="submit" class="dropdown-item">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Usuário não logado -->
+                        <li class="nav-item" sec:authorize="isAnonymous()">
+                            <a role="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -126,34 +158,34 @@
         <div class="offcanvas-body">
             <ul class="nav nav-pills flex-column gap-1">
 
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link"
                        th:classappend="${currentUri == '/' ? 'active' : ''}"
                        th:aria-current="${currentUri == '/' ? 'page' : ''}"
                        href="/">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link"
                        th:classappend="${currentUri == '/npcs' ? 'active' : ''}"
                        th:aria-current="${currentUri == '/npcs' ? 'page' : ''}"
                        href="/npcs"
                        th:text="#{app.menu.npcs}"></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link"
                        th:classappend="${currentUri == '/monsters' ? 'active' : ''}"
                        th:aria-current="${currentUri == '/monsters' ? 'page' : ''}"
                        href="/monsters"
                        th:text="#{app.menu.monsters}"></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link"
                        th:classappend="${currentUri == '/taverns' ? 'active' : ''}"
                        th:aria-current="${currentUri == '/taverns' ? 'page' : ''}"
                        href="/taverns"
                        th:text="#{app.menu.taverns}"></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link"
                        th:classappend="${currentUri == '/quests' ? 'active' : ''}"
                        th:aria-current="${currentUri == '/quests' ? 'page' : ''}"
@@ -211,7 +243,65 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- Usuário logado -->
+                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                        <img th:src="${#authentication.principal.attributes['picture']}"
+                             alt="Avatar"
+                             class="rounded-circle me-2"
+                             style="width: 32px; height: 32px; object-fit: cover;">
+
+                        <span th:text="${#authentication.principal.attributes['name']}"></span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li class="dropdown-header">
+                            <small th:text="${#authentication.principal.attributes['email']}"></small>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Usuário não logado -->
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a role="button" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                </li>
             </ul>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Faça login para continuar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body text-center">
+
+                    <p>Use sua conta do Google:</p>
+
+                    <a href="/oauth2/authorization/google" class="btn btn-outline-danger w-100">
+                        <img src="https://www.svgrepo.com/show/355037/google.svg"
+                             width="20" class="me-2">
+                        Entrar com Google
+                    </a>
+
+                </div>
+
+            </div>
         </div>
     </div>
 

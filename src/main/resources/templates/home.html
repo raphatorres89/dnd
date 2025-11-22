@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
       th:replace="~{layout/base :: base(
           pageTitle='Home',
           content=~{::content},
@@ -13,8 +13,11 @@
         <div class="overlay"></div>
 
         <div class="container position-relative">
-            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
-                th:text="#{app.home.welcome.title}">Bem-vindo ao Reino</h1>
+            <h1 sec:authorize="isAnonymous()" class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
+                th:text="#{app.home.welcome.title}"></h1>
+
+            <h1 sec:authorize="isAuthenticated()" class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
+                th:text="${#authentication.principal.attributes['email']}"></h1>
 
             <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-1s"
                th:text="#{app.home.welcome.message}">
