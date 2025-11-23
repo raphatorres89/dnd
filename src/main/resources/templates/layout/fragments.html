@@ -64,25 +64,30 @@
                             <a class="nav-link dropdown-toggle"
                                href="#"
                                role="button"
-                               data-bs-toggle="dropdown"
-                               aria-expanded="false"
-                               th:text="${#locale.getDisplayName()}">
+                               data-bs-toggle="dropdown">
+                                <i class="bi bi-translate"></i>
                             </a>
 
                             <ul class="dropdown-menu locale-menu">
                                 <li th:if="${#locale.language != 'pt_BR'}">
                                     <a class="dropdown-item locale-switcher"
                                        href="#"
-                                       data-lang="pt_BR"
-                                       th:text="#{app.language.portuguese}"></a>
+                                       data-lang="pt_BR">
+                                        <img src="https://flagcdn.com/w20/br.png" width="20" class="me-2" alt="">
+                                        Português
+                                    </a>
                                 </li>
+
                                 <li th:if="${#locale.language != 'en_US'}">
                                     <a class="dropdown-item locale-switcher"
                                        href="#"
-                                       data-lang="en_US"
-                                       th:text="#{app.language.english}"></a>
+                                       data-lang="en_US">
+                                        <img src="https://flagcdn.com/w20/us.png" width="20" class="me-2" alt="">
+                                        English
+                                    </a>
                                 </li>
                             </ul>
+
                         </li>
 
                         <li class="nav-item dropdown">
@@ -115,7 +120,7 @@
 
                         <!-- Usuário logado -->
                         <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
                                 <img th:src="${#authentication.principal.attributes['picture']}"
@@ -197,22 +202,27 @@
                     <a class="nav-link dropdown-toggle"
                        href="#"
                        role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        <i class="bi bi-translate"></i> <span th:text="${#locale.getDisplayName()}"></span>
+                       data-bs-toggle="dropdown">
+                        <i class="bi bi-translate"></i>
+
                     </a>
                     <ul class="dropdown-menu locale-menu">
                         <li th:if="${#locale.language != 'pt_BR'}">
                             <a class="dropdown-item locale-switcher"
                                href="#"
-                               data-lang="pt_BR"
-                               th:text="#{app.language.portuguese}"></a>
+                               data-lang="pt_BR">
+                                <img src="https://flagcdn.com/w20/br.png" width="20" class="me-2" alt="">
+                                Português
+                            </a>
                         </li>
+
                         <li th:if="${#locale.language != 'en_US'}">
                             <a class="dropdown-item locale-switcher"
                                href="#"
-                               data-lang="en_US"
-                               th:text="#{app.language.english}"></a>
+                               data-lang="en_US">
+                                <img src="https://flagcdn.com/w20/us.png" width="20" class="me-2" alt="">
+                                English
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -285,20 +295,19 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Faça login para continuar</h5>
+                    <h5 class="modal-title" th:text="#{app.login.title}"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body text-center">
 
-                    <p>Use sua conta do Google:</p>
+                    <p th:text="#{app.login.google.text}"></p>
 
                     <a href="/oauth2/authorization/google" class="btn btn-outline-danger w-100">
                         <img src="https://www.svgrepo.com/show/355037/google.svg"
-                             width="20" class="me-2">
-                        Entrar com Google
+                             width="20" class="me-2" alt="">
+                        <span th:text="#{app.login.google.button}"></span>
                     </a>
-
                 </div>
 
             </div>

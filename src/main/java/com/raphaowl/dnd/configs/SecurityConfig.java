@@ -2,12 +2,12 @@ package com.raphaowl.dnd.configs;
 
 import jakarta.servlet.http.HttpServletResponse;
 
-import com.raphaowl.dnd.service.CustomOAuth2UserService;
 import com.raphaowl.dnd.service.CustomOidcUserService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -15,9 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http,
-            CustomOAuth2UserService customOAuth2UserService,
-            CustomOidcUserService customOidcUserService) {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomOidcUserService customOidcUserService) {
 
         http
                 .authorizeHttpRequests(auth -> auth
@@ -33,8 +31,7 @@ public class SecurityConfig {
                 )
                 .oauth2Login(oauth -> oauth
                         .userInfoEndpoint(userInfo -> userInfo
-                                .oidcUserService(customOidcUserService)  // para Google (OIDC)
-                                .userService(customOAuth2UserService)      // para GitHub / OAuth2 puro
+                                .oidcUserService(customOidcUserService)
                         )
                         .defaultSuccessUrl("/", true)
                 )
@@ -50,10 +47,12 @@ public class SecurityConfig {
                         .authenticationEntryPoint((request, response, authException) -> {
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                             response.setHeader("X-Login-Required", "true");
+                            response.sendRedirect("/");
                         })
                 );
 
-        http.headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
+        http.headers(headers -> headers
+                .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
         return http.build();
     }

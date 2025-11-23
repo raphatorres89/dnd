@@ -13,20 +13,25 @@
         <div class="overlay"></div>
 
         <div class="container position-relative">
-            <h1 sec:authorize="isAnonymous()" class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
+            <h1 sec:authorize="isAnonymous()" c
+                lass="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
                 th:text="#{app.home.welcome.title}"></h1>
 
-            <h1 sec:authorize="isAuthenticated()" class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
-                th:text="${#authentication.principal.attributes['email']}"></h1>
+            <h1 sec:authorize="isAuthenticated()"
+                class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown"
+                th:text="${#authentication.principal.attributes['name']}"></h1>
 
             <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-1s"
                th:text="#{app.home.welcome.message}">
-                Descubra aventuras épicas e histórias lendárias.
             </p>
 
-            <a href="/npcs"
+            <a href="/npcs" sec:authorize="isAnonymous()"
                class="btn btn-lg btn-primary px-5 shadow-lg animate__animated animate__fadeInUp animate__delay-2s"
-               th:text="#{app.home.welcome.button}">Explorar</a>
+               data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+
+            <a href="/npcs" sec:authorize="isAuthenticated()"
+               class="btn btn-lg btn-primary px-5 shadow-lg animate__animated animate__fadeInUp animate__delay-2s"
+               th:text="#{app.home.welcome.button}"></a>
         </div>
     </section>
 
