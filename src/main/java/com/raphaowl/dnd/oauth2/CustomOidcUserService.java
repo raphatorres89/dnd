@@ -1,9 +1,6 @@
-package com.raphaowl.dnd.service;
+package com.raphaowl.dnd.oauth2;
 
 import java.time.Instant;
-
-import com.raphaowl.dnd.model.User;
-import com.raphaowl.dnd.repositories.UserRepository;
 
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
@@ -23,17 +20,18 @@ public class CustomOidcUserService extends OidcUserService {
     public OidcUser loadUser(OidcUserRequest userRequest) {
         OidcUser oidcUser = super.loadUser(userRequest);
 
-        String registrationId = userRequest.getClientRegistration().getRegistrationId();
+        String provider = userRequest.getClientRegistration().getRegistrationId(); // google
         String providerId = oidcUser.getSubject();
 
-        String email = oidcUser.getEmail();
-        String name = oidcUser.getFullName();
+        String email   = oidcUser.getEmail();
+        String name    = oidcUser.getFullName();
         String picture = oidcUser.getPicture();
 
-        User user = userRepository.findByProviderAndProviderId(registrationId, providerId)
+        User user = userRepository
+                .findByProviderAndProviderId(provider, providerId)
                 .orElseGet(() -> {
                     User u = new User();
-                    u.setProvider(registrationId);
+                    u.setProvider(provider);
                     u.setProviderId(providerId);
                     u.setCreatedAt(Instant.now());
                     return u;
@@ -46,6 +44,11 @@ public class CustomOidcUserService extends OidcUserService {
 
         userRepository.save(user);
 
-        return oidcUser;
+        return new CustomUserPrincipal(
+                oidcUser.getAuthorities(),
+                oidcUser.getIdToken(),
+                oidcUser.getUserInfo(),
+                user.getId()
+        );
     }
 }

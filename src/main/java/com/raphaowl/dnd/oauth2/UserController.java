@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.controllers.web;
+package com.raphaowl.dnd.oauth2;
 
 import java.util.Map;
 

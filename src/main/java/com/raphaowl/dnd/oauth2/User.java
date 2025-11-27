@@ -1,4 +1,4 @@
-package com.raphaowl.dnd.model;
+package com.raphaowl.dnd.oauth2;
 
 import java.time.Instant;
 

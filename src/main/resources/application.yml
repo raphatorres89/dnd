@@ -7,10 +7,10 @@ spring:
       add-mappings: true
 
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/dnd
+    driver-class-name: org.postgresql.Driver
+    username: admin
+    password: admin
 
   jpa:
     hibernate:
@@ -18,10 +18,6 @@ spring:
     show-sql: true
     properties:
       hibernate.format_sql: true
-
-  h2:
-    console:
-      enabled: true
 
   security:
     oauth2:
@@ -34,10 +30,17 @@ spring:
               - openid
               - profile
               - email
-            redirect-uri: http://localhost:8080/login/oauth2/code/google
+            redirect-uri: "{baseUrl}/login/oauth2/code/google"
 
 server:
   servlet:
     session:
       cookie:
         secure: true # em produção com https
+
+patreon:
+  client-id: ${PATREON_CLIENT_ID}
+  client-secret: ${PATREON_CLIENT_SECRET}
+  redirect-uri: ${PATREON_REDIRECT_URI}
+  webhook:
+    secret: ${PATREON_WEBHOOK_SECRET}

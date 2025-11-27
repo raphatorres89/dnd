@@ -2,7 +2,7 @@ package com.raphaowl.dnd.configs;
 
 import jakarta.servlet.http.HttpServletResponse;
 
-import com.raphaowl.dnd.service.CustomOidcUserService;
+import com.raphaowl.dnd.oauth2.CustomOidcUserService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,12 +41,13 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID")
                 )
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/api/**", "/h2-console/**")
+                        .ignoringRequestMatchers("/api/**", "/h2-console/**", "/api/patreon/**")
                 )
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint((request, response, authException) -> {
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                             response.setHeader("X-Login-Required", "true");
+                            System.out.println("Unauthorized access to " + request.getRequestURI());
                             response.sendRedirect("/");
                         })
                 );
