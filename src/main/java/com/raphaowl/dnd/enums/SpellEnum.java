@@ -394,6 +394,10 @@ public enum SpellEnum {
         this.damageAtSlotLevel = damageAtSlotLevel;
     }
 
+    public Spell toSpell() {
+        return new Spell(this.name(), level, school, damageType, damageAtSlotLevel != null ? damageAtSlotLevel.toString() : "");
+    }
+
     public Spell toSpell(Integer npcLevel) {
         return new Spell(this.name(), level, school, damageType, getDamageForLevel(damageAtSlotLevel, npcLevel));
     }
