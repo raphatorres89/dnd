@@ -6,19 +6,6 @@ spring:
     resources:
       add-mappings: true
 
-  datasource:
-    url: jdbc:postgresql://localhost:5432/dnd
-    driver-class-name: org.postgresql.Driver
-    username: admin
-    password: admin
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate.format_sql: true
-
   security:
     oauth2:
       client:
@@ -31,6 +18,9 @@ spring:
               - profile
               - email
             redirect-uri: "{baseUrl}/login/oauth2/code/google"
+
+  mongodb:
+    uri: mongodb+srv://raphatorres89:31ZlM6Nmtd2Y1xQi@dndspirit.yhqescd.mongodb.net/dnd?authSource=admin&appName=DnDSpirit
 
 server:
   servlet:

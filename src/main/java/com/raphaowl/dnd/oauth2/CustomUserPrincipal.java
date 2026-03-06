@@ -12,12 +12,12 @@ import lombok.Getter;
 @Getter
 public class CustomUserPrincipal extends DefaultOidcUser {
 
-    private final Long userId;
+    private final String userId;
 
     public CustomUserPrincipal(Collection<? extends GrantedAuthority> authorities,
             OidcIdToken idToken,
             OidcUserInfo userInfo,
-            Long userId) {
+            String userId) {
 
         super(authorities, idToken, userInfo);
         this.userId = userId;
