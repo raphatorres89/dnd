@@ -20,7 +20,7 @@ spring:
             redirect-uri: "{baseUrl}/login/oauth2/code/google"
 
   mongodb:
-    uri: mongodb+srv://raphatorres89:31ZlM6Nmtd2Y1xQi@dndspirit.yhqescd.mongodb.net/dnd?authSource=admin&appName=DnDSpirit
+    uri: mongodb+srv://${MONGODB_USER}:${MONGODB_SECRET}@dndspirit.yhqescd.mongodb.net/dnd?authSource=admin&appName=DnDSpirit
 
 server:
   servlet:
