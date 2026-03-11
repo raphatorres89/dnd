@@ -10,110 +10,99 @@
     <div class="container mt-4">
         <div class="row text-center mb-4">
             <h1>
-                <i class="ra ra-dragon text-primary"></i> <span th:text="#{app.spells.title}"></span>
+                <i class="ra ra-crystal-cluster text-primary"></i> <span th:text="#{app.spells.title}"></span>
             </h1>
         </div>
 
         <!-- Filtros -->
-        <div class="card shadow p-4 mb-4">
+        <form method="get" th:action="@{/spells}" class="card shadow p-4 mb-4">
             <div class="row g-3">
                 <div class="col-md-4">
                     <label for="filterSpellName" class="form-label">Nome</label>
-                    <input type="text" id="filterSpellName" class="form-control" placeholder="Filtrar por nome">
+                    <input type="text" id="filterSpellName" name="name" class="form-control" placeholder="Filtrar por nome" th:value="${name}">
                 </div>
                 <div class="col-md-4">
                     <label for="filterSpellLevel" class="form-label">Level</label>
-                    <select id="filterSpellLevel" class="form-select">
+                    <select id="filterSpellLevel" name="level" class="form-select">
                         <option value="">Todos</option>
-                        <option th:each="level : ${#numbers.sequence(0,9)}" th:value="${level}" th:text="${level}"></option>
+                        <option th:each="levelOption : ${#numbers.sequence(0,9)}"
+                                th:value="${levelOption}"
+                                th:text="${levelOption}"
+                                th:selected="${levelOption == level}"></option>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="filterSpellSchool" class="form-label">Escola</label>
-                    <select id="filterSpellSchool" class="form-select">
+                    <select id="filterSpellSchool" name="school" class="form-select">
                         <option value="">Todas</option>
                         <option th:each="school : ${T(com.raphaowl.dnd.enums.MagicSchool).values()}"
                                 th:value="${school.name()}"
-                                th:text="#{${'spell.school.' + school.name()}}">
+                                th:text="#{${'spell.school.' + school.name()}}"
+                                th:selected="${school.name() == school}">
                         </option>
                     </select>
                 </div>
             </div>
             <div class="row mt-4 justify-content-center">
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-primary w-100" onclick="clearSpellFilters()">Limpar Filtros</button>
+                    <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+                    <a th:href="@{/spells}" class="btn btn-secondary w-100 mt-2">Limpar Filtros</a>
                 </div>
             </div>
-        </div>
+        </form>
 
-        <div class="card shadow p-4 mb-4">
-            <table class="table table-hover" id="spellTable">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Level</th>
-                        <th scope="col">Escola</th>
-                        <th scope="col">Tipo de Dano</th>
-                        <th scope="col">Dano</th>
-                    </tr>
-                </thead>
-                <tbody th:each="spell : ${spells}">
-                    <tr style="cursor: pointer;">
-                        <td th:text="#{${'spell.' + spell.name}}"></td>
-                        <td th:text="${spell.level}"></td>
-                        <td>
-                            <i th:classappend="${spell.school.iconClass}" data-bs-toggle="popover" th:title="#{${'spell.school.' + spell.school.name()}}"></i>
-                            <span th:text="#{${'spell.school.' + spell.school}}"></span>
-                        </td>
-                        <td>
-                            <i th:if="${spell.damageType != null}" th:classappend="${spell.damageType.iconClass}"></i>
-                            <span th:if="${spell.damageType != null}" th:text="#{${'damage.' + spell.damageType}}"></span>
-                        </td>
-                        <td th:text="${spell.damage}"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table class="table table-hover" id="spellTable">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Level</th>
+                    <th scope="col">Escola</th>
+                    <th scope="col">Componente</th>
+                    <th scope="col">Alcance</th>
+                </tr>
+            </thead>
+            <tbody th:each="spell : ${spells}">
+                <tr style="cursor: pointer;">
+                    <td th:text="#{${'spell.' + spell.id}}"></td>
+                    <td th:text="${spell.level}"></td>
+                    <td>
+                        <i th:classappend="${spell.school.iconClass}" data-bs-toggle="popover" th:title="#{${'spell.school.' + spell.school.name()}}"></i>
+                        <span th:text="#{${'spell.school.' + spell.school}}"></span>
+                    </td>
+                    <td>
+                        <span th:each="component, iterStat : ${spell.components}"
+                              th:text="${component.name} + (iterStat.last ? ' ' : ' ')"></span>
+                    </td>
+                    <td th:text="${spell.range}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link"
+                       aria-label="Previous"
+                       th:if="${page > 0}"
+                       th:href="@{/spells(page=${page - 1},size=${size},name=${name},level=${level},school=${school})}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}" class="page-item" th:classappend="${i == page} ? 'active'">
+                    <a class="page-link"
+                       th:href="@{/spells(page=${i},size=${size},name=${name},level=${level},school=${school})}"
+                       th:text="${i+1}"></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link"
+                       aria-label="Next"
+                       th:if="${page < totalPages - 1}"
+                       th:href="@{/spells(page=${page + 1},size=${size},name=${name},level=${level},school=${school})}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
-
-    <!-- Script de filtragem -->
-    <script>
-        function filterSpells() {
-            const filterName = $('#filterSpellName').val().toLowerCase();
-            const filterLevel = $('#filterSpellLevel').val();
-            const filterSchool = $('#filterSpellSchool').val();
-
-            $('#spellTable tbody tr').each(function() {
-                const $row = $(this);
-                const name = $row.find('td:nth-child(1)').text().toLowerCase();
-                const level = $row.find('td:nth-child(2)').text();
-                const school = $row.find('td:nth-child(3) span').text();
-                let show = true;
-
-                if (filterName && !name.includes(filterName)) {
-                    show = false;
-                }
-                if (show && filterLevel && level !== filterLevel) {
-                    show = false;
-                }
-                if (show && filterSchool && school !== $('#filterSpellSchool option:selected').text()) {
-                    show = false;
-                }
-                $row.toggle(show);
-            });
-        }
-
-        function clearSpellFilters() {
-            $('#filterSpellName').val('');
-            $('#filterSpellLevel').val('');
-            $('#filterSpellSchool').val('');
-            filterSpells();
-        }
-
-        $(document).ready(function() {
-            $('#filterSpellName, #filterSpellLevel, #filterSpellSchool').on('keyup change', filterSpells);
-        });
-    </script>
 </th:block>
 </body>
 </html>

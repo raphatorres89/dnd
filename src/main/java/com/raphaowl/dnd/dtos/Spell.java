@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Spell {
+    private String id;
     private String name;
     private Integer level;
     private MagicSchool school;

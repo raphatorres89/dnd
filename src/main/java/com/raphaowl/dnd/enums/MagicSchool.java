@@ -16,4 +16,13 @@ public enum MagicSchool {
     TRANSMUTATION("ra ra-recycle text-success");
 
     private final String iconClass;
+
+    public static MagicSchool from(String school) {
+        for (MagicSchool ms : values()) {
+            if (ms.name().equalsIgnoreCase(school)) {
+                return ms;
+            }
+        }
+        throw new IllegalArgumentException("Unknown magic school: " + school);
+    }
 }
